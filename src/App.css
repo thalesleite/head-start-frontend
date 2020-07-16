@@ -1,13 +1,18 @@
 body {
   font-family: 'Roboto';
-  padding: 1.2rem 3.8rem;
+  padding-top: 80px;
+  overflow: hidden;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 * {
   box-sizing: border-box;;
+}
+
+.container {
+  padding: 1.2rem 3.8rem;
 }

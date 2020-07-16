@@ -1,9 +1,13 @@
 import React from 'react';
-import './Home.css';
+
+import backgroundImage from '../../assets/background.jpg';
+
+import './Home.scss';
+
 
 function Home() {
   return (
-    <h1>Home Page</h1>
+    <img className="bkg-img" src={backgroundImage} alt=""/>
   );
 }
 
