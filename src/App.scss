@@ -1,7 +1,10 @@
 body {
   font-family: 'Roboto';
   padding-top: 80px;
-  overflow: hidden;
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 0px;
+  }
 }
 
 a {
@@ -15,4 +18,12 @@ a {
 
 .container {
   padding: 1.2rem 3.8rem;
+}
+
+.float-r{
+  float: right;
+}
+
+.float-l{
+  float: left;
 }

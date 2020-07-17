@@ -40,6 +40,11 @@
       .option {
         width: 100%;
         padding: 15px 20px !important;
+        border-bottom: 1px solid #9a9494;
+
+        &:first-child {
+          border-top: 1px solid #9a9494;
+        }
       }
     }
   }

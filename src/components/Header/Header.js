@@ -22,7 +22,7 @@ function Header() {
                 COURSES
             </Link>
             <Link className="option" to="/contact">
-                CONTACT US
+                CONTACT
             </Link>
             <Link className="option" to="/login">
                 LOGIN
