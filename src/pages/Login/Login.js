@@ -20,7 +20,7 @@ function Login() {
           localStorage.setItem('userEmail', email);
           localStorage.setItem('userName', response.data.name);
 
-          //history.push('/dashboard');
+          history.push('/dashboard');
       } catch (error) {
           alert('Login error, try again!');
       }

@@ -11,6 +11,8 @@ import CoursesPage from './pages/Courses/Courses';
 import ContactPage from './pages/Contact/Contact';
 import LoginPage from './pages/Login/Login';
 
+import DashboardPage from './pages/Dashboard/Dashboard';
+
 function App() {
   return (
     <div>
@@ -21,6 +23,8 @@ function App() {
         <Route path='/courses' component={CoursesPage} />
         <Route path='/contact' component={ContactPage} />
         <Route path='/login' component={LoginPage} />
+
+        <Route path='/dashboard' component={DashboardPage} />
       </Switch>
     </div>
   );
