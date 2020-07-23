@@ -3,6 +3,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   padding-top: $size-header;
+  background-color: $color-blue;
 
   @media only screen and (max-width: 600px) {
     padding-top: 0px;
