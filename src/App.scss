@@ -1,6 +1,8 @@
+@import './scss/variables';
+
 body {
-  font-family: 'Roboto';
-  padding-top: 80px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: $size-header;
 
   @media only screen and (max-width: 600px) {
     padding-top: 0px;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import Logo from '../../assets/head-start-branco.png';
 
 import './Header.scss';
 
@@ -9,21 +9,21 @@ function Header() {
   return (
     <div className="header">
         <Link className="logo-container" to="/">
-            <Logo className="logo"/>
+            <img src={Logo} alt="Head Start"/>
         </Link>
         <div className="options">
             <Link className="option" to="/">
                 HOME
             </Link>
-            <Link className="option" to="/about-us">
+            <a className="option" href="/#about-us">
                 ABOUT US
-            </Link>
-            <Link className="option" to="/courses">
+            </a>
+            <a className="option" href="/#courses">
                 COURSES
-            </Link>
-            <Link className="option" to="/contact">
+            </a>
+            <a className="option" href="/#contact">
                 CONTACT
-            </Link>
+            </a>
             <Link className="option" to="/login">
                 LOGIN
             </Link>

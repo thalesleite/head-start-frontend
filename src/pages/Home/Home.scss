@@ -1,5 +1,25 @@
+.Carousel-root-1 {
+  position: inherit !important;
+}
 
-.bkg-img {
-  background-size: cover;
+.carousel {
   width: 100%;
+  
+  .carousel-item {
+    height: 400px;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 0px;
+    color: white;
+
+    .btn-check {
+      margin-top: 40px;
+      color: white;
+      font-size: 25px;
+      border: 3px solid white;
+      text-transform: capitalize;
+
+      transition: 200ms;
+    }
+  }
 }
