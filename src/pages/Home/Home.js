@@ -7,13 +7,19 @@ import AboutUsPage from '../AboutUs/AboutUs';
 import CoursesPage from '../Courses/Courses';
 import ContactPage from '../Contact/Contact';
 
+import BkgOne from '../../assets/HEAD-START.jpg';
+
 import './Home.scss';
 
 function Item(props) {
   return (
     <Paper 
         className="carousel-item"
-        style={{ backgroundColor: props.item.color }}
+        style={{ 
+          backgroundColor: props.item.color,
+          backgroundImage: `url(${props.item.image})`,
+          backgroundSize: "cover"
+        }}
         elevation={10}
     >
       <h2>{props.item.name}</h2>
@@ -22,8 +28,11 @@ function Item(props) {
       {
         ( props.item.type === 'questions' ) 
         ? (
-          <Button className="btn-check">
-            Check it out!
+          <Button 
+            className="btn-check" 
+            href="/#contact"
+          >
+            Contact us!
           </Button>
         ): ''
       }
@@ -34,22 +43,25 @@ function Item(props) {
 function Home() {
   const items = [
     {
-      name: "Lear Music Reader",
+      name: "Institutional",
       description: "A PDF Reader specially designed for musicians.",
       type: "institutional",
-      color: "#64ACC8"
+      color: "#d1f8ff",
+      image: BkgOne
     },
     {
-      name: "Hash Code 2019",
+      name: "Courses",
       description: "My Solution on the 2019 Hash Code by Google Slideshow problem.",
       type: "courses",
-      color: "#7D85B1",
+      color: "#1f2729",
+      image: ""
     },
     {
-      name: "Terrio",
+      name: "Questions",
       description: "A exciting mobile game game made in the Unity Engine.",
       type: "questions",
-      color: "#CE7E78",
+      color: "#3c1d5d",
+      image: "BkgOne"
     }
   ]
 
