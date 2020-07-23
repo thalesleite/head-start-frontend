@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.scss';
 
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 import HomePage from './pages/Home/Home';
 import AboutUsPage from './pages/AboutUs/AboutUs';
@@ -17,15 +18,16 @@ function App() {
   return (
     <div>
       <Header />
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/about-us' component={AboutUsPage} />
-        <Route path='/courses' component={CoursesPage} />
-        <Route path='/contact' component={ContactPage} />
-        <Route path='/login' component={LoginPage} />
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/about-us' component={AboutUsPage} />
+          <Route path='/courses' component={CoursesPage} />
+          <Route path='/contact' component={ContactPage} />
+          <Route path='/login' component={LoginPage} />
 
-        <Route path='/dashboard' component={DashboardPage} />
-      </Switch>
+          <Route path='/dashboard' component={DashboardPage} />
+        </Switch>
+      {/* <Footer /> */}
     </div>
   );
 }
