@@ -1,0 +1,19 @@
+.services {
+  .services-cards {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .services-card {
+      width: 30%;
+      margin: 12px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .services-card {
+        width: 100%;
+        margin: 15px;
+      }
+    }
+  }
+}
