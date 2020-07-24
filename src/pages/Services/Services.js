@@ -1,10 +1,13 @@
 import React from 'react';
-import './Services.css';
+import './Services.scss';
 
 function Services() {
   return (
-    <div id="services" className="container">
-      <h1>Services Page</h1>
+    <div 
+      id="services" 
+      className="container"
+    >
+      
     </div>
   );
 }
