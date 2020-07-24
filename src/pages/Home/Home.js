@@ -4,7 +4,7 @@ import Carousel from 'react-material-ui-carousel';
 import { Paper, Button } from '@material-ui/core';
 
 import AboutUsPage from '../AboutUs/AboutUs';
-import CoursesPage from '../Courses/Courses';
+import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
 
 import BkgOne from '../../assets/HEAD-START.jpg';
@@ -43,8 +43,8 @@ function Item(props) {
 function Home() {
   const items = [
     {
-      name: "Institutional",
-      description: "A PDF Reader specially designed for musicians.",
+      name: "Head Start",
+      description: "A PDF Reader specially.",
       type: "institutional",
       color: "#d1f8ff",
       image: BkgOne
@@ -84,7 +84,7 @@ function Home() {
       </Carousel>
 
       <AboutUsPage />
-      <CoursesPage />
+      <ServicesPage />
       <ContactPage />
     </div>
   );

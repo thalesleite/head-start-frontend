@@ -9,14 +9,14 @@ import './Header.scss';
 function Header() {
     const [home, setHome] = useState(true);
     const [about, setAbout] = useState(false);
-    const [courses, setCourses] = useState(false);
+    const [services, setServices] = useState(false);
     const [contact, setContact] = useState(false);
     const [login, setLogin] = useState(false);
 
     function setAllFalse() {
         setHome(false);
         setAbout(false);
-        setCourses(false);
+        setServices(false);
         setContact(false);
         setLogin(false);
     }
@@ -30,8 +30,8 @@ function Header() {
         if (option === 'about') {
             setAbout(true);
         }
-        if (option === 'courses') {
-            setCourses(true);
+        if (option === 'services') {
+            setServices(true);
         }
         if (option === 'contact') {
             setContact(true);
@@ -62,11 +62,11 @@ function Header() {
                     ABOUT US
                 </a>
                 <a
-                    className={`option ${courses ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('courses')}
-                    href="/#courses"
+                    className={`option ${services ? 'line-bottom' : ''}`}
+                    onClick={() => setOption('services')}
+                    href="/#services"
                 >
-                    COURSES
+                    SERVICES
                 </a>
                 <a
                     className={`option ${contact ? 'line-bottom' : ''}`}
