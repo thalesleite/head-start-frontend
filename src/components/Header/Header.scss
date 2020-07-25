@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
 .header {
-  height: $size-header;
+  height: 120px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,9 @@
   .logo-container {
     img {
       height: $size-header;
-      width: 250px;
+      width: 220px;
+      background-color: $color-pink;
+      border-radius: 50%;
     }
   }
 
@@ -23,6 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: 20px 20px 0px 0px;
 
     .option {
       font-size: 18px;
@@ -59,4 +62,12 @@
       }
     }
   }
+}
+
+.header-behind {
+  width: 100%;
+  height: $size-header;
+  top: 0;
+  background-color: $color-pink;
+  position: absolute;
 }

@@ -42,46 +42,50 @@ function Header() {
     }
 
     return (
-        <div className="header">
-            <Link className="logo-container" to="/">
-                <img src={Logo} alt="Head Start"/>
-            </Link>
-            <div className="options">
-                <Link 
-                    className={`option ${home ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('home')}
-                    to="/"
-                >
-                    HOME
+        <div>
+            <div className="header">
+                <Link className="logo-container" to="/">
+                    <img src={Logo} alt="Head Start"/>
                 </Link>
-                <a
-                    className={`option ${about ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('about')}
-                    href="/#about-us"
-                >
-                    ABOUT US
-                </a>
-                <a
-                    className={`option ${services ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('services')}
-                    href="/#services"
-                >
-                    SERVICES
-                </a>
-                <a
-                    className={`option ${contact ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('contact')}
-                    href="/#contact">
-                    CONTACT
-                </a>
-                <Link 
-                    className={`option ${login ? 'line-bottom' : ''}`}
-                    onClick={() => setOption('login')}
-                    to="/login">
-                    LOGIN
-                </Link>
+                <div className="options">
+                    <Link 
+                        className={`option ${home ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('home')}
+                        to="/"
+                    >
+                        HOME
+                    </Link>
+                    <a
+                        className={`option ${about ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('about')}
+                        href="/#about-us"
+                    >
+                        ABOUT US
+                    </a>
+                    <a
+                        className={`option ${services ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('services')}
+                        href="/#services"
+                    >
+                        SERVICES
+                    </a>
+                    <a
+                        className={`option ${contact ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('contact')}
+                        href="/#contact">
+                        CONTACT
+                    </a>
+                    <Link 
+                        className={`option ${login ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('login')}
+                        to="/login">
+                        LOGIN
+                    </Link>
+                </div>
             </div>
+            <div className="header-behind"></div>
         </div>
+        
     );
 }
 

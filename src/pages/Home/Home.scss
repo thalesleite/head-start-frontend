@@ -1,5 +1,11 @@
+@import '../../scss/variables';
+
 .Carousel-root-1 {
   position: inherit !important;
+
+  .Carousel-fullHeightHoverWrapper-6 {
+    height: calc(100% + 220px) !important;
+  }
 }
 
 .carousel {
