@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/head-start-branco.png';
 
@@ -45,7 +46,9 @@ function Header() {
         <div>
             <div className="header">
                 <Link className="logo-container" to="/">
-                    <img src={Logo} alt="Head Start"/>
+                    <Parallax y={[-40, 0]}>
+                        <img src={Logo} alt="Head Start"/>
+                    </Parallax> 
                 </Link>
                 <div className="options">
                     <Link 

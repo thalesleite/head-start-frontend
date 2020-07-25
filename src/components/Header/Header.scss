@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   background-color: $color-pink;
+  //background-color: $color-purple;
   z-index: 9999;
 
   .logo-container {
@@ -15,6 +16,7 @@
       height: $size-header;
       width: 220px;
       background-color: $color-pink;
+      //background-color: $color-purple;
       border-radius: 50%;
     }
   }
@@ -38,6 +40,7 @@
 
   .line-bottom {
     border-bottom: solid 5px $color-purple;
+    //border-bottom: solid 5px $color-pink;
   }
 
   @media only screen and (max-width: 600px)  {
@@ -66,8 +69,9 @@
 
 .header-behind {
   width: 100%;
-  height: $size-header;
+  height: $height-header;
   top: 0;
   background-color: $color-pink;
+  //background-color: $color-purple;
   position: absolute;
 }

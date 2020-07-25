@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Parallax } from 'react-scroll-parallax';
 import BartiraImg from '../../assets/BARTIRA.jpg';
 
 import './AboutUs.scss';
@@ -28,7 +29,10 @@ function AboutUs() {
       <section className="about-section">
         <h1>BARTIRA</h1>
         <div className="about-founder">
-          <img className="bartira-img" src={BartiraImg} alt="Bartira"/>
+        
+          <Parallax y={[-20, 20]}>
+            <img className="bartira-img" src={BartiraImg} alt="Bartira"/>
+          </Parallax>
           
           <div className="description">
             <p>

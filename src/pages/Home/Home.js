@@ -18,7 +18,9 @@ function Item(props) {
         style={{ 
           backgroundColor: props.item.color,
           backgroundImage: `url(${props.item.image})`,
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "50% 50%"
         }}
         elevation={10}
     >
@@ -82,7 +84,8 @@ function Home() {
           })
         }
       </Carousel>
-
+      
+      
       <AboutUsPage />
       <ServicesPage />
       <ContactPage />
