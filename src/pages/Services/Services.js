@@ -13,18 +13,18 @@ function Services() {
       <h1>SERVICES</h1>
 
       <h2>Online Courses</h2>
-      <section className="services-cards">
+      <section className="services-cards line-bottom">
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
       </section>
@@ -33,71 +33,71 @@ function Services() {
       <section className="services-cards">
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
 
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
 
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
 
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
 
         <Card className="services-card">
           <CardContent>
-            <h3>Title</h3>
+            <h3 className="txt-border">HACCP - Level 1</h3>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor totam doloremque soluta 
               quis obcaecati reprehenderit vero quia recusandae accusantium nam? Eius et blanditiis aliquam 
               nisi consectetur impedit, ut ullam nesciunt.
             </p>
           </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
+          <CardActions className="btn-container">
+            <Button className="btn-orange">ADD TO CART</Button>
           </CardActions>
         </Card>
       </section>

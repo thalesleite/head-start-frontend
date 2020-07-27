@@ -68,7 +68,7 @@ function Home() {
   ]
 
   return (
-    <div>
+    <div id="main">
       <Carousel 
         className="carousel"
         autoPlay={true}
@@ -84,7 +84,6 @@ function Home() {
           })
         }
       </Carousel>
-      
       
       <AboutUsPage />
       <ServicesPage />

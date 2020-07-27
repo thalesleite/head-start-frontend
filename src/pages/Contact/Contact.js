@@ -13,9 +13,9 @@ function Contact() {
       id="contact" 
       className="container txt-center contact"
     >
-      <h1>Contact Us</h1>
+      <h1>CONTACT US</h1>
       <p>
-        Fill out the fields below. We will answer you soon.
+        Fill out the fields below. We will answer you as soon as possible.
       </p>
       <form
         //onSubmit={handleLogin}
@@ -52,9 +52,10 @@ function Contact() {
           </Grid>
           <Grid item xs={12}>
             <Button
-              variant="contained"
-              type="submit">
-                Send it
+              className="btn-purple"
+              type="submit"
+            >
+                Send
             </Button>
           </Grid>
         </Grid>

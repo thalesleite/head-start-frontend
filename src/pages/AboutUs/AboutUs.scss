@@ -1,6 +1,8 @@
 @import '../../scss/variables';
 
 .about {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
   background-color: $color-blue;
 
   .about-section {
@@ -20,9 +22,18 @@
         padding: 10px;
       }
 
-      @media only screen and (max-width: 600px) {
-        display: block;
+      
+    }
+  }
 
+  @media only screen and (max-width: 600px) {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+    .about-section {
+      .about-founder {
+        display: block;
+  
         .bartira-img {
           width: 100%;
         }

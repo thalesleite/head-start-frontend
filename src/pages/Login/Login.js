@@ -60,9 +60,9 @@ function Login() {
           </Grid>
           <Grid item xs={12}>
             <Button 
-              className="float-r" 
-              variant="contained"
-              type="submit">
+              className="btn-purple float-r"
+              type="submit"
+            >
                 Login
             </Button>
           </Grid>

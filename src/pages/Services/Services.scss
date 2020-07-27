@@ -1,15 +1,44 @@
+@import '../../scss/variables';
+
 .services {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  background-color: $color-purple;
+  color: white;
+
   .services-cards {
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 20px;
 
     .services-card {
       width: 30%;
-      margin: 12px;
-    }
+      margin: 15px;
+      padding-bottom: 10px;
+      transition: all .2s ease-in-out;
 
-    @media only screen and (max-width: 600px) {
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      .btn-container {
+        display: inline-flex;
+        justify-items: center;
+      }
+    }
+  }
+
+  .line-bottom {
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+
+    .services-cards {
       .services-card {
         width: 100%;
         margin: 15px;
