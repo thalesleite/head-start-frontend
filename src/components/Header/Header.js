@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
+import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
+
 import Logo from '../../assets/head-start-branco.png';
 
 import './Header.scss';
@@ -83,6 +85,12 @@ function Header() {
                         onClick={() => setOption('login')}
                         to="/login">
                         LOGIN
+                    </Link>
+                    <Link 
+                        className="option"
+                        onClick={() => {}}
+                        to="/">
+                        <ShoppingCart />
                     </Link>
                 </div>
             </div>

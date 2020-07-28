@@ -72,7 +72,6 @@ a {
 }
 
 // CSS HACKS
-
 .MuiInput-underline:after {
   border-bottom: 2px solid $color-pink !important;
 }
@@ -87,5 +86,16 @@ textarea{
 
   &:focus {
     outline: $color-pink auto 1px !important;
+  }
+}
+
+.leaflet-container {
+  width: 60vw;
+  height: 60vh;
+  margin: 0px 15% 0px 15%;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    margin: 0px;
   }
 }

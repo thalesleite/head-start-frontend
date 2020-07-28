@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 
-import { Grid, TextField, Button, Typography, Link, TextareaAutosize } from '@material-ui/core';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Grid, TextField, Button, TextareaAutosize } from '@material-ui/core';
 
+import 'leaflet/dist/leaflet.css';
 import './Contact.scss';
 
 function Contact() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+
+  const [lat] = useState(53.3495808);
+  const [lng] = useState(-6.258688);
+  const [zoom] = useState(13);
 
   return (
     <div 
@@ -23,7 +29,6 @@ function Contact() {
         noValidate 
         autoComplete="off"
       >
-
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <TextField
@@ -59,9 +64,21 @@ function Contact() {
             </Button>
           </Grid>
         </Grid>
-
       </form>
 
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <Map 
+            center={[lat, lng]} 
+            zoom={zoom}
+          >
+            <TileLayer
+              attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </Map>
+        </Grid>
+      </Grid>
     </div>
   );
 }
