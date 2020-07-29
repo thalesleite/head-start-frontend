@@ -3,6 +3,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
   padding-top: $height-header;
+  font-size: 14px;
 
   @media only screen and (max-width: 600px) {
     padding-top: 0px;
@@ -45,7 +46,7 @@ a {
 .btn-orange {
   width: 200px;
   height: 60px;
-  font-size: 18px !important;
+  font-size: 16px !important;
   font-weight: 500 !important;
   border: solid 3px $color-orange !important;
   color: $color-orange !important;
@@ -59,7 +60,7 @@ a {
 .btn-purple {
   width: 180px;
   height: 50px;
-  font-size: 18px !important;
+  font-size: 16px !important;
   font-weight: 500 !important;
   border: solid 3px $color-purple !important;
   color: $color-purple !important;

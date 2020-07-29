@@ -94,7 +94,6 @@ function Header() {
                     </Link>
                 </div>
             </div>
-            <div className="header-behind"></div>
         </div>
         
     );

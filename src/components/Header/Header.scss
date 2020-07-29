@@ -8,7 +8,6 @@
   position: fixed;
   top: 0;
   background-color: $color-pink;
-  //background-color: $color-purple;
   z-index: 9999;
 
   .logo-container {
@@ -16,21 +15,21 @@
       height: $size-header;
       width: 220px;
       background-color: $color-pink;
-      //background-color: $color-purple;
       border-radius: 50%;
     }
   }
 
   .options {
-    width: 80%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 80%;
+    height: 90%;
+    border-bottom: 1px solid white;
     padding: 20px 20px 0px 0px;
 
     .option {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
       padding: 10px 15px;
       margin: 5px;
@@ -40,7 +39,6 @@
 
   .line-bottom {
     border-bottom: solid 5px $color-purple;
-    //border-bottom: solid 5px $color-pink;
   }
 
   @media only screen and (max-width: 600px)  {
@@ -65,13 +63,4 @@
       }
     }
   }
-}
-
-.header-behind {
-  width: 100%;
-  height: $height-header;
-  top: 0;
-  background-color: $color-pink;
-  //background-color: $color-purple;
-  position: absolute;
 }
