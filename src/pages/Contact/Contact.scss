@@ -1,6 +1,10 @@
 .contact {
   padding-top: 7rem;
   padding-bottom: 7rem;
+
+  section:first-child {
+    margin-bottom: 5rem;
+  }
   
   .form-container {
     width: 100%;
