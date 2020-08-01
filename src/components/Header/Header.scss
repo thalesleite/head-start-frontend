@@ -35,6 +35,10 @@
       margin: 5px;
       cursor: pointer;
     }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .line-bottom {
@@ -47,20 +51,5 @@
     width: 100%;
     justify-content: center;
     position: relative;
-
-    .options {
-      width: 100%;
-      flex-wrap: wrap;
-
-      .option {
-        width: 100%;
-        padding: 15px 20px !important;
-        border-bottom: 1px solid #9a9494;
-
-        &:first-child {
-          border-top: 1px solid #9a9494;
-        }
-      }
-    }
   }
 }

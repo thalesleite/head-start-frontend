@@ -4,6 +4,8 @@ import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
 import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+
 import Logo from '../../assets/head-start-branco.png';
 
 import './Header.scss';
@@ -42,6 +44,10 @@ function Header() {
         if (option === 'login') {
             setLogin(true);
         }
+    }
+
+    function showSettings (event) {
+        event.preventDefault();
     }
 
     return (
@@ -93,6 +99,8 @@ function Header() {
                         <ShoppingCart />
                     </Link>
                 </div>
+    
+                <BurgerMenu />
             </div>
         </div>
         
