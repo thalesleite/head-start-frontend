@@ -7,7 +7,7 @@ import AboutUsPage from '../AboutUs/AboutUs';
 import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
 
-import BkgOne from '../../assets/HEAD-START.jpg';
+import BkgOne from '../../assets/HEAD-START.jpeg';
 
 import './Home.scss';
 
@@ -20,7 +20,7 @@ function Item(props) {
           backgroundImage: `url(${props.item.image})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "50% 50%"
+          backgroundPosition: "50% 55%"
         }}
         elevation={10}
     >

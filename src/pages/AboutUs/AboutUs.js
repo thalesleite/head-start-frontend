@@ -49,7 +49,7 @@ function AboutUs() {
         <h1>WHO IS BARTIRA?</h1>
         <div className="about-founder">
         
-          <Parallax y={[-20, 20]}>
+          <Parallax y={[-10, 30]}>
             <img className="bartira-img" src={BartiraImg} alt="Bartira"/>
             <p>
               <i>
