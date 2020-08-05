@@ -72,7 +72,7 @@ function Services() {
             </div>
 
             <div className="card-price">
-              €40
+              €25
             </div>
           </CardContent>
           
@@ -146,7 +146,7 @@ function Services() {
             </div>
 
             <div className="card-price">
-              €40
+              €35
             </div>
           </CardContent>
           
@@ -171,33 +171,11 @@ function Services() {
                   professional and personal experiences and qualifications to help you in your journey to 
                   get a job in Ireland.
                 </p>
-
-                {/* <div className={`card-link ${course3 ? '' : 'hide'}`}>
-                  <a 
-                    onClick={() => setCourse3(!course3)}
-                  >
-                    See more
-                  </a>
-                </div> */}
               </div>
-              {/* <div className={`${course3 ? 'hide' : ''}`}>
-                <p>
-                  Bartira had developed a practical content, solving the requirements from “Food Safety Authority of 
-                  Ireland  (FSAI)” and following all the principes from HACCP System (Hazard Analysis & Critical Control 
-                  Point).
-                </p>
-                <div className="card-link">
-                    <a 
-                      onClick={() => setCourse3(!course3)}
-                    >
-                      <ArrowBackIcon />
-                    </a>
-                </div>
-              </div> */}
             </div>
 
             <div className="card-price">
-              €40
+              €25
             </div>
           </CardContent>
           
@@ -315,38 +293,16 @@ function Services() {
                 <p>
                   Join the courses with your friends and start growing together!
                 </p>
-
-                {/* <div className={`card-link ${course6 ? '' : 'hide'}`}>
-                  <a 
-                    onClick={() => setCourse6(!course6)}
-                  >
-                    See more
-                  </a>
-                </div> */}
               </div>
-              {/* <div className={`${course6 ? 'hide' : ''}`}>
-                <p>
-                  Bartira had developed a practical content, solving the requirements from “Food Safety Authority of 
-                  Ireland  (FSAI)” and following all the principes from HACCP System (Hazard Analysis & Critical Control 
-                  Point).
-                </p>
-                <div className="card-link">
-                    <a 
-                      onClick={() => setCourse6(!course6)}
-                    >
-                      <ArrowBackIcon />
-                    </a>
-                </div>
-              </div> */}
             </div>
 
             <div className="card-price">
-              €40
+              Contact us
             </div>
           </CardContent>
           
           <CardActions className="btn-container">
-            <Button className="btn-orange">ADD TO CART</Button>
+            {/* <Button className="btn-orange">ADD TO CART</Button> */}
           </CardActions>
         </Card>
 

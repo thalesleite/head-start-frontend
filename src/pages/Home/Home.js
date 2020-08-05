@@ -7,7 +7,12 @@ import AboutUsPage from '../AboutUs/AboutUs';
 import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
 
-import BkgOne from '../../assets/HEAD-START.jpeg';
+import BkgHeadStart from '../../assets/HEAD-START.jpeg';
+import BkgTwo from '../../assets/carousell2.jpg';
+import BkgThree from '../../assets/carousell3.jpg';
+import BkgFour from '../../assets/carousell4.jpg';
+import BkgFive from '../../assets/carousell5.jpg';
+import BkgSix from '../../assets/carousell6.jpg';
 
 import './Home.scss';
 
@@ -45,26 +50,54 @@ function Item(props) {
 function Home() {
   const items = [
     {
-      name: "Head Start",
-      description: "A PDF Reader specially.",
-      type: "institutional",
-      color: "#d1f8ff",
-      image: BkgOne
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgHeadStart
     },
     {
-      name: "Courses",
-      description: "My Solution on the 2019 Hash Code by Google Slideshow problem.",
-      type: "courses",
+      name: "",
+      description: "",
+      type: "",
       color: "#1f2729",
       image: ""
     },
     {
-      name: "Questions",
-      description: "A exciting mobile game game made in the Unity Engine.",
-      type: "questions",
-      color: "#3c1d5d",
-      image: "BkgOne"
-    }
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgTwo
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgThree
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgFour
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgFive
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgSix
+    },
   ]
 
   return (
