@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const dev = 'http://localhost:3333';
+const prod = 'https://head-start-app.herokuapp.com/';
+
 const api = axios.create({
-    baseURL: 'http://localhost:3333',
+    baseURL: prod,
 });
 
 export default api;
