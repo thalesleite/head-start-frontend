@@ -11,52 +11,6 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
-
-    .services-card {
-      width: 33%;
-      height: 100%;
-      margin: 15px;
-      padding-bottom: 10px;
-      transition: all .2s ease-in-out;
-
-      .card-description {
-        border-bottom: 1px solid black;
-
-        .card-link {
-          text-align: left;
-          padding-bottom: 5px;
-
-          a {
-            font-weight: 700;
-            color: $color-pink;
-            cursor: pointer;
-
-            &:hover {
-              color: $color-pink;
-              opacity: .5;
-            }
-          }
-        }
-      }
-
-      .card-price {
-        font-size: 28px;
-        padding-top: 20px;
-      }
-
-      .hide {
-        display: none;
-      }
-
-      &:hover {
-        transform: scale(1.1);
-      }
-
-      .btn-container {
-        display: inline-flex;
-        justify-items: center;
-      }
-    }
   }
 
   .line-bottom {
@@ -67,12 +21,5 @@
   @media only screen and (max-width: 600px) {
     padding-top: 5px;
     padding-bottom: 0rem;
-
-    .services-cards {
-      .services-card {
-        width: 100%;
-        margin: 15px;
-      }
-    }
   }
 }
