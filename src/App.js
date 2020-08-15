@@ -18,6 +18,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      cart: [],
       courses: []
     };
   }
@@ -31,13 +32,23 @@ class App extends React.Component {
     });
   }
 
+  addCart = ( value ) => {
+    debugger;
+    const oldCart = this.state.cart;
+    this.setState({
+      cart: oldCart.push(value)
+    })
+
+    console.log(this.state.cart);
+  }
+
   render() {
     const { courses } = this.state;
     return (
       <div>
         <Header />
           <Switch>
-            <Route exact path='/' component={() => <HomePage courses={courses} />} />
+            <Route exact path='/' component={() => <HomePage courses={courses} addCart={this.addCart} />} />
             <Route path='/login' component={LoginPage} />
   
             <Route path='/dashboard' component={DashboardPage} />

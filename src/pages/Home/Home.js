@@ -47,7 +47,7 @@ function Item(props) {
   )
 }
 
-function Home(props) {
+function Home({ courses, addCart }) {
   const items = [
     {
       name: "",
@@ -119,7 +119,7 @@ function Home(props) {
       </Carousel>
       
       <AboutUsPage />
-      <ServicesPage courses={props.courses} />
+      <ServicesPage courses={courses} addCart={addCart} />
       <ContactPage />
     </div>
   );

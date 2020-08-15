@@ -4,9 +4,9 @@ import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
 
-function Services(props) {
-  const online = props.courses.filter( course => course.type === 'online' );
-  const facetoface = props.courses.filter( course => course.type !== 'online' );
+function Services({ courses, addCart }) {
+  const online = courses.filter( course => course.type === 'online' );
+  const facetoface = courses.filter( course => course.type !== 'online' );
 
   const [onlineCourses, setOnlineCourses] = useState(online);
   const [faceToFaceCourses, setFaceCourses] = useState(facetoface);
@@ -22,9 +22,9 @@ function Services(props) {
         {(
           onlineCourses ?
             onlineCourses.map( course => (
-              <CourseCart key={course.id} course={course} />
+              <CourseCart key={course.id} course={course} addCart={addCart} />
             ))
-          : 'Sorry, No online courses at the moment!'
+          : <p>Sorry, No online courses at the moment!</p>
         )}
       </section>
 
@@ -33,9 +33,9 @@ function Services(props) {
         {(
           faceToFaceCourses ?
           faceToFaceCourses.map( course => (
-            <CourseCart key={course.id} course={course} />
+            <CourseCart key={course.id} course={course} addCart={addCart} />
           ))
-          : 'Sorry, No face to face courses at the moment!'
+          : <p>Sorry, No face to face courses at the moment!</p>
         )}
       </section>
     </div>

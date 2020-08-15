@@ -5,7 +5,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import './CourseCart.scss';
 
-function CourseCart({ course }) {
+function CourseCart({ course, addCart }) {
   const [hide, setHide] = useState(true);
 
   return (
@@ -46,7 +46,11 @@ function CourseCart({ course }) {
       </CardContent>
       
       <CardActions className="btn-container">
-        <Button className="btn-orange">ADD TO CART</Button>
+        <Button 
+          className="btn-orange"
+          onClick={ () => { addCart(course) }}
+          >ADD TO CART
+        </Button>
       </CardActions>
     </Card>
   );
