@@ -5,7 +5,6 @@ import CourseCart from '../../components/CourseCart/CourseCart';
 import './Services.scss';
 
 function Services(props) {
-  console.log(props.courses);
   const online = props.courses.filter( course => course.type === 'online' );
   const facetoface = props.courses.filter( course => course.type !== 'online' );
 
