@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -11,44 +13,25 @@ import DashboardPage from './pages/Dashboard/Dashboard';
 
 import api from './services/api';
 
+import { setCourses } from './redux/course/course.actions';
+
 import './App.scss';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      cart: [],
-      courses: []
-    };
-  }
 
   componentDidMount() {
     api.get('/courses')
       .then(response => {
-        this.setState({
-          courses: response.data
-        });
+        setCourses(response.data);
     });
   }
 
-  addCart = ( value ) => {
-    debugger;
-    const oldCart = this.state.cart;
-    this.setState({
-      cart: oldCart.push(value)
-    })
-
-    console.log(this.state.cart);
-  }
-
   render() {
-    const { courses } = this.state;
     return (
       <div>
         <Header />
           <Switch>
-            <Route exact path='/' component={() => <HomePage courses={courses} addCart={this.addCart} />} />
+            <Route exact path='/' component={HomePage} />
             <Route path='/login' component={LoginPage} />
   
             <Route path='/dashboard' component={DashboardPage} />
@@ -59,4 +42,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  courses: state.courses
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCourses: courses => dispatch(setCourses(courses))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCourses } from '../../redux/course/course.selectors';
 
 import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
+import { render } from '@testing-library/react';
 
-function Services({ courses, addCart }) {
+const Services = ({ courses }) => {
   const online = courses.filter( course => course.type === 'online' );
   const facetoface = courses.filter( course => course.type !== 'online' );
-
-  const [onlineCourses, setOnlineCourses] = useState(online);
-  const [faceToFaceCourses, setFaceCourses] = useState(facetoface);
 
   return (
     <div 
@@ -20,9 +23,9 @@ function Services({ courses, addCart }) {
       <h2>Online Courses</h2>
       <section className="services-cards line-bottom">
         {(
-          onlineCourses ?
-            onlineCourses.map( course => (
-              <CourseCart key={course.id} course={course} addCart={addCart} />
+          online ?
+            online.map( course => (
+              <CourseCart key={course.id} course={course} />
             ))
           : <p>Sorry, No online courses at the moment!</p>
         )}
@@ -31,15 +34,19 @@ function Services({ courses, addCart }) {
       <h2>Face-to-face Courses</h2>
       <section className="services-cards">
         {(
-          faceToFaceCourses ?
-          faceToFaceCourses.map( course => (
-            <CourseCart key={course.id} course={course} addCart={addCart} />
+          facetoface ?
+          facetoface.map( course => (
+            <CourseCart key={course.id} course={course} />
           ))
           : <p>Sorry, No face to face courses at the moment!</p>
         )}
       </section>
     </div>
-  );
-}
+  )
+};
 
-export default Services;
+const mapStateToProps = createStructuredSelector({
+  courses: selectCourses
+});
+
+export default connect(mapStateToProps)(Services);
