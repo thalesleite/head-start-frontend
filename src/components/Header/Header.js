@@ -67,18 +67,18 @@ function Header() {
                         HOME
                     </Link>
                     <a
-                        className={`option ${about ? 'line-bottom' : ''}`}
-                        onClick={() => setOption('about')}
-                        href="/#about-us"
-                    >
-                        ABOUT US
-                    </a>
-                    <a
                         className={`option ${services ? 'line-bottom' : ''}`}
                         onClick={() => setOption('services')}
                         href="/#services"
                     >
                         SERVICES
+                    </a>
+                    <a
+                        className={`option ${about ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('about')}
+                        href="/#about-us"
+                    >
+                        ABOUT US
                     </a>
                     <a
                         className={`option ${contact ? 'line-bottom' : ''}`}

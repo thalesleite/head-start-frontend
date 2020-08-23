@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/Login/Login';
+import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 
 import DashboardPage from './pages/Dashboard/Dashboard';
 
@@ -33,6 +34,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route path='/login' component={LoginPage} />
+            <Route path='/security-policy' component={SecurityPolicy} />
   
             <Route path='/dashboard' component={DashboardPage} />
           </Switch>

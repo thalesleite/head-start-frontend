@@ -20,7 +20,7 @@ function Footer() {
     <footer className="footer">
       <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Link to="/">
+            <Link to="/security-policy">
               Security Policy
             </Link>
           </Grid>

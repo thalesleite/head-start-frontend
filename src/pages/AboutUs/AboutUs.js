@@ -90,6 +90,13 @@ function AboutUs() {
           </div>
         </div>
       </section>
+      <section className="about-section">
+        <h1>Transform your life through education</h1>
+
+        <iframe className="about-video"
+          src="https://www.youtube.com/embed/LHJ5VaZlKsk">
+        </iframe>
+      </section>
     </div>
   );
 }

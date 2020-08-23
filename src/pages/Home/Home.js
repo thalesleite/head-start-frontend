@@ -118,8 +118,8 @@ function Home() {
         }
       </Carousel>
       
-      <AboutUsPage />
       <ServicesPage />
+      <AboutUsPage />
       <ContactPage />
     </div>
   );
