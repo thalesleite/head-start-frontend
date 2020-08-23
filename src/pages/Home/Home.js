@@ -56,48 +56,48 @@ function Home() {
       color: "",
       image: BkgHeadStart
     },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "#1f2729",
-    //   image: ""
-    // },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "",
-    //   image: BkgTwo
-    // },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "",
-    //   image: BkgThree
-    // },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "",
-    //   image: BkgFour
-    // },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "",
-    //   image: BkgFive
-    // },
-    // {
-    //   name: "",
-    //   description: "",
-    //   type: "",
-    //   color: "",
-    //   image: BkgSix
-    // },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "#1f2729",
+      image: ""
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgTwo
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgThree
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgFour
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgFive
+    },
+    {
+      name: "",
+      description: "",
+      type: "",
+      color: "",
+      image: BkgSix
+    },
   ]
 
   return (
