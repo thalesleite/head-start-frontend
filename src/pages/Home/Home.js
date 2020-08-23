@@ -33,13 +33,13 @@ function Item(props) {
       <p>{props.item.description}</p>
       
       {
-        ( props.item.type === 'questions' ) 
+        ( props.item.type === 'head-start' ) 
         ? (
           <Button 
-            className="btn-check" 
-            href="/#contact"
+            className="btn-orange-filled" 
+            href="/#services"
           >
-            Contact us!
+            Explore our services
           </Button>
         ): ''
       }
@@ -52,52 +52,52 @@ function Home() {
     {
       name: "",
       description: "",
-      type: "",
+      type: "head-start",
       color: "",
       image: BkgHeadStart
     },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "#1f2729",
-      image: ""
-    },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
-      image: BkgTwo
-    },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
-      image: BkgThree
-    },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
-      image: BkgFour
-    },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
-      image: BkgFive
-    },
-    {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
-      image: BkgSix
-    },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "#1f2729",
+    //   image: ""
+    // },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "",
+    //   image: BkgTwo
+    // },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "",
+    //   image: BkgThree
+    // },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "",
+    //   image: BkgFour
+    // },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "",
+    //   image: BkgFive
+    // },
+    // {
+    //   name: "",
+    //   description: "",
+    //   type: "",
+    //   color: "",
+    //   image: BkgSix
+    // },
   ]
 
   return (

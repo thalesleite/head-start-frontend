@@ -28,7 +28,7 @@ function Footer() {
             <span className="">Copyright © {year} Head Start</span>
           </Grid>
           <Grid item xs={12} md={4}>
-            <span className="social">
+            {/* <span className="social">
               <a 
                 className="email" 
                 href="https:\\www.gmail.com" 
@@ -36,7 +36,7 @@ function Footer() {
               >
                 <MailOutlineIcon />
               </a>
-            </span>
+            </span> */}
             <span className="social">
               <a 
                 className="facebook" 

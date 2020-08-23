@@ -19,12 +19,14 @@
     color: white;
 
     .btn-check {
-      margin-top: 40px;
-      color: white;
+      right: 2rem;
+      bottom: 5rem;
+      position: absolute;
+      color: $color-pink;
+      background-color: $color-orange;
       font-size: 25px;
-      border: 3px solid white;
-      text-transform: capitalize;
-      transition: 200ms;
+      font-weight: 700;
+      text-transform: none;
     }
   }
 }
