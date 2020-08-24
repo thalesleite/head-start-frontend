@@ -44,28 +44,6 @@ a {
   float: left;
 }
 
-.btn-orange-filled {
-  right: 2rem;
-  bottom: 5rem;
-  position: absolute !important;
-  color: $color-pink !important;
-  background-color: $color-orange !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  text-transform: none !important;
-
-  &:hover {
-    color: $color-purple !important;
-  }
-
-  @media only screen and (max-width: 600px) {
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 15px 0 15px !important;
-  }
-}
-
 .btn-orange {
   width: 200px;
   height: 60px;

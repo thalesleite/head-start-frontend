@@ -8,6 +8,7 @@ import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
 
 import BkgHeadStart from '../../assets/HEAD-START.jpeg';
+import BkgOne from '../../assets/carousell1.jpg';
 import BkgTwo from '../../assets/carousell2.jpg';
 import BkgThree from '../../assets/carousell3.jpg';
 import BkgFour from '../../assets/carousell4.jpg';
@@ -16,31 +17,51 @@ import BkgSix from '../../assets/carousell6.jpg';
 
 import './Home.scss';
 
-function Item(props) {
+function Item({ item }) {
   return (
     <Paper 
         className="carousel-item"
         style={{ 
-          backgroundColor: props.item.color,
-          backgroundImage: `url(${props.item.image})`,
+          backgroundColor: item.color,
+          backgroundImage: `url(${item.image})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "50% 55%"
         }}
         elevation={10}
     >
-      <h2>{props.item.name}</h2>
-      <p>{props.item.description}</p>
+      {/* <h2>{item.title}</h2>
+      <p>{item.description}</p> */}
       
       {
-        ( props.item.type === 'head-start' ) 
+        ( item.type === 'head-start' ) 
         ? (
           <Button 
-            className="btn-orange-filled" 
-            href="/#services"
+            className={`btn-${item.btnColor}-filled`} 
+            href={`/#${item.linkTo}`} 
           >
-            Explore our services
+            { item.btnDescription }
           </Button>
+        ): ''
+      }
+      {
+        ( item.type === 'regular' ) 
+        ? (
+          <div className="carousel-description">
+            <div className="title" style={{color: item.titleColor }}>
+              { item.title }
+            </div>
+            <div className="subtitle" style={{color: item.subtitleColor }}>
+              { item.subtitle }
+            </div>
+            
+            <Button 
+              className={`btn-${item.btnColor}-filled`} 
+              href={`/#${item.linkTo}`}
+            >
+              { item.btnDescription }
+            </Button>
+          </div>
         ): ''
       }
     </Paper>
@@ -50,52 +71,80 @@ function Item(props) {
 function Home() {
   const items = [
     {
-      name: "",
-      description: "",
       type: "head-start",
-      color: "",
+      title: "",
+      subtitle: "",
+      titleColor: "",
+      subtitleColor: "",
+      btnDescription: "Explore our services",
+      btnColor: "orange",
+      linkTo: "services",
       image: BkgHeadStart
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "#1f2729",
-      image: ""
+      type: "regular",
+      title: "COMBO: BARISTA + FOOD SAFETY COURSE",
+      subtitle: "Your start in Ireland",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Learn more",
+      btnColor: "white",
+      linkTo: "services",
+      image: BkgOne
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
+      type: "regular",
+      title: "FOOD SAFETY - HACCP - LEVEL 1",
+      subtitle: "Curso online em Protuguês",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Saiba mais",
+      btnColor: "pink",
+      linkTo: "services",
       image: BkgTwo
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
+      type: "regular",
+      title: "FACE TO FACE BARIST COURSE (ENGLISH OR PORTUGUESE)",
+      subtitle: "Fancy coffees?",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffffff",
+      btnDescription: "Be a Barista",
+      btnColor: "pink",
+      linkTo: "services",
       image: BkgThree
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
+      type: "regular",
+      title: "BARISTA + FOOD SAFETY + CVIEW",
+      subtitle: "Combo to get a Head Start",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Book now",
+      btnColor: "pink",
+      linkTo: "services",
       image: BkgFour
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
+      type: "regular",
+      title: `€5 OFF FOR YOU AND YOUR FRIENDS`,
+      subtitle: "Let's start together?",
+      titleColor: "#ffcc65",
+      subtitleColor: "#3c1d5d",
+      btnDescription: "Get an offer",
+      btnColor: "pink",
+      linkTo: "services",
       image: BkgFive
     },
     {
-      name: "",
-      description: "",
-      type: "",
-      color: "",
+      type: "regular",
+      title: "+5000 students in Ireland",
+      subtitle: "Start your journey now",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Contact Bartira",
+      btnColor: "white",
+      linkTo: "contact",
       image: BkgSix
     },
   ]

@@ -18,15 +18,86 @@
     border-radius: 0px;
     color: white;
 
-    .btn-check {
-      right: 2rem;
-      bottom: 5rem;
-      position: absolute;
-      color: $color-pink;
-      background-color: $color-orange;
-      font-size: 25px;
-      font-weight: 700;
-      text-transform: none;
+    .carousel-description {
+      text-align: center;
+      padding-top: 160px;
+
+      .title {
+        font-size: 18px;
+      }
+
+      .subtitle {
+        font-size: 50px;
+        font-weight: 700;
+      }
+
+      a {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .btn-orange-filled {
+    right: 2rem;
+    bottom: 5rem;
+    position: absolute !important;
+    color: $color-pink !important;
+    background-color: $color-orange !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+  
+    &:hover {
+      color: $color-purple !important;
+    }
+  
+    @media only screen and (max-width: 600px) {
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: 0 15px 0 15px !important;
+    }
+  }
+  
+  .btn-white-filled {
+    width: 200px;
+    height: 45px;
+    color: $color-pink !important;
+    background-color: white !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+  
+    &:hover {
+      color: $color-purple !important;
+    }
+  
+    @media only screen and (max-width: 600px) {
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: 0 15px 0 15px !important;
+    }
+  }
+  
+  .btn-pink-filled {
+    width: 200px;
+    height: 45px;
+    color: white !important;
+    background-color: $color-pink !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+  
+    &:hover {
+      color: $color-purple !important;
+    }
+  
+    @media only screen and (max-width: 600px) {
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: 0 15px 0 15px !important;
     }
   }
 }
