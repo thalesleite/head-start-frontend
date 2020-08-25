@@ -29,10 +29,7 @@ function Item({ item }) {
           backgroundPosition: "50% 55%"
         }}
         elevation={10}
-    >
-      {/* <h2>{item.title}</h2>
-      <p>{item.description}</p> */}
-      
+    >      
       {
         ( item.type === 'head-start' ) 
         ? (
