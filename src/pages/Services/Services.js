@@ -8,7 +8,6 @@ import { selectCourses } from '../../redux/course/course.selectors';
 import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
-import { render } from '@testing-library/react';
 
 const Services = ({ courses }) => {
   const online = courses.filter( course => course.type === 'online' );

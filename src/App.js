@@ -21,6 +21,8 @@ import './App.scss';
 class App extends React.Component {
 
   componentDidMount() {
+    const { setCourses } = this.props;
+    
     api.get('/courses')
       .then(response => {
         setCourses(response.data);
@@ -48,8 +50,10 @@ const mapStateToProps = state => ({
   courses: state.courses
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCourses: courses => dispatch(setCourses(courses))
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    setCourses: courses => dispatch(setCourses(courses))
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
