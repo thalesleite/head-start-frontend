@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -9,9 +8,9 @@ import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
 
-const Services = ({ courses }) => {
-  const online = courses.filter( course => course.type === 'online' );
-  const facetoface = courses.filter( course => course.type !== 'online' );
+const Services = ({ courses, ...otherProps }) => {
+  const online = courses ? courses.filter( course => course.type === 'online' ) : '';
+  const facetoface = courses ? courses.filter( course => course.type !== 'online' ) : '';
 
   return (
     <div 
@@ -24,9 +23,9 @@ const Services = ({ courses }) => {
         {(
           online ?
             online.map( course => (
-              <CourseCart key={course.id} course={course} />
+              <CourseCart key={course.id} course={course} {...otherProps} />
             ))
-          : <p>Sorry, No online courses at the moment!</p>
+          : ''
         )}
       </section>
 
@@ -35,9 +34,9 @@ const Services = ({ courses }) => {
         {(
           facetoface ?
           facetoface.map( course => (
-            <CourseCart key={course.id} course={course} />
+            <CourseCart key={course.id} course={course} {...otherProps} />
           ))
-          : <p>Sorry, No face to face courses at the moment!</p>
+          : ''
         )}
       </section>
     </div>

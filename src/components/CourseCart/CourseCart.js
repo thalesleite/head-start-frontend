@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import { Card, CardActions, CardContent, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+import ConfirmCartItem from '../ConfirmCartItem/ConfirmCartItem';
+
+import { addItem } from '../../redux/cart/cart.actions';
+
 import './CourseCart.scss';
 
-function CourseCart({ course, addCart }) {
+function CourseCart({ course, addItem }) {
   const [hide, setHide] = useState(true);
+  const [item, setItem] = useState(false);
 
   return (
     <Card className="card">
@@ -48,12 +54,32 @@ function CourseCart({ course, addCart }) {
       <CardActions className="btn-container">
         <Button 
           className="btn-orange"
-          onClick={ () => { addCart(course) }}
+          onClick={ () => { 
+            addItem(course);
+            setItem(true);
+          }}
           >ADD TO CART
         </Button>
+        
+        {
+          item ? (
+            <ConfirmCartItem course={course} />
+          ) : ''
+        }
+        
       </CardActions>
     </Card>
   );
 }
 
-export default CourseCart;
+const mapStateToProps = state => ({
+  cartItems: state.cartItems
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addItem: cartItems => dispatch(addItem(cartItems))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseCart);

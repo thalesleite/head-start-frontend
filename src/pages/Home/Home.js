@@ -151,10 +151,10 @@ function Home() {
       <Carousel 
         className="carousel"
         autoPlay={true}
-        timer={500}
+        timer={1000}
         animation={"fade"}
         indicators={true}
-        timeout={500}
+        timeout={1000}
         navButtonsAlwaysVisible={false}
       >
         {

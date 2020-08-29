@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
+import Badge from '@material-ui/core/Badge';
 import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 import Logo from '../../assets/head-start-branco.png';
 
 import './Header.scss';
 
 
-function Header() {
+function Header({ cartItems }) {
+    const ItemsQtty = cartItems?.length;
+
     const [home, setHome] = useState(true);
     const [about, setAbout] = useState(false);
     const [services, setServices] = useState(false);
@@ -44,10 +50,6 @@ function Header() {
         if (option === 'login') {
             setLogin(true);
         }
-    }
-
-    function showSettings (event) {
-        event.preventDefault();
     }
 
     return (
@@ -95,8 +97,10 @@ function Header() {
                     <Link 
                         className="option"
                         onClick={() => {}}
-                        to="/">
-                        <ShoppingCart />
+                        to="/cart">
+                        <Badge badgeContent={ItemsQtty} color="primary">
+                            <ShoppingCart />
+                        </Badge>
                     </Link>
                 </div>
     
@@ -107,4 +111,8 @@ function Header() {
     );
 }
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+    cartItems: selectCartItems
+});
+  
+export default connect(mapStateToProps)(Header);

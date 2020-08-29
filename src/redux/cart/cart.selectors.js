@@ -1,16 +1,10 @@
 import { createSelector } from 'reselect';
-import { createStore } from 'redux';
 
 const selectCart = state => state.cart;
 
 export const selectCartItems = createSelector(
     [selectCart],
     cart => cart.cartItems
-);
-
-export const selectCarHidden = createSelector(
-    [selectCart],
-    cart => cart.hidden
 );
 
 export const selectCartItemsCount = createSelector(
