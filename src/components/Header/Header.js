@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { Parallax } from 'react-scroll-parallax';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 
@@ -23,6 +23,7 @@ function Header({ cartItems }) {
     const [services, setServices] = useState(false);
     const [contact, setContact] = useState(false);
     const [login, setLogin] = useState(false);
+    const [cart, setCart] = useState(false);
 
     function setAllFalse() {
         setHome(false);
@@ -30,6 +31,7 @@ function Header({ cartItems }) {
         setServices(false);
         setContact(false);
         setLogin(false);
+        setCart(false);
     }
 
     function setOption(option) {
@@ -50,6 +52,9 @@ function Header({ cartItems }) {
         if (option === 'login') {
             setLogin(true);
         }
+        if (option === 'cart') {
+            setCart(true);
+        }
     }
 
     return (
@@ -68,26 +73,26 @@ function Header({ cartItems }) {
                     >
                         HOME
                     </Link>
-                    <a
+                    <Link
                         className={`option ${services ? 'line-bottom' : ''}`}
                         onClick={() => setOption('services')}
-                        href="/#services"
+                        to="/#services"
                     >
                         SERVICES
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className={`option ${about ? 'line-bottom' : ''}`}
                         onClick={() => setOption('about')}
-                        href="/#about-us"
+                        to="/#about-us"
                     >
                         ABOUT US
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className={`option ${contact ? 'line-bottom' : ''}`}
                         onClick={() => setOption('contact')}
-                        href="/#contact">
+                        to="/#contact">
                         CONTACT
-                    </a>
+                    </Link>
                     <Link 
                         className={`option ${login ? 'line-bottom' : ''}`}
                         onClick={() => setOption('login')}
@@ -95,8 +100,8 @@ function Header({ cartItems }) {
                         LOGIN
                     </Link>
                     <Link 
-                        className="option"
-                        onClick={() => {}}
+                        className={`option ${cart ? 'line-bottom' : ''}`}
+                        onClick={() => setOption('cart')}
                         to="/cart">
                         <Badge badgeContent={ItemsQtty} color="primary">
                             <ShoppingCart />

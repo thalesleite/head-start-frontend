@@ -52,10 +52,18 @@ a {
   border: solid 3px $color-orange !important;
   color: $color-orange !important;
 
+  a {
+    color: $color-orange !important;
+  }
+
   &:hover {
     border: solid 3px $color-purple !important;
     color: $color-purple !important;
     background-color: $color-orange !important;
+
+    a {
+      color: $color-purple !important;
+    }
   }
 }
 
@@ -67,10 +75,18 @@ a {
   border: solid 3px $color-purple !important;
   color: $color-purple !important;
 
+  a {
+    color: $color-purple !important;
+  }
+
   &:hover {
     border: solid 3px $color-orange !important;
     color: $color-orange !important;
     background-color: $color-purple !important;
+
+    a {
+      color: $color-orange !important;
+    }
   }
 }
 

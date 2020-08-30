@@ -1,5 +1,14 @@
 .cart {
   padding-top: 120px !important;
+  min-height: 30rem;
+
+  .cart-container {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    //height: 200px;
+  }
 
   @media only screen and (max-width: 600px) {
     padding-top: 50px !important;
