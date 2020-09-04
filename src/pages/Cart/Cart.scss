@@ -1,3 +1,5 @@
+@import '../../scss/variables';
+
 .cart {
   padding-top: 120px !important;
   min-height: 30rem;
@@ -7,11 +9,27 @@
     padding: 20px;
     text-align: center;
     border: 1px solid #ccc;
-    //height: 200px;
+
+    .coupon {
+      padding-top: 20px;
+
+      .btn-coupon {
+        background-color: $color-orange;
+        border: solid 1px $color-black;
+        margin-top: 12px;
+        margin-left: 5px;
+
+        &:hover {
+          border: solid 1px $color-orange;
+          color: $color-orange;
+          background-color: $color-black;
+        }
+      }
+    }
   }
 
   @media only screen and (max-width: 600px) {
     padding-top: 50px !important;
-    padding: 20px;
+    padding: 20px !important;
   }
 }

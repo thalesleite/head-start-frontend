@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCartTotal } from '../../redux/cart/cart.selectors';
 
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, TextField } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
@@ -23,7 +23,7 @@ function Cart({ cart, cartTotal }) {
           cart?.length > 0 ?
           <section className="cart-container">
             <Grid container spacing={4}>
-              <Grid item xs={8}>
+              <Grid item sm={8} xs={12}>
                 {
                   cart ?
                   cart.map( item => (
@@ -31,8 +31,8 @@ function Cart({ cart, cartTotal }) {
                   )) : ''
                 }
               </Grid>
-              <Grid item xs={4}>
-                <p>Total:</p>
+              <Grid item sm={4} xs={12}>
+                <p>Total</p>
                 <h1>€{ cartTotal }</h1>
                 <Button
                   className="btn-purple"
@@ -41,6 +41,21 @@ function Cart({ cart, cartTotal }) {
                 >
                   checkout
                 </Button>
+                <div className="coupon">
+                  <TextField
+                    id="coupon" 
+                    label="Enter Coupon"
+                    type="text"
+                    //value={coupon}
+                    //onChange={e => setCoupon(e.target.value)}
+                  />
+                  <Button
+                    className="btn-coupon"
+                    type="button"
+                  >
+                    Apply
+                  </Button>
+                </div>
               </Grid>
             </Grid>
           </section> : 

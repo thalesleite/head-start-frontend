@@ -22,5 +22,9 @@
       outline: none;
       box-shadow: none;
     }
+
+    @media only screen and (max-width: 600px) {
+      width: 70%;
+    }
   }
 }

@@ -33,7 +33,7 @@ function BurgerMenu() {
         <Link to="/login">
           LOGIN
         </Link>
-        <Link to="/">
+        <Link to="/cart">
           <ShoppingCart />
         </Link>
       </div>
