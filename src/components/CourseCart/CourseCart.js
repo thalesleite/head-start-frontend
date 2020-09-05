@@ -10,7 +10,10 @@ import { addItem } from '../../redux/cart/cart.actions';
 
 import './CourseCart.scss';
 
-function CourseCart({ course, addItem }) {
+function CourseCart({ course, addItem, language }) {
+  const text = language === 'EN' ? 'See more' : 'Veja mais';
+  const btnText = language === 'EN' ? 'ADD TO CART' : 'Adicionar';
+
   const [hide, setHide] = useState(true);
   const [item, setItem] = useState(false);
 
@@ -28,7 +31,7 @@ function CourseCart({ course, addItem }) {
               <a 
                 onClick={() => setHide(!hide)}
               >
-                See more
+                { text }
               </a>
             </div>
           </div>
@@ -58,12 +61,12 @@ function CourseCart({ course, addItem }) {
             addItem(course);
             setItem(true);
           }}
-          >ADD TO CART
+          >{ btnText }
         </Button>
         
         {
           item ? (
-            <ConfirmCartItem course={course} />
+            <ConfirmCartItem course={course} language={language} />
           ) : ''
         }
         

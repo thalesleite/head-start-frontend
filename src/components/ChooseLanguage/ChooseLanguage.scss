@@ -1,0 +1,35 @@
+@import '../../scss/variables';
+
+.item-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  .paper {
+    border: 4px solid $color-orange;
+    border-radius: 15px;
+    padding: 2px 4px 3px;
+    background: white;
+    width: 30%;
+    text-align: center;
+
+    .item-flag {
+      margin: 15px;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(50%);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      width: 70%;
+    }
+  }
+}

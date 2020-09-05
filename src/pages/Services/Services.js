@@ -3,12 +3,19 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCourses } from '../../redux/course/course.selectors';
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
 
 import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
 
-const Services = ({ courses, ...otherProps }) => {
+const Services = ({ courses, language, ...otherProps }) => {
+  // getting language text
+  const text = language === 'EN' ? EN_DATA.sections.services : PT_DATA.sections.services;
+
   const online = courses ? courses.filter( course => course.type === 'online' ) : '';
   const facetoface = courses ? courses.filter( course => course.type !== 'online' ) : '';
 
@@ -17,24 +24,24 @@ const Services = ({ courses, ...otherProps }) => {
       id="services" 
       className="container txt-center services"
     >
-      <h1>SERVICES</h1>
-      <h2>Online Courses</h2>
+      <h1>{ text[0] }</h1>
+      <h2>{ text[1] }</h2>
       <section className="services-cards line-bottom">
         {(
           online ?
             online.map( course => (
-              <CourseCart key={course.id} course={course} {...otherProps} />
+              <CourseCart key={course.id} course={course} language={language} {...otherProps} />
             ))
           : ''
         )}
       </section>
 
-      <h2>Face-to-face Courses</h2>
+      <h2>{ text[2] }</h2>
       <section className="services-cards">
         {(
           facetoface ?
           facetoface.map( course => (
-            <CourseCart key={course.id} course={course} {...otherProps} />
+            <CourseCart key={course.id} course={course} language={language} {...otherProps} />
           ))
           : ''
         )}
@@ -44,7 +51,8 @@ const Services = ({ courses, ...otherProps }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  courses: selectCourses
+  courses: selectCourses,
+  language: selectLanguage
 });
 
 export default connect(mapStateToProps)(Services);

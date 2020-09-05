@@ -9,13 +9,19 @@ import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
 
 import Logo from '../../assets/head-start-branco.png';
 
 import './Header.scss';
 
 
-function Header({ cartItems }) {
+function Header({ cartItems, language }) {
+    // getting language text
+    const menu = language === 'EN' ? EN_DATA.menu : PT_DATA.menu;
     const ItemsQtty = cartItems?.length;
 
     const [home, setHome] = useState(true);
@@ -71,33 +77,33 @@ function Header({ cartItems }) {
                         onClick={() => setOption('home')}
                         to="/"
                     >
-                        HOME
+                        { menu[0] }
                     </Link>
                     <Link
                         className={`option ${services ? 'line-bottom' : ''}`}
                         onClick={() => setOption('services')}
                         to="/#services"
                     >
-                        SERVICES
+                        { menu[1] }
                     </Link>
                     <Link
                         className={`option ${about ? 'line-bottom' : ''}`}
                         onClick={() => setOption('about')}
                         to="/#about-us"
                     >
-                        ABOUT US
+                        { menu[2] }
                     </Link>
                     <Link
                         className={`option ${contact ? 'line-bottom' : ''}`}
                         onClick={() => setOption('contact')}
                         to="/#contact">
-                        CONTACT
+                        { menu[3] }
                     </Link>
                     <Link 
                         className={`option ${login ? 'line-bottom' : ''}`}
                         onClick={() => setOption('login')}
                         to="/login">
-                        LOGIN
+                        { menu[4] }
                     </Link>
                     <Link 
                         className={`option ${cart ? 'line-bottom' : ''}`}
@@ -117,7 +123,8 @@ function Header({ cartItems }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-    cartItems: selectCartItems
+    cartItems: selectCartItems,
+    language: selectLanguage
 });
   
 export default connect(mapStateToProps)(Header);

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
+import Language from './components/ChooseLanguage/ChooseLanguage';
+
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/Login/Login';
 import CheckoutPage from './pages/Checkout/Checkout';
@@ -34,6 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Language />
         <Header />
           <Switch>
             <Route exact path='/' component={HomePage} />
@@ -52,6 +55,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   courses: state.courses
+
 });
 
 const mapDispatchToProps = dispatch => {

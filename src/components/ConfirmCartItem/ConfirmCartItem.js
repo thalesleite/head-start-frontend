@@ -8,8 +8,8 @@ import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
 
 import './ConfirmCartItem.scss';
 
-function ConfirmCartItem({ course }) {
-  console.log(course);
+function ConfirmCartItem({ course, language }) {
+  const text = language === 'EN' ? 'Added to cart' : 'Adicionado ao carrinho';
   const [open, setOpen] = useState(true);
 
   const handleClose = () => {
@@ -32,9 +32,9 @@ function ConfirmCartItem({ course }) {
       >
         <Fade in={open}>
           <div className="paper">
-            <h2 id="modal-title">Added to cart</h2>
+            <h2 id="modal-title">{ text }</h2>
             <p id="modal-description">
-              {course.name}
+              { course.name }
             </p>
             <CheckCircleOutlinedIcon className="icon"/>
           </div>

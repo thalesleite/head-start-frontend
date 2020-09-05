@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Grid, TextField, Button, TextareaAutosize } from '@material-ui/core';
 import L from 'leaflet';
+
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
 
 import 'leaflet/dist/leaflet.css';
 import './Contact.scss';
@@ -15,7 +22,10 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
 });
 
-function Contact() {
+function Contact({ language }) {
+  // getting language text
+  const text = language === 'EN' ? EN_DATA.sections.contact : PT_DATA.sections.contact;
+
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
@@ -31,9 +41,9 @@ function Contact() {
     >
 
     <section>
-      <h1>CONTACT US</h1>
+      <h1>{ text[0] }</h1>
       <p>
-        Fill out the fields below. We will answer you as soon as possible.
+        { text[1] }
       </p>
       <form
         //onSubmit={handleLogin}
@@ -47,7 +57,7 @@ function Contact() {
               className="form-input"
               required 
               id="name" 
-              label="Name"
+              label={ text[2] }
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
@@ -58,21 +68,21 @@ function Contact() {
               className="form-input" 
               required 
               id="email" 
-              label="Email"
+              label={ text[3] }
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
-            <TextareaAutosize className="form-input textarea" placeholder="Message" />
+            <TextareaAutosize className="form-input textarea" placeholder={ text[4] } />
           </Grid>
           <Grid item xs={12}>
             <Button
               className="btn-purple"
               type="submit"
             >
-                Send
+                { text[5] }
             </Button>
           </Grid>
         </Grid>
@@ -80,10 +90,10 @@ function Contact() {
     </section>
 
     <section>
-      <h2>Location</h2>
-      <p>You can find Head Start Courses in: </p>
+      <h2>{ text[6] }</h2>
+      <p>{ text[7] } </p>
       <p><i>Dublin City Centre, Ulysses House, 23/24, Foley Street, Dublin 1. D01 W2T2.</i></p>
-      <p>You are very welcome here. Will be our pleasure having you with us!</p>
+      <p>{ text[8] }</p>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Map 
@@ -110,4 +120,8 @@ function Contact() {
   );
 }
 
-export default Contact;
+const mapStateToProps = createStructuredSelector({
+  language: selectLanguage
+});
+
+export default connect(mapStateToProps)(Contact);
