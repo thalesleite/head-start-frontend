@@ -45,6 +45,8 @@ const EN_DATA = {
       'You are very welcome here. Will be our pleasure having you with us!'
     ],
     login: [
+      'Email',
+      'Password',
       'or Create a new account',
       'Forgot Password?'
     ],
@@ -57,7 +59,9 @@ const EN_DATA = {
       'Courses in Cart',
       'CHECKOUT',
       'Enter Coupon',
-      'APPLY'
+      'APPLY',
+      'Your cart is empty. Keep shopping to find a course!',
+      'go shoopping'
     ]
   }
 };

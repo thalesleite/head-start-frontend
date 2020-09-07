@@ -10,14 +10,22 @@ import { HashLink as Link } from 'react-router-hash-link';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
+
 import './Cart.scss';
 
-function Cart({ cart, cartTotal }) {
+function Cart({ cart, cartTotal, language }) {
+  // getting language text
+  const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
+
   return (
     <div className="cart container">
       <section>
-        <h1>Shopping Cart</h1>
-        <p>{cart?.length > 0 ? cart.length : '0'} Courses in Cart</p>
+        <h1>{ text[0] }</h1>
+        <p>{cart?.length > 0 ? cart.length : '0'} { text[1] }</p>
       </section>
       {(
           cart?.length > 0 ?
@@ -39,12 +47,12 @@ function Cart({ cart, cartTotal }) {
                   type="button"
                   href="/checkout"
                 >
-                  checkout
+                  { text[2] }
                 </Button>
                 <div className="coupon">
                   <TextField
                     id="coupon" 
-                    label="Enter Coupon"
+                    label={ text[3] }
                     type="text"
                     //value={coupon}
                     //onChange={e => setCoupon(e.target.value)}
@@ -53,7 +61,7 @@ function Cart({ cart, cartTotal }) {
                     className="btn-coupon"
                     type="button"
                   >
-                    Apply
+                    { text[4] }
                   </Button>
                 </div>
               </Grid>
@@ -62,7 +70,7 @@ function Cart({ cart, cartTotal }) {
           <section className="cart-container">
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                <p>Your cart is empty. Keep shopping to find a course!</p>
+                <p>{ text[5] }</p>
               </Grid>
               <Grid item xs={12}>
                 <Button
@@ -70,7 +78,7 @@ function Cart({ cart, cartTotal }) {
                   type="button"
                 >
                   <Link to="/#services">
-                    go shoopping
+                    { text[6] }
                   </Link>
                 </Button>
               </Grid>
@@ -83,7 +91,8 @@ function Cart({ cart, cartTotal }) {
 
 const mapStateToProps = createStructuredSelector({
   cart: selectCartItems,
-  cartTotal: selectCartTotal
+  cartTotal: selectCartTotal,
+  language: selectLanguage
 });
 
 export default connect(mapStateToProps)(Cart);

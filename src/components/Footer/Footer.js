@@ -1,19 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectLanguage } from '../../redux/language/language.selectors';
 
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import './Footer.scss';
 
-function Footer() {
+function Footer({ language }) {
+  const text = language === 'EN' ? 'Security Policy' : 'Política de Segurança';
+
   let newDate = new Date()
-  //let date = newDate.getDate();
-  //let month = newDate.getMonth() + 1;
   let year = newDate.getFullYear();
 
   return (
@@ -21,22 +24,13 @@ function Footer() {
       <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <Link to="/security-policy">
-              Security Policy
+              { text }
             </Link>
           </Grid>
           <Grid item xs={12} md={4}>
             <span className="">Copyright © {year} Head Start</span>
           </Grid>
           <Grid item xs={12} md={4}>
-            {/* <span className="social">
-              <a 
-                className="email" 
-                href="https:\\www.gmail.com" 
-                target="_blank"
-              >
-                <MailOutlineIcon />
-              </a>
-            </span> */}
             <span className="social">
               <a 
                 className="facebook" 
@@ -70,4 +64,8 @@ function Footer() {
   );
 }
 
-export default Footer;
+const mapStateToProps = createStructuredSelector({
+  language: selectLanguage
+});
+
+export default connect(mapStateToProps)(Footer);

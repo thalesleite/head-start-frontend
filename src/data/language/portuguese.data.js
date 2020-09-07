@@ -47,7 +47,7 @@ const PT_DATA = {
     login: [
       'Email',
       'Senha',
-      'ou Crie uma nova conta',
+      'Criar nova conta',
       'Esqueceu a Senha?'
     ],
     security: [
@@ -59,7 +59,9 @@ const PT_DATA = {
       'Cursos no Carrinho',
       'CONFIRMAR',
       'Inserir Cupom',
-      'APLICAR'
+      'APLICAR',
+      'O carrinho está vazio. Encontre cum curso para você!',
+      'ir às compras'
     ]
   }
 };

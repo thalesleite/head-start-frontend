@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Carousel from 'react-material-ui-carousel';
 import { Paper, Button } from '@material-ui/core';
@@ -14,6 +16,8 @@ import BkgThree from '../../assets/carousell3.jpg';
 import BkgFour from '../../assets/carousell4.jpg';
 import BkgFive from '../../assets/carousell5.jpg';
 import BkgSix from '../../assets/carousell6.jpg';
+
+import { selectLanguage } from '../../redux/language/language.selectors';
 
 import './Home.scss';
 
@@ -65,8 +69,8 @@ function Item({ item }) {
   )
 }
 
-function Home() {
-  const items = [
+function Home({ language }) {
+  const itemsEN = [
     {
       type: "head-start",
       title: "",
@@ -89,20 +93,20 @@ function Home() {
       linkTo: "services",
       image: BkgOne
     },
+    // {
+    //   type: "regular",
+    //   title: "FOOD SAFETY - HACCP - LEVEL 1",
+    //   subtitle: "Curso online em Protuguês",
+    //   titleColor: "#ffffff",
+    //   subtitleColor: "#ffcc65",
+    //   btnDescription: "Saiba mais",
+    //   btnColor: "pink",
+    //   linkTo: "services",
+    //   image: BkgTwo
+    // },
     {
       type: "regular",
-      title: "FOOD SAFETY - HACCP - LEVEL 1",
-      subtitle: "Curso online em Protuguês",
-      titleColor: "#ffffff",
-      subtitleColor: "#ffcc65",
-      btnDescription: "Saiba mais",
-      btnColor: "pink",
-      linkTo: "services",
-      image: BkgTwo
-    },
-    {
-      type: "regular",
-      title: "FACE TO FACE BARIST COURSE (ENGLISH OR PORTUGUESE)",
+      title: "FACE TO FACE BARISTA COURSE (ENGLISH OR PORTUGUESE)",
       subtitle: "Fancy coffees?",
       titleColor: "#ffffff",
       subtitleColor: "#ffffff",
@@ -144,7 +148,89 @@ function Home() {
       linkTo: "contact",
       image: BkgSix
     },
+  ];
+
+  const itemsPT = [
+    {
+      type: "head-start",
+      title: "",
+      subtitle: "",
+      titleColor: "",
+      subtitleColor: "",
+      btnDescription: "Explore nossos serviços",
+      btnColor: "orange",
+      linkTo: "services",
+      image: BkgHeadStart
+    },
+    {
+      type: "regular",
+      title: "COMBO: BARISTA + CURSO FOOD SAFETY",
+      subtitle: "O seu início na Irlanda",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Saiba mais",
+      btnColor: "white",
+      linkTo: "services",
+      image: BkgOne
+    },
+    {
+      type: "regular",
+      title: "FOOD SAFETY - HACCP - LEVEL 1",
+      subtitle: "Curso online em Protuguês",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Saiba mais",
+      btnColor: "pink",
+      linkTo: "services",
+      image: BkgTwo
+    },
+    {
+      type: "regular",
+      title: "CURSO PRESENCIAL DE BARISTA (INGLÊS OU PORTUGUÊS)",
+      subtitle: "Cafés finos?",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffffff",
+      btnDescription: "Seja um Barista",
+      btnColor: "pink",
+      linkTo: "services",
+      image: BkgThree
+    },
+    {
+      type: "regular",
+      title: "BARISTA + FOOD SAFETY + CVIEW",
+      subtitle: "Combo para ter um Head Start",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Agende agora",
+      btnColor: "pink",
+      linkTo: "services",
+      image: BkgFour
+    },
+    {
+      type: "regular",
+      title: `€5 DE DESCONTO PARA VOCÊ E SEUS AMIGOS`,
+      subtitle: "Let's start together?",
+      titleColor: "#ffcc65",
+      subtitleColor: "#3c1d5d",
+      btnDescription: "Obtenha oferta",
+      btnColor: "pink",
+      linkTo: "services",
+      image: BkgFive
+    },
+    {
+      type: "regular",
+      title: "+5000 estudantes na Europa",
+      subtitle: "Comece sua jornada agora",
+      titleColor: "#ffffff",
+      subtitleColor: "#ffcc65",
+      btnDescription: "Contate Bartira",
+      btnColor: "white",
+      linkTo: "contact",
+      image: BkgSix
+    },
   ]
+
+  const items = language === 'EN' ? itemsEN : itemsPT;
 
   return (
     <div id="main">
@@ -171,4 +257,8 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = createStructuredSelector({
+  language: selectLanguage
+});
+
+export default connect(mapStateToProps)(Home);

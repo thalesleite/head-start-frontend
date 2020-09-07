@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
 
 import { Grid, TextField, Button, Typography, Link } from '@material-ui/core';
+
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
 
 import api from '../../services/api';
 
 import './Login.scss';
 
-function Login() {
+function Login({ language }) {
+  // getting language text
+  const text = language === 'EN' ? EN_DATA.sections.login : PT_DATA.sections.login;
   const [email, setEmail] = useState();
   const history = useHistory();
 
@@ -43,7 +52,7 @@ function Login() {
               className="form-input" 
               required 
               id="email" 
-              label="Email"
+              label={ text[0] }
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -54,7 +63,7 @@ function Login() {
               className="form-input"
               required 
               id="password" 
-              label="Password"
+              label={ text[1] }
               type="password"
             />
           </Grid>
@@ -69,12 +78,12 @@ function Login() {
           <Grid item xs={12}>
             <Typography variant="subtitle2" className="float-l">
               <Link href="/" onClick={ () => {} }>
-                or Create a new account
+                { text[2] }
               </Link>
             </Typography>
             <Typography variant="subtitle2" className="float-r">
               <Link href="/" onClick={ () => {} }>
-                Forgot Password?
+                { text[3] }
               </Link>
             </Typography>
           </Grid>
@@ -86,4 +95,8 @@ function Login() {
   );
 }
 
-export default Login;
+const mapStateToProps = createStructuredSelector({
+  language: selectLanguage
+});
+
+export default connect(mapStateToProps)(Login);
