@@ -45,6 +45,8 @@ const PT_DATA = {
       'Dúvidas? Estamos aqui para ajudar você. Fale com a gente!'
     ],
     login: [
+      'Email',
+      'Senha',
       'ou Crie uma nova conta',
       'Esqueceu a Senha?'
     ],

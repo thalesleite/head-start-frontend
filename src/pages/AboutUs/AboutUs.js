@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { Parallax } from 'react-scroll-parallax';
 import BartiraImg from '../../assets/BARTIRA.jpg';
 
 import { selectLanguage } from '../../redux/language/language.selectors';
@@ -40,13 +39,13 @@ function AboutUs({ language }) {
       <section className="about-section">
         <h1>{ text[9] }</h1>
         <div className="about-founder">
-        
-          <Parallax y={[-10, 30]}>
+
+          <div>
             <img className="bartira-img" src={BartiraImg} alt="Bartira"/>
             <p>
               <i>{ text[10] }</i> { text[11] }
             </p>
-          </Parallax>
+          </div>
           
           <div className="description">
             <p>{ text[12] }</p>
