@@ -1,0 +1,25 @@
+.account {
+  padding-top: 120px !important;
+  min-height: 30rem;
+
+  .form-container {
+    width: 40%;
+  
+    .form-input {
+      width: 100%;
+    }
+  
+    .form-submit {
+      float: right;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 50px !important;
+    padding: 20px !important;
+
+    .form-container {
+      width: 100%;
+    }
+  }
+}

@@ -10,6 +10,7 @@ import Language from './components/ChooseLanguage/ChooseLanguage';
 
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/Login/Login';
+import CreateAccountPage from './pages/CreateAccount/CreateAccount';
 import CheckoutPage from './pages/Checkout/Checkout';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
@@ -43,6 +44,7 @@ class App extends React.Component {
             <Route path='/cart' component={CartPage} />
             <Route path='/checkout' component={CheckoutPage} />
             <Route path='/login' component={LoginPage} />
+            <Route path='/create-account' component={CreateAccountPage} />
             <Route path='/security-policy' component={SecurityPolicy} />
   
             <Route path='/dashboard' component={DashboardPage} />

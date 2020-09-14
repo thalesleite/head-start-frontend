@@ -11,6 +11,8 @@ import { selectLanguage } from '../../redux/language/language.selectors';
 import EN_DATA from '../../data/language/english.data';
 import PT_DATA from '../../data/language/portuguese.data';
 
+import api from '../../services/api';
+
 import 'leaflet/dist/leaflet.css';
 import './Contact.scss';
 
@@ -26,13 +28,46 @@ function Contact({ language }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.contact : PT_DATA.sections.contact;
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [respText, setRespText] = useState('');
+  const [sent, setSent] = useState(false);
 
   const [lat] = useState(53.3519139);
   const [lng] = useState(-6.2530696);
   const [zoom] = useState(16);
   const position = [lat, lng];
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  
+    setRespText('...sending');
+
+    try {
+      const data = {
+          name: name,
+          email: email,
+          message: message
+      };
+      
+      await api.post('/send', data)
+              .then( res => {
+                setSent(true);
+                resetForm();
+            });
+    } catch (error) {
+      alert('Message not sent: ' + error);
+    }
+  }
+
+  const resetForm = () => {
+    setSent(false);
+    setName('');
+    setEmail('');
+    setMessage('');
+    setRespText('Message Sent!');
+  }
 
   return (
     <div 
@@ -46,7 +81,7 @@ function Contact({ language }) {
         { text[1] }
       </p>
       <form
-        //onSubmit={handleLogin}
+        onSubmit={ handleSubmit }
         className="form-container" 
         noValidate 
         autoComplete="off"
@@ -75,7 +110,12 @@ function Contact({ language }) {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextareaAutosize className="form-input textarea" placeholder={ text[4] } />
+            <TextareaAutosize 
+              className="form-input textarea" 
+              placeholder={ text[4] } 
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+            />
           </Grid>
           <Grid item xs={12}>
             <Button

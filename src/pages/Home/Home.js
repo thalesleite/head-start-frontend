@@ -96,7 +96,7 @@ function Home({ language }) {
     // {
     //   type: "regular",
     //   title: "FOOD SAFETY - HACCP - LEVEL 1",
-    //   subtitle: "Curso online em Protuguês",
+    //   subtitle: "Curso online em Português",
     //   titleColor: "#ffffff",
     //   subtitleColor: "#ffcc65",
     //   btnDescription: "Saiba mais",
@@ -176,7 +176,7 @@ function Home({ language }) {
     {
       type: "regular",
       title: "FOOD SAFETY - HACCP - LEVEL 1",
-      subtitle: "Curso online em Protuguês",
+      subtitle: "Curso online em Português",
       titleColor: "#ffffff",
       subtitleColor: "#ffcc65",
       btnDescription: "Saiba mais",
@@ -187,7 +187,7 @@ function Home({ language }) {
     {
       type: "regular",
       title: "CURSO PRESENCIAL DE BARISTA (INGLÊS OU PORTUGUÊS)",
-      subtitle: "Cafés finos?",
+      subtitle: "Quer aprender a fazer cafés?",
       titleColor: "#ffffff",
       subtitleColor: "#ffffff",
       btnDescription: "Seja um Barista",

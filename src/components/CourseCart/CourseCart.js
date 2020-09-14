@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import { useHistory } from 'react-router-dom';
+
 import { Card, CardActions, CardContent, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import ConfirmCartItem from '../ConfirmCartItem/ConfirmCartItem';
+//import ConfirmCartItem from '../ConfirmCartItem/ConfirmCartItem';
 
 import { addItem } from '../../redux/cart/cart.actions';
 
@@ -15,7 +17,8 @@ function CourseCart({ course, addItem, language }) {
   const btnText = language === 'EN' ? 'ADD TO CART' : 'Adicionar';
 
   const [hide, setHide] = useState(true);
-  const [item, setItem] = useState(false);
+  //const [item, setItem] = useState(false);
+  const history = useHistory();
 
   return (
     <Card className="card">
@@ -59,15 +62,16 @@ function CourseCart({ course, addItem, language }) {
           className="btn-orange"
           onClick={ () => { 
             addItem(course);
-            setItem(true);
+            //setItem(true);
+            history.push('/cart');
           }}
           >{ btnText }
         </Button>
         
         {
-          item ? (
+          /* item ? (
             <ConfirmCartItem course={course} language={language} />
-          ) : ''
+          ) : '' */
         }
         
       </CardActions>

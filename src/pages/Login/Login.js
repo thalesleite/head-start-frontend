@@ -77,12 +77,24 @@ function Login({ language }) {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="subtitle2" className="float-l">
-              <Link href="/" onClick={ () => {} }>
+              <Link 
+                onClick={ 
+                  () => { 
+                    history.push('/create-account'); 
+                  } 
+                }
+              >
                 { text[2] }
               </Link>
             </Typography>
             <Typography variant="subtitle2" className="float-r">
-              <Link href="/" onClick={ () => {} }>
+              <Link 
+                onClick={ 
+                  () => { 
+                    history.push('/'); 
+                  } 
+                }
+              >
                 { text[3] }
               </Link>
             </Typography>

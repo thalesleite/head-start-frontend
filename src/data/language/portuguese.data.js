@@ -35,7 +35,7 @@ const PT_DATA = {
     ],
     contact: [
       'CONTATO',
-      'Preencha o formulário abixo. Retornaremos assim que possível.',
+      'Preencha o formulário abaixo. Retornaremos assim que possível.',
       'Nome',
       'Email',
       'Mensagem',
@@ -60,7 +60,7 @@ const PT_DATA = {
       'CONFIRMAR',
       'Inserir Cupom',
       'APLICAR',
-      'O carrinho está vazio. Encontre cum curso para você!',
+      'O carrinho está vazio. Encontre um curso para você!',
       'ir às compras'
     ]
   }
