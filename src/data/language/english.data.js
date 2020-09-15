@@ -4,7 +4,9 @@ const EN_DATA = {
     'SERVICES',
     'ABOUT US',
     'CONTACT',
-    'LOGIN'
+    'LOGIN',
+    'LOGOUT',
+    'DASHBOARD'
   ],
   sections: {
     services: [

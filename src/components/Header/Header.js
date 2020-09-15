@@ -10,6 +10,9 @@ import ShoppingCart from '@material-ui/icons/ShoppingCartOutlined';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectLanguage } from '../../redux/language/language.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+import { setCurrentUser } from '../../redux/user/user.actions';
 
 import EN_DATA from '../../data/language/english.data';
 import PT_DATA from '../../data/language/portuguese.data';
@@ -19,7 +22,7 @@ import Logo from '../../assets/head-start-branco.png';
 import './Header.scss';
 
 
-function Header({ cartItems, language }) {
+function Header({ cartItems, language, currentUser, setCurrentUser }) {
     // getting language text
     const menu = language === 'EN' ? EN_DATA.menu : PT_DATA.menu;
     const ItemsQtty = cartItems?.length;
@@ -29,6 +32,7 @@ function Header({ cartItems, language }) {
     const [services, setServices] = useState(false);
     const [contact, setContact] = useState(false);
     const [login, setLogin] = useState(false);
+    const [dash, setDash] = useState(false);
     const [cart, setCart] = useState(false);
 
     function setAllFalse() {
@@ -37,6 +41,7 @@ function Header({ cartItems, language }) {
         setServices(false);
         setContact(false);
         setLogin(false);
+        setDash(false);
         setCart(false);
     }
 
@@ -58,9 +63,17 @@ function Header({ cartItems, language }) {
         if (option === 'login') {
             setLogin(true);
         }
+        if (option === 'dash') {
+            setDash(true);
+        }
         if (option === 'cart') {
             setCart(true);
         }
+    }
+
+    function handleLogout() {
+        setCurrentUser();
+        localStorage.clear();
     }
 
     return (
@@ -99,12 +112,33 @@ function Header({ cartItems, language }) {
                         to="/#contact">
                         { menu[3] }
                     </Link>
-                    <Link 
-                        className={`option ${login ? 'line-bottom' : ''}`}
-                        onClick={() => setOption('login')}
-                        to="/login">
-                        { menu[4] }
-                    </Link>
+                    {
+                        currentUser ? (
+                            <Link 
+                                className={`option ${dash ? 'line-bottom' : ''}`}
+                                onClick={() => setOption('dash')}
+                                to="/dashboard">
+                                { menu[6] }
+                            </Link>
+                        ) : ''
+                    }
+                    {
+                        // Log Out
+                        currentUser ? (
+                            <Link 
+                                className={`option ${login ? 'line-bottom' : ''}`}
+                                onClick={() => handleLogout()}
+                                to="/">
+                                { menu[5] }
+                            </Link>
+                        ) :
+                        <Link 
+                            className={`option ${login ? 'line-bottom' : ''}`}
+                            onClick={() => setOption('login')}
+                            to="/login">
+                            { menu[4] }
+                        </Link>
+                    }
                     <Link 
                         className={`option ${cart ? 'line-bottom' : ''}`}
                         onClick={() => setOption('cart')}
@@ -123,8 +157,13 @@ function Header({ cartItems, language }) {
 }
 
 const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
     cartItems: selectCartItems,
     language: selectLanguage
 });
-  
-export default connect(mapStateToProps)(Header);
+
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

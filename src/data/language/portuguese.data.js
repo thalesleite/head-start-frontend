@@ -4,7 +4,9 @@ const PT_DATA = {
     'SERVIÇOS',
     'SOBRE NÓS',
     'CONTATO',
-    'LOGIN'
+    'LOGIN',
+    'LOGOUT',
+    'DASHBOARD',
   ],
   sections: {
     services: [

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Grid, TextField, Button, Typography, Link } from '@material-ui/core';
 
+import { setCurrentUser } from '../../redux/user/user.actions';
 import { selectLanguage } from '../../redux/language/language.selectors';
 
 import EN_DATA from '../../data/language/english.data';
@@ -14,25 +15,32 @@ import api from '../../services/api';
 
 import './Login.scss';
 
-function Login({ language }) {
+function Login({ language, setCurrentUser }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.login : PT_DATA.sections.login;
+
   const [email, setEmail] = useState();
   const history = useHistory();
 
   async function handleLogin(event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      try {
-          const response = await api.post('/sessions', { email });
+    try {
+        const response = await api.post('/sessions', { email });
 
-          localStorage.setItem('userEmail', email);
-          localStorage.setItem('userName', response.data.name);
+        localStorage.setItem('userEmail', email);
+        setCurrentUser({
+          currentUser: {
+            id: response.data.id,
+            name: response.data.name,
+            email: email
+          }
+        });
 
-          history.push('/dashboard');
-      } catch (error) {
-          alert('Login error, try again!');
-      }
+        history.push('/dashboard');
+    } catch (error) {
+        alert('Login error, try again!');
+    }
   }
 
   return (
@@ -111,4 +119,8 @@ const mapStateToProps = createStructuredSelector({
   language: selectLanguage
 });
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

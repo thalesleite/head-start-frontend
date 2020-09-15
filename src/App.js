@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -16,6 +16,8 @@ import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 
 import DashboardPage from './pages/Dashboard/Dashboard';
+
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 import api from './services/api';
 
@@ -35,19 +37,21 @@ class App extends React.Component {
   }
 
   render() {
+    const pathName = window.location.pathname;
+    const { currentUser } = this.props;
+
     return (
       <div>
         <Language />
-        <Header />
+        { pathName === '/dashboard' && currentUser ? '' : <Header /> }
           <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route path='/cart' component={CartPage} />
-            <Route path='/checkout' component={CheckoutPage} />
-            <Route path='/login' component={LoginPage} />
-            <Route path='/create-account' component={CreateAccountPage} />
-            <Route path='/security-policy' component={SecurityPolicy} />
-  
-            <Route path='/dashboard' component={DashboardPage} />
+              <Route exact path='/' component={HomePage} />
+              <Route path='/cart' component={CartPage} />
+              <Route path='/checkout' component={CheckoutPage} />
+              <Route path='/login' component={LoginPage} />
+              <Route path='/create-account' component={CreateAccountPage} />
+              <Route path='/security-policy' component={SecurityPolicy} />
+              <Route path='/dashboard' component={DashboardPage} />
           </Switch>
         <Footer />
       </div>
@@ -56,8 +60,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  courses: state.courses
-
+  courses: state.courses,
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => {
