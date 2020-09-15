@@ -20,6 +20,7 @@ function Login({ language, setCurrentUser }) {
   const text = language === 'EN' ? EN_DATA.sections.login : PT_DATA.sections.login;
 
   const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const history = useHistory();
 
   async function handleLogin(event) {
@@ -30,11 +31,9 @@ function Login({ language, setCurrentUser }) {
 
         localStorage.setItem('userEmail', email);
         setCurrentUser({
-          currentUser: {
-            id: response.data.id,
-            name: response.data.name,
-            email: email
-          }
+          name: response.data.name,
+          email: response.data.email,
+          type: response.data.type
         });
 
         history.push('/dashboard');
@@ -73,6 +72,8 @@ function Login({ language, setCurrentUser }) {
               id="password" 
               label={ text[1] }
               type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>

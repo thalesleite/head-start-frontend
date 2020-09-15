@@ -12,7 +12,7 @@ import CourseCart from '../../components/CourseCart/CourseCart';
 
 import './Services.scss';
 
-const Services = ({ courses, language, ...otherProps }) => {
+const Services = ({ courses, language }) => {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.services : PT_DATA.sections.services;
 
@@ -30,7 +30,7 @@ const Services = ({ courses, language, ...otherProps }) => {
         {(
           online ?
             online.map( course => (
-              <CourseCart key={course.id} course={course} language={language} {...otherProps} />
+              <CourseCart key={course.id} course={course} language={language} />
             ))
           : ''
         )}
@@ -41,7 +41,7 @@ const Services = ({ courses, language, ...otherProps }) => {
         {(
           facetoface ?
           facetoface.map( course => (
-            <CourseCart key={course.id} course={course} language={language} {...otherProps} />
+            <CourseCart key={course.id} course={course} language={language} />
           ))
           : ''
         )}

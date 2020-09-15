@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import { loadStripe } from "@stripe/stripe-js";
+
+import api from '../../services/api';
+
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCartTotal } from '../../redux/cart/cart.selectors';
 
@@ -20,6 +24,21 @@ import './Cart.scss';
 function Cart({ cart, cartTotal, language }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
+  const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
+
+  async function handleClick(event) {
+    event.preventDefault();
+
+    const stripe = await stripePromise;
+    const session = await api.post('/payment-session', { cartTotal });
+    const response = await stripe.redirectToCheckout({
+      sessionId: session.data.id,
+    });
+
+    if (response.error) {
+      console.log(response.error.message);
+    }
+  }
 
   return (
     <div className="cart container">
@@ -46,6 +65,7 @@ function Cart({ cart, cartTotal, language }) {
                   className="btn-purple"
                   type="button"
                   href="/checkout"
+                  onClick={ handleClick }
                 >
                   { text[2] }
                 </Button>
