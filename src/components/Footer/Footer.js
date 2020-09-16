@@ -43,7 +43,7 @@ function Footer({ language }) {
             <span className="social">
               <a
                 className="instagram"
-                href="https:\\www.instagram.com" 
+                href="https:\\www.instagram.com"
                 target="_blank"
               >
                 <InstagramIcon />
@@ -52,7 +52,7 @@ function Footer({ language }) {
             <span className="social">
               <a 
                 className="whatsapp"
-                href="/" 
+                href="https://api.whatsapp.com/send?phone=3530899720494" 
                 target="_blank"
               >
                 <WhatsAppIcon />

@@ -13,8 +13,9 @@ import LoginPage from './pages/Login/Login';
 import CreateAccountPage from './pages/CreateAccount/CreateAccount';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
-
 import DashboardPage from './pages/Dashboard/Dashboard';
+import EditCoursePage from './pages/EditCourse/EditCourse';
+import AddCoursePage from './pages/AddCourse/AddCourse';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -69,7 +70,8 @@ class App extends React.Component {
                 currentUser ? (
                   <div>
                     <Route exact path='/dashboard' component={DashboardPage} />
-                    <Route exact path='/edit-course/:id' component={DashboardPage} />
+                    <Route exact path='/edit-course/:id' component={EditCoursePage} />
+                    <Route exact path='/add-course' component={AddCoursePage} />
                   </div>
                 ) : (
                   <Redirect to='/login' />
