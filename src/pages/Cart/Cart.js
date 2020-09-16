@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -25,18 +25,36 @@ function Cart({ cart, cartTotal, language }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
   const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
+  
+  const [coupon, setCoupon] = useState('');
+  const [checkTotal, setCheckTotal] = useState(cartTotal);
+  const [isValid, setIsValid] = useState(false);
 
   async function handleClick(event) {
     event.preventDefault();
 
+    const total = `${checkTotal}`.replace('.', '').padEnd(4, 0);
+
     const stripe = await stripePromise;
-    const session = await api.post('/payment-session', { cartTotal });
+    const session = await api.post('/payment-session', { total });
     const response = await stripe.redirectToCheckout({
       sessionId: session.data.id,
     });
 
     if (response.error) {
       console.log(response.error.message);
+    }
+  }
+
+  function handleValidCupom(event) {
+    event.preventDefault();
+
+    if ( coupon === 'HEADFISRT' ) {
+      const discount = ( cartTotal * 10 ) / 100;
+      setCheckTotal(cartTotal - discount);
+      setIsValid(true);
+    } else {
+      setCoupon('');
     }
   }
 
@@ -60,7 +78,7 @@ function Cart({ cart, cartTotal, language }) {
               </Grid>
               <Grid item sm={4} xs={12}>
                 <p>Total</p>
-                <h1>€{ cartTotal }</h1>
+                <h1>€{ checkTotal }</h1>
                 <Button
                   className="btn-purple"
                   type="button"
@@ -74,14 +92,16 @@ function Cart({ cart, cartTotal, language }) {
                     id="coupon" 
                     label={ text[3] }
                     type="text"
-                    //value={coupon}
-                    //onChange={e => setCoupon(e.target.value)}
+                    value={coupon}
+                    onChange={e => setCoupon(e.target.value)}
+                    disabled={isValid}
                   />
                   <Button
                     className="btn-coupon"
                     type="button"
+                    onClick={ handleValidCupom }
                   >
-                    { text[4] }
+                    { isValid ? 'APPLIED' : text[4] }
                   </Button>
                 </div>
               </Grid>
