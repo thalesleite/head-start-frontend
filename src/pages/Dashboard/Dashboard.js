@@ -12,51 +12,76 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import { setCourses } from '../../redux/course/course.actions';
+
+import api from '../../services/api';
+
 import './Dashboard.scss';
 
-function Dashboard({ courses, currentUser }) {
-  return (
-    <div className="container dashboard">
-      <h1>Hi, { currentUser?.name }!</h1>
+class Dashboard extends React.Component {
 
-       {
-        currentUser?.type === 0 ? (
-          <div>
-            <p>Admin</p>
+  componentDidMount() {
+    const { setCourses } = this.props;
+    
+    api.get('/courses')
+      .then(response => {
+        setCourses(response.data);
+    });
+  }
 
+  render() {
+    const { courses, currentUser } = this.props;
+
+    return (
+      <div className="container dashboard">
+        <h1>Hi, { currentUser?.name }!</h1>
+
+        {
+          currentUser?.type === 0 ? (
             <div>
-              <Link
-                className="add-button"
-                to='/add-course/'
-              >
-                Add Course <AddCircleOutlineIcon />
-              </Link>
+              <p>Admin</p>
+
+              <div>
+                <Link
+                  className="add-button"
+                  to='/add-course/'
+                >
+                  Add Course <AddCircleOutlineIcon />
+                </Link>
+              </div>
+              {
+                courses && courses.map( course => (
+                  <div key={ course.id } className="course">
+                    <span className="name"> { course.name }</span>
+                    <Link
+                      className="edit-button"
+                      to={`/edit-course/${course.id}`}
+                    >
+                      edit 
+                      <EditIcon />
+                    </Link>
+                  </div>
+                ))
+              }
             </div>
-            {
-              courses && courses.map( course => (
-                <div key={ course.id } className="course">
-                  <span className="name"> { course.name }</span>
-                  <Link
-                    className="edit-button"
-                    to={`/edit-course/${course.id}`}
-                  >
-                    edit 
-                    <EditIcon />
-                  </Link>
-                </div>
-              ))
-            }
-          </div>
-        ) : (
-          <div>Student</div>
-        )
-       }
-    </div>
-  );
+          ) : (
+            <div>Student</div>
+          )
+        }
+      </div>
+    );
+  }
 }
+
 const mapStateToProps = createStructuredSelector({
   courses: selectCourses,
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = dispatch => {
+  return {
+    setCourses: courses => dispatch(setCourses(courses))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

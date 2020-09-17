@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import api from '../../services/api';
@@ -12,16 +12,15 @@ class EditCourse extends React.Component {
     super();
 
     this.state = {
-      pt: {
-        name: '',
-        description1: '',
-        description2: ''
-      },
-      eng: {
-        name: '',
-        description1: '',
-        description2: ''
-      }
+      id: '',
+      name: '',
+      description1: '',
+      description2: '',
+      description1_pt: '',
+      description2_pt: '',
+      type: '',
+      price: 0,
+      duration: 0
     };
   }
   
@@ -32,48 +31,72 @@ class EditCourse extends React.Component {
       .then(response => {
         const course = response.data.course;
         this.setState({
-          pt: {
-            name: course?.name,
-            description1: course?.description1,
-            description2: course?.description2
-          },
-          eng: {
-            name: course?.name,
-            description1: course?.description1,
-            description2: course?.description2
-          },
+          id: id,
+          name: course?.name,
+          description1: course?.description1,
+          description2: course?.description2,
+          description1_pt: course?.description1_pt,
+          description2_pt: course?.description2_pt,
+          type: course?.type,
+          price: course?.price,
+          duration: course?.duration
         });
     });
   }
 
-  async handleSubmit(event) {
-    event.preventDefault();
+  async handleSubmit() {
+    const { 
+      id,
+      name, 
+      description1, 
+      description2, 
+      description1_pt, 
+      description2_pt,
+      type,
+      price,
+      duration
+    } = this.state;
 
-    // try {
-    //     const response = await api.post('/sessions', { email });
+    try {
+        const response = await api.put(`/courses/${id}`, { 
+          id,
+          name,
+          description1,
+          description2,
+          description1_pt,
+          description2_pt,
+          type,
+          price,
+          duration
+        });
 
-    //     localStorage.setItem('userEmail', email);
-    //     setCurrentUser({
-    //       name: response.data.name,
-    //       email: response.data.email,
-    //       type: response.data.type
-    //     });
-
-    //     history.push('/dashboard');
-    // } catch (error) {
-    //     alert('Login error, try again!');
-    // }
+        this.props.history.push('/dashboard');
+    } catch (error) {
+        alert('Edit course error!!!');
+    }
   }
 
   render() {
-    const { pt, eng } = this.state;
+    const { 
+      name, 
+      description1, 
+      description2, 
+      description1_pt, 
+      description2_pt,
+      type,
+      price,
+      duration
+    } = this.state;
 
     return (
       <div className="container edit">
         <h1>Edit Course</h1>
 
         <form
-          onSubmit={this.handleSubmit}
+          onSubmit={(e) => { 
+            e.preventDefault();
+            this.handleSubmit();
+          }}
           className="form-container" 
           noValidate 
           autoComplete="off"
@@ -91,19 +114,20 @@ class EditCourse extends React.Component {
                   id="name" 
                   label='Name'
                   type="text"
-                  value={pt.name}
-                  onChange={e => this.setState({ eng: {name: e.target.value} })}
+                  value={name}
+                  onChange={e => this.setState({ name: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   className="form-input" 
+                  required
                   id="description1" 
                   label='Description 1'
                   multiline
                   rows={5}
-                  value={pt.description1}
-                  onChange={e => this.setState({ eng: {description1: e.target.value} })}
+                  value={description1}
+                  onChange={e => this.setState({ description1: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -113,8 +137,8 @@ class EditCourse extends React.Component {
                   label='Description 2'
                   multiline
                   rows={5}
-                  value={pt.description2}
-                  onChange={e => this.setState({ eng: {description2: e.target.value} })}
+                  value={description2}
+                  onChange={e => this.setState({ description2: e.target.value })}
                 />
               </Grid>
             </Grid>
@@ -125,35 +149,61 @@ class EditCourse extends React.Component {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  className="form-input" 
-                  required 
-                  id="name" 
-                  label='Name'
-                  type="text"
-                  value={pt.name}
-                  onChange={e => this.setState({ pt: {name: e.target.value} })}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  className="form-input" 
+                  className="form-input"
+                  required
                   id="description1" 
-                  label='Description 1'
+                  label='Descrição 1'
                   multiline
                   rows={5}
-                  value={pt.description1}
-                  onChange={e => this.setState({ pt: {description1: e.target.value} })}
+                  value={description1_pt}
+                  onChange={e => this.setState({ description1_pt: e.target.value })}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   className="form-input" 
                   id="description2" 
-                  label='Description 2'
+                  label='Descrição 2'
                   multiline
                   rows={5}
-                  value={pt.description2}
-                  onChange={e => this.setState({ pt: {description2: e.target.value} })}
+                  value={description2_pt}
+                  onChange={e => this.setState({ description2_pt: e.target.value })}
+                />
+              </Grid>
+              <Grid className="form-select" item xs={12}>
+                <InputLabel id="select-label">Type</InputLabel>
+                <Select
+                  className="form-input"
+                  required
+                  labelId="select-label"
+                  id="type"
+                  value={type}
+                  onChange={e => this.setState({ type: e.target.value })}
+                >
+                  <MenuItem value={'online'}>Online</MenuItem>
+                  <MenuItem value={'face-to-face'}>Face-to-face</MenuItem>
+                </Select>
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input"
+                  required
+                  id="price" 
+                  label='Price'
+                  type="number"
+                  value={price}
+                  onChange={e => this.setState({ price: e.target.value })}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input"
+                  required
+                  id="duration" 
+                  label='Duration(days)'
+                  type="number"
+                  value={duration}
+                  onChange={e => this.setState({ duration: e.target.value })}
                 />
               </Grid>
             </Grid>

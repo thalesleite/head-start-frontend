@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { Card, CardActions, CardContent, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -15,6 +16,8 @@ import './CourseCart.scss';
 function CourseCart({ course, addItem, language }) {
   const text = language === 'EN' ? 'See more' : 'Veja mais';
   const btnText = language === 'EN' ? 'ADD TO CART' : 'Adicionar';
+  const description1 = language === 'EN' ? course?.description1 : course?.description1_pt;
+  const description2 = language === 'EN' ? course?.description2 : course?.description2_pt;
 
   const [hide, setHide] = useState(true);
   //const [item, setItem] = useState(false);
@@ -28,9 +31,9 @@ function CourseCart({ course, addItem, language }) {
         <div className="card-description">
           
           <div>
-            <p>{course?.description1}</p>
+            <p>{ description1 }</p>
 
-            <div className={`card-link ${( hide && course?.description2 ) ? '' : 'hide'}`}>              
+            <div className={`card-link ${( hide && description2 ) ? '' : 'hide'}`}>              
               <a 
                 onClick={() => setHide(!hide)}
               >
@@ -40,7 +43,7 @@ function CourseCart({ course, addItem, language }) {
           </div>
 
           <div className={`${hide ? 'hide' : ''}`}>
-            <p>{course?.description2}</p>
+            <p>{ description2 }</p>
             <div className="card-link">
                 <a 
                   onClick={() => setHide(!hide)}
@@ -52,26 +55,29 @@ function CourseCart({ course, addItem, language }) {
 
         </div>
 
-        <div className="card-price">
-          €{course.price}
-        </div>
+        {
+          course?.price !== 0 ?
+          (
+            <div className="card-price">
+              €{course.price}
+            </div> 
+          ) : ''
+        }
       </CardContent>
       
       <CardActions className="btn-container">
-        <Button 
-          className="btn-orange"
-          onClick={ () => { 
-            addItem(course);
-            //setItem(true);
-            history.push('/cart');
-          }}
-          >{ btnText }
-        </Button>
-        
         {
-          /* item ? (
-            <ConfirmCartItem course={course} language={language} />
-          ) : '' */
+          course?.price !== 0 ?
+          (
+            <Button 
+              className="btn-orange"
+              onClick={ () => { 
+                addItem(course);
+                history.push('/cart');
+              }}
+              >{ btnText }
+            </Button>
+          ) : ''
         }
         
       </CardActions>

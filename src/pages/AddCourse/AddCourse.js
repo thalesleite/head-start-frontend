@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { Grid, TextField, Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
+import { Grid, TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import api from '../../services/api';
@@ -8,31 +10,35 @@ import api from '../../services/api';
 import './AddCourse.scss';
 
 function AddCourse() {
-  const [ptName, setPtName] = useState();
-  const [ptDesc1, setPtDesc1] = useState();
-  const [ptDesc2, setPtDesc2] = useState();
-  const [engName, setEngName] = useState();
-  const [engDesc1, setEngDesc1] = useState();
-  const [engDesc2, setEngDesc2] = useState();
-  //const history = useHistory();
+  const [name, setName] = useState();
+  const [description1, setDesc1] = useState();
+  const [description2, setDesc2] = useState();
+  const [description1_pt, setDesc1Pt] = useState();
+  const [description2_pt, setDesc2Pt] = useState();
+  const [type, setType] = useState(0);
+  const [price, setPrice] = useState();
+  const [duration, setDuration] = useState(1);
+  const history = useHistory();
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    // try {
-    //     const response = await api.post('/sessions', { email });
+    try {
+        const response = await api.post('/courses', { 
+          name,
+          description1,
+          description2,
+          description1_pt,
+          description2_pt,
+          type,
+          price,
+          duration
+        });
 
-    //     localStorage.setItem('userEmail', email);
-    //     setCurrentUser({
-    //       name: response.data.name,
-    //       email: response.data.email,
-    //       type: response.data.type
-    //     });
-
-    //     history.push('/dashboard');
-    // } catch (error) {
-    //     alert('Login error, try again!');
-    // }
+        history.push('/dashboard');
+    } catch (error) {
+        alert('Add course error!!!');
+    }
   }
 
   return (
@@ -58,19 +64,20 @@ function AddCourse() {
                 id="name" 
                 label='Name'
                 type="text"
-                value={ptName}
-                onChange={e => setPtName(e.target.value)}
+                value={name}
+                onChange={e => setName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className="form-input" 
+                className="form-input"
+                required
                 id="description1" 
                 label='Description 1'
                 multiline
                 rows={5}
-                value={ptDesc1}
-                onChange={e => setPtDesc1(e.target.value)}
+                value={description1}
+                onChange={e => setDesc1(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -80,8 +87,44 @@ function AddCourse() {
                 label='Description 2'
                 multiline
                 rows={5}
-                value={ptDesc2}
-                onChange={e => setPtDesc2(e.target.value)}
+                value={description2}
+                onChange={e => setDesc2(e.target.value)}
+              />
+            </Grid>
+            <Grid className="form-select" item xs={12}>
+              <InputLabel id="select-label">Type</InputLabel>
+              <Select
+                className="form-input"
+                required
+                labelId="select-label"
+                id="type"
+                value={type}
+                onChange={e => setType(e.target.value)}
+              >
+                <MenuItem value={'online'}>Online</MenuItem>
+                <MenuItem value={'face-to-face'}>Face-to-face</MenuItem>
+              </Select>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                className="form-input"
+                required
+                id="price" 
+                label='Price'
+                type="number"
+                value={price}
+                onChange={e => setPrice(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                className="form-input"
+                required
+                id="duration" 
+                label='Duration(days)'
+                type="number"
+                value={duration}
+                onChange={e => setDuration(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -92,35 +135,26 @@ function AddCourse() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className="form-input" 
+                className="form-input"
                 required 
-                id="name" 
-                label='Name'
-                type="text"
-                value={engName}
-                onChange={e => setEngName(e.target.value)}
+                id="description1_pt" 
+                label='Descrição 1'
+                multiline
+                rows={5}
+                value={description1_pt}
+                onChange={e => setDesc1Pt(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                className="form-input" 
-                id="description1" 
-                label='Description 1'
+                className="form-input"
+                required
+                id="description2_pt" 
+                label='Descrição 2'
                 multiline
                 rows={5}
-                value={engDesc1}
-                onChange={e => setEngDesc1(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className="form-input" 
-                id="description2" 
-                label='Description 2'
-                multiline
-                rows={5}
-                value={engDesc2}
-                onChange={e => setEngDesc2(e.target.value)}
+                value={description2_pt}
+                onChange={e => setDesc2Pt(e.target.value)}
               />
             </Grid>
           </Grid>
