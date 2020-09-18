@@ -49,7 +49,7 @@ const EN_DATA = {
     login: [
       'Email',
       'Password',
-      'or Create a new account',
+      'or Create a new account to go shopping ',
       'Forgot Password?'
     ],
     security: [
@@ -62,7 +62,7 @@ const EN_DATA = {
       'CHECKOUT',
       'Enter Coupon',
       'APPLY',
-      'Your cart is empty. Keep shopping to find a course!',
+      'Your cart is empty. Keep shopping!',
       'go shoopping'
     ]
   }

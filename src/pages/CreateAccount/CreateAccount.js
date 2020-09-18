@@ -24,19 +24,17 @@ function CreateAccount({ language }) {
   const [phone, setPhone] = useState();
   const history = useHistory();
 
-  async function handleLogin(event) {
+  async function handleSubmit(event) {
       event.preventDefault();
 
-      // try {
-      //     const response = await api.post('/sessions', { email });
+      try {
+          const response = await api.post('/users', { name, email, password, address, phone });
+          localStorage.setItem('userEmail', email);
 
-      //     localStorage.setItem('userEmail', email);
-      //     localStorage.setItem('userName', response.data.name);
-
-      //     history.push('/dashboard');
-      // } catch (error) {
-      //     alert('Login error, try again!');
-      // }
+          history.push('/login');
+      } catch (error) {
+        alert('Create user error!!!');
+      }
   }
 
   return (
@@ -44,7 +42,7 @@ function CreateAccount({ language }) {
       <h1>Create Account</h1>
 
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleSubmit}
         className="form-container" 
         noValidate 
         autoComplete="off"
@@ -117,7 +115,13 @@ function CreateAccount({ language }) {
               // onChange={e => setEmail(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid className="form-button" item xs={12}>
+            <Button 
+              className="btn-orange float-r"
+              onClick={() => history.push('/login')}
+            >
+                Cancel
+            </Button>
             <Button 
               className="btn-purple float-r"
               type="submit"

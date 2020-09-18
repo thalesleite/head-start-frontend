@@ -7,6 +7,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { Button } from '@material-ui/core';
 
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import { selectCourses } from '../../redux/course/course.selectors';
@@ -53,6 +54,13 @@ class Dashboard extends React.Component {
                 courses && courses.map( course => (
                   <div key={ course.id } className="course">
                     <span className="name"> { course.name }</span>
+                    {/* <Link
+                      className="delete-button"
+                      onClick={() => {}}
+                    >
+                      delete 
+                      <DeleteIcon />
+                    </Link> */}
                     <Link
                       className="edit-button"
                       to={`/edit-course/${course.id}`}

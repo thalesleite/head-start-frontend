@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import { useHistory } from 'react-router-dom';
+
 import { loadStripe } from "@stripe/stripe-js";
 
 import api from '../../services/api';
 
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCartTotal } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import { Grid, Button, TextField } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
@@ -21,7 +24,7 @@ import PT_DATA from '../../data/language/portuguese.data';
 
 import './Cart.scss';
 
-function Cart({ cart, cartTotal, language }) {
+function Cart({ cart, cartTotal, language, currentUser }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
   const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
@@ -29,20 +32,25 @@ function Cart({ cart, cartTotal, language }) {
   const [coupon, setCoupon] = useState('');
   const [checkTotal, setCheckTotal] = useState(cartTotal);
   const [isValid, setIsValid] = useState(false);
+  const history = useHistory();
 
   async function handleClick(event) {
     event.preventDefault();
 
-    const total = `${checkTotal}`.replace('.', '').padEnd(4, 0);
+    if ( currentUser ) {
+      const total = `${checkTotal}`.replace('.', '').padEnd(4, 0);
 
-    const stripe = await stripePromise;
-    const session = await api.post('/payment-session', { total });
-    const response = await stripe.redirectToCheckout({
-      sessionId: session.data.id,
-    });
+      const stripe = await stripePromise;
+      const session = await api.post('/payment-session', { total });
+      const response = await stripe.redirectToCheckout({
+        sessionId: session.data.id,
+      });
 
-    if (response.error) {
-      console.log(response.error.message);
+      if (response.error) {
+        console.log(response.error.message);
+      }
+    } else {
+      history.push('/login');
     }
   }
 
@@ -82,7 +90,6 @@ function Cart({ cart, cartTotal, language }) {
                 <Button
                   className="btn-purple"
                   type="button"
-                  href="/checkout"
                   onClick={ handleClick }
                 >
                   { text[2] }
@@ -132,7 +139,8 @@ function Cart({ cart, cartTotal, language }) {
 const mapStateToProps = createStructuredSelector({
   cart: selectCartItems,
   cartTotal: selectCartTotal,
-  language: selectLanguage
+  language: selectLanguage,
+  currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(Cart);

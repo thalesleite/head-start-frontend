@@ -12,6 +12,15 @@
     .form-submit {
       float: right;
     }
+
+    .form-button {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        margin: 5px;
+      }
+    }
   }
 
   @media only screen and (max-width: 600px) {
