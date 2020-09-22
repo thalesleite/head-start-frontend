@@ -27,7 +27,7 @@ function Login({ language, setCurrentUser }) {
     event.preventDefault();
 
     try {
-        const response = await api.post('/sessions', { email });
+        const response = await api.post('/sessions', { email, password });
 
         localStorage.setItem('userEmail', email);
         setCurrentUser({
