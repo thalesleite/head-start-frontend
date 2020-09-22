@@ -15,6 +15,7 @@ function CreateAccount() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
+  const [type, setType] = useState(1);
   const [error, setError] = useState();
   const history = useHistory();
 
@@ -27,7 +28,7 @@ function CreateAccount() {
       }
 
       try {
-        await api.post('/users', { name, email, password, address, phone });
+        await api.post('/users', { name, email, password, address, phone, type });
         localStorage.setItem('userEmail', email);
         setError('');
 
