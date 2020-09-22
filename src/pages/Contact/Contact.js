@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import Alert from '@material-ui/lab/Alert';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Grid, TextField, Button, TextareaAutosize } from '@material-ui/core';
 import L from 'leaflet';
@@ -31,8 +32,10 @@ function Contact({ language }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [respText, setRespText] = useState('');
-  const [sent, setSent] = useState(false);
+  const [sent, setSent] = useState('');
+  const [sending, setSending] = useState('');
+  const [error, setError] = useState();
+  const [isValid, setIsValid] = useState(false);
 
   const [lat] = useState(53.3519139);
   const [lng] = useState(-6.2530696);
@@ -41,32 +44,36 @@ function Contact({ language }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    setRespText('...sending');
 
     try {
       const data = {
-          name: name,
-          email: email,
-          message: message
+        name: name,
+        email: email,
+        message: message
       };
       
+      setError('');
+      setSent('');
+      setIsValid(true);
+      setSending('...sending');
+
       await api.post('/send', data)
-              .then( res => {
-                setSent(true);
-                resetForm();
-            });
+        .then( res => {
+          resetForm();
+          setSent('Your message has sent!');
+      });
     } catch (error) {
-      alert('Message not sent: ' + error);
+      const { message } = error?.response?.data;
+      setError(message);
     }
   }
 
   const resetForm = () => {
-    setSent(false);
     setName('');
     setEmail('');
     setMessage('');
-    setRespText('Message Sent!');
+    setSending('');
+    setIsValid(false);
   }
 
   return (
@@ -96,6 +103,7 @@ function Contact({ language }) {
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
+              disabled={isValid && !error}
             />
           </Grid>
           <Grid item xs={12}>
@@ -107,6 +115,7 @@ function Contact({ language }) {
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
+              disabled={isValid && !error}
             />
           </Grid>
           <Grid item xs={12}>
@@ -115,8 +124,30 @@ function Contact({ language }) {
               placeholder={ text[4] } 
               value={message}
               onChange={e => setMessage(e.target.value)}
+              disabled={isValid && !error}
             />
           </Grid>
+          {
+            error ? (
+              <Grid item xs={12}>
+                <Alert severity="error">{ error }</Alert>
+              </Grid>
+            ) : ''
+          }
+          {
+            sending && !error ? (
+              <Grid item xs={12}>
+                <Alert severity="warning">{ sending }</Alert>
+              </Grid>
+            ) : ''
+          }
+          {
+            sent && !error ? (
+              <Grid item xs={12}>
+                <Alert severity="success">{ sent }</Alert>
+              </Grid>
+            ) : ''
+          }
           <Grid item xs={12}>
             <Button
               className="btn-purple"

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
 
+import Alert from '@material-ui/lab/Alert';
 import { Grid, TextField, Button, Typography, Link } from '@material-ui/core';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
@@ -21,6 +22,7 @@ function Login({ language, setCurrentUser }) {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [error, setError] = useState();
   const history = useHistory();
 
   async function handleLogin(event) {
@@ -35,10 +37,12 @@ function Login({ language, setCurrentUser }) {
           email: response.data.email,
           type: response.data.type
         });
+        setError('');
 
         history.push('/dashboard');
     } catch (error) {
-        alert('Login error, try again!');
+      const { message } = error?.response?.data;
+      setError(message);
     }
   }
 
@@ -76,6 +80,13 @@ function Login({ language, setCurrentUser }) {
               onChange={e => setPassword(e.target.value)}
             />
           </Grid>
+          {
+            error ? (
+              <Grid item xs={12}>
+                <Alert severity="error">{ error }</Alert>
+              </Grid>
+            ) : ''
+          }
           <Grid item xs={12}>
             <Button 
               className="btn-purple float-r"

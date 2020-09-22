@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
 
+import Alert from '@material-ui/lab/Alert';
 import { Grid, TextField, Button, Typography, Link } from '@material-ui/core';
-
-import { selectLanguage } from '../../redux/language/language.selectors';
-
-import EN_DATA from '../../data/language/english.data';
-import PT_DATA from '../../data/language/portuguese.data';
 
 import api from '../../services/api';
 
 import './CreateAccount.scss';
 
-function CreateAccount({ language }) {
-  // getting language text
-  //const text = language === 'EN' ? EN_DATA.sections.createAccount : PT_DATA.sections.createAccount;
+function CreateAccount() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
+  const [error, setError] = useState();
   const history = useHistory();
 
   async function handleSubmit(event) {
       event.preventDefault();
 
-      try {
-          const response = await api.post('/users', { name, email, password, address, phone });
-          localStorage.setItem('userEmail', email);
+      if( password !== confirmPassword ) {
+        setError('Please make sure your passwords match!');
+        return;
+      }
 
-          history.push('/login');
+      try {
+        await api.post('/users', { name, email, password, address, phone });
+        localStorage.setItem('userEmail', email);
+        setError('');
+
+        history.push('/login');
       } catch (error) {
-        alert('Create user error!!!');
+        const { message } = error?.response?.data;
+        setError(message);
       }
   }
 
@@ -111,10 +112,17 @@ function CreateAccount({ language }) {
               id="confirmPassword" 
               label="Confirm Password"
               type="password"
-              // value={email}
-              // onChange={e => setEmail(e.target.value)}
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
             />
           </Grid>
+          {
+            error ? (
+              <Grid item xs={12}>
+                <Alert severity="error">{ error }</Alert>
+              </Grid>
+            ) : ''
+          }
           <Grid className="form-button" item xs={12}>
             <Button 
               className="btn-orange float-r"
@@ -137,8 +145,4 @@ function CreateAccount({ language }) {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  language: selectLanguage
-});
-
-export default connect(mapStateToProps)(CreateAccount);
+export default CreateAccount;
