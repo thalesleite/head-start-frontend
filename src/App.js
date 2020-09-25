@@ -16,6 +16,8 @@ import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 import DashboardPage from './pages/Dashboard/Dashboard';
 import EditCoursePage from './pages/EditCourse/EditCourse';
 import AddCoursePage from './pages/AddCourse/AddCourse';
+import SuccessPage from './pages/Success/Success';
+import CancelPage from './pages/Cancel/Cancel';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 
@@ -35,18 +37,19 @@ class App extends React.Component {
       .then(response => {
         setCourses(response.data);
 
-        const userEmail = localStorage.getItem('userEmail');
-        if ( userEmail ) {
-          this.handleUser( userEmail );
+        const userId = localStorage.getItem('userId');
+        if ( userId ) {
+          this.handleUser( userId );
         }
     });
   }
 
-  async handleUser( email ) {
+  async handleUser( id ) {
     const { setCurrentUser } = this.props;
 
-    const response = await api.post('/sessions', { email });
+    const response = await api.get(`/user/${id}`);
     setCurrentUser({
+      id: response.data.id,
       name: response.data.name,
       email: response.data.email,
       type: response.data.type
@@ -72,6 +75,8 @@ class App extends React.Component {
                     <Route exact path='/dashboard' component={DashboardPage} />
                     <Route exact path='/edit-course/:id' component={EditCoursePage} />
                     <Route exact path='/add-course' component={AddCoursePage} />
+                    <Route exact path='/success' component={SuccessPage} />
+                    <Route exact path='/cancel' component={CancelPage} />
                   </div>
                 ) : (
                   <Redirect to='/login' />

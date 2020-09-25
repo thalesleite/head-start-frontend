@@ -28,8 +28,8 @@ function CreateAccount() {
       }
 
       try {
-        await api.post('/users', { name, email, password, address, phone, type });
-        localStorage.setItem('userEmail', email);
+        const response = await api.post('/users', { name, email, password, address, phone, type });
+        localStorage.setItem('userId', response.data.id);
         setError('');
 
         history.push('/login');

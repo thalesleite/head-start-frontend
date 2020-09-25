@@ -7,8 +7,6 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { Card, CardActions, CardContent, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-//import ConfirmCartItem from '../ConfirmCartItem/ConfirmCartItem';
-
 import { addItem } from '../../redux/cart/cart.actions';
 
 import './CourseCart.scss';
@@ -20,7 +18,6 @@ function CourseCart({ course, addItem, language }) {
   const description2 = language === 'EN' ? course?.description2 : course?.description2_pt;
 
   const [hide, setHide] = useState(true);
-  //const [item, setItem] = useState(false);
   const history = useHistory();
 
   return (

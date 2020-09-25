@@ -4,11 +4,9 @@ import { createStructuredSelector } from 'reselect';
 
 import { HashLink as Link } from 'react-router-hash-link';
 
-import { Button } from '@material-ui/core';
-
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -20,18 +18,26 @@ import api from '../../services/api';
 import './Dashboard.scss';
 
 class Dashboard extends React.Component {
+  constructor() {
+    super();
 
-  componentDidMount() {
-    const { setCourses } = this.props;
-    
-    api.get('/courses')
-      .then(response => {
-        setCourses(response.data);
+    this.state = {
+      userCourses: ''
+    }
+  };
+
+  async componentDidMount() {
+    const userId = localStorage.getItem('userId');
+
+    await api.get(`/user-courses/${userId}`)
+        .then(response => {
+          this.setState({ userCourses: response.data.course });
     });
   }
 
   render() {
     const { courses, currentUser } = this.props;
+    const { userCourses } = this.state;
 
     return (
       <div className="container dashboard">
@@ -73,7 +79,39 @@ class Dashboard extends React.Component {
               }
             </div>
           ) : (
-            <div>Student</div>
+            <div>
+              <p>Student</p>
+
+              {
+                userCourses ? 
+                  (userCourses.map( course => (
+                    <div key={ course?.id } className="course">
+                      <span className="name"> { course?.name }</span>
+
+                      {
+                        course?.type === 'online' ? (
+                          <Link
+                            className="edit-button"
+                            to='/course'
+                            target="_blank"
+                          >
+                            Open 
+                            <OpenInNewIcon />
+                          </Link>
+                        ) : (
+                          <Link
+                            className="add-button"
+                            disabled={true}
+                          >
+                            Purchased
+                          </Link>
+                        )
+                      }
+                    </div>
+                  ))
+                ) : ''
+              }
+            </div>
           )
         }
       </div>

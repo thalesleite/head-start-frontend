@@ -39,6 +39,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
 
     if ( currentUser ) {
       const total = `${checkTotal}`.replace('.', '').padEnd(4, 0);
+      localStorage.setItem('userCart', JSON.stringify(cart));
 
       const stripe = await stripePromise;
       const session = await api.post('/payment-session', { total });
@@ -46,9 +47,6 @@ function Cart({ cart, cartTotal, language, currentUser }) {
         sessionId: session.data.id,
       });
 
-      if (response.error) {
-        console.log(response.error.message);
-      }
     } else {
       history.push('/login');
     }

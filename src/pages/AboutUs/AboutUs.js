@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import BartiraImg from '../../assets/BARTIRA.jpg';
+import BartiraVideoEng from '../../assets/videos/CoffeeEnglish.mp4';
+import BartiraVideoPt from '../../assets/videos/CoffeePortuguese.mp4';
 
 import { selectLanguage } from '../../redux/language/language.selectors';
 
@@ -60,7 +62,8 @@ function AboutUs({ language }) {
         <h1>{ text[17] }</h1>
 
         <iframe className="about-video"
-          src="https://www.youtube.com/embed/LHJ5VaZlKsk">
+          //src="https://www.youtube.com/embed/LHJ5VaZlKsk">
+          src={language === 'EN' ? BartiraVideoEng : BartiraVideoPt}>
         </iframe>
       </section>
     </div>

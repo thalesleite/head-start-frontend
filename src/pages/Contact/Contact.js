@@ -37,9 +37,9 @@ function Contact({ language }) {
   const [error, setError] = useState();
   const [isValid, setIsValid] = useState(false);
 
-  const [lat] = useState(53.3519139);
-  const [lng] = useState(-6.2530696);
-  const [zoom] = useState(16);
+  const [lat] = useState(53.3475528);
+  const [lng] = useState(-6.2622095);
+  const [zoom] = useState(17);
   const position = [lat, lng];
 
   const handleSubmit = async (event) => {
@@ -163,7 +163,7 @@ function Contact({ language }) {
     <section>
       <h2>{ text[6] }</h2>
       <p>{ text[7] } </p>
-      <p><i>Dublin City Centre, Ulysses House, 23/24, Foley Street, Dublin 1. D01 W2T2.</i></p>
+      <p><i>32 Bachelors Walk, North City, Dublin, D01 HK76</i></p>
       <p>{ text[8] }</p>
       <Grid container spacing={4}>
         <Grid item xs={12}>

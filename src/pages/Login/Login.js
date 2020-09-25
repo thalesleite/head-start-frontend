@@ -31,8 +31,9 @@ function Login({ language, setCurrentUser }) {
     try {
         const response = await api.post('/sessions', { email, password });
 
-        localStorage.setItem('userEmail', email);
+        localStorage.setItem('userId', response.data.id);
         setCurrentUser({
+          id: response.data.id,
           name: response.data.name,
           email: response.data.email,
           type: response.data.type

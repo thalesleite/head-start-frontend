@@ -34,7 +34,7 @@ function Footer({ language }) {
             <span className="social">
               <a 
                 className="facebook" 
-                href="https:\\www.facebook.com" 
+                href="https://www.facebook.com/Head-Start-Courses-116549869955570/" 
                 target="_blank"
               >
                 <FacebookIcon />
