@@ -92,7 +92,7 @@ class Dashboard extends React.Component {
                         course?.type === 'online' ? (
                           <Link
                             className="edit-button"
-                            to='/dashboard/course'
+                            to='/course'
                             target="_blank"
                           >
                             Open 
