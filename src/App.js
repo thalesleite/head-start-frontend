@@ -65,10 +65,10 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route>
+          <Route path='/course/:path?' exact>
             <MainCourse>
               <Switch>
-                <Route path='/course' component={CoursePage} />
+                <Route exact path='/course' component={CoursePage} />
               </Switch>
             </MainCourse>
           </Route>
