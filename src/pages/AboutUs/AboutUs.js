@@ -63,7 +63,7 @@ function AboutUs({ language }) {
         
         <video 
           className="about-video"
-          controls="true"
+          controls={true}
           controlsList="nodownload"
           src={language === 'EN' ? BartiraVideoEng : BartiraVideoPt}>
         </video>

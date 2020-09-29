@@ -10,7 +10,6 @@ import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { setCurrentUser } from '../../redux/user/user.actions';
 
 import { setCourses } from '../../redux/course/course.actions';
 
@@ -29,22 +28,14 @@ class Dashboard extends React.Component {
 
   async componentDidMount() {
     const userId = localStorage.getItem('userId');
-    const { setCurrentUser } = this.props;
 
     if ( userId ) {
-      const response = await api.get(`/user/${userId}`);
-      setCurrentUser({
-        id: response.data.id,
-        name: response.data.name,
-        email: response.data.email,
-        type: response.data.type,
-        level: response.data.level
-      });
-
       await api.get(`/user-courses/${userId}`)
           .then(response => {
             this.setState({ userCourses: response.data.course });
       });
+    } else {
+      this.props.history.push('/login');
     }
   }
 
@@ -139,8 +130,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCourses: courses => dispatch(setCourses(courses)),
-    setCurrentUser: user => dispatch(setCurrentUser(user))
+    setCourses: courses => dispatch(setCourses(courses))
   }
 };
 

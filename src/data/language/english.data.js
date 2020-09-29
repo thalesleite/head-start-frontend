@@ -42,7 +42,7 @@ const EN_DATA = {
       'Email',
       'Phone',
       'Subject',
-      'Doubts',
+      'Questions',
       'Technical Assistance',
       'Comments',
       'Other',
