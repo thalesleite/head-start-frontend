@@ -43,7 +43,7 @@ function Footer({ language }) {
             <span className="social">
               <a
                 className="instagram"
-                href="https:\\www.instagram.com"
+                href="https://www.instagram.com/headstartcourses"
                 target="_blank"
               >
                 <InstagramIcon />
