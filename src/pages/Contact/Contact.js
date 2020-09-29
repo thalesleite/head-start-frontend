@@ -145,10 +145,10 @@ function Contact({ language }) {
               onChange={e => setSubject(e.target.value)}
               disabled={isValid && !error}
             >
-              <MenuItem value={ text[6] }>Dúvidas</MenuItem>
-              <MenuItem value={ text[7] }>Assitência Técnica</MenuItem>
-              <MenuItem value={ text[8] }>Comentários</MenuItem>
-              <MenuItem value={ text[9] }>Outros</MenuItem>
+              <MenuItem value={ text[6] }>{ text[6] }</MenuItem>
+              <MenuItem value={ text[7] }>{ text[7] }</MenuItem>
+              <MenuItem value={ text[8] }>{ text[8] }</MenuItem>
+              <MenuItem value={ text[9] }>{ text[9] }</MenuItem>
             </Select>
           </Grid>
           <Grid item xs={12}>
