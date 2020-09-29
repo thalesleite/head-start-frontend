@@ -8,6 +8,7 @@ import { Grid, TextField, Button, Typography, Link } from '@material-ui/core';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { selectLanguage } from '../../redux/language/language.selectors';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 import EN_DATA from '../../data/language/english.data';
 import PT_DATA from '../../data/language/portuguese.data';
@@ -16,7 +17,7 @@ import api from '../../services/api';
 
 import './Login.scss';
 
-function Login({ language, setCurrentUser }) {
+function Login({ language, setCurrentUser, cart }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.login : PT_DATA.sections.login;
 
@@ -40,7 +41,11 @@ function Login({ language, setCurrentUser }) {
         });
         setError('');
 
-        history.push('/dashboard');
+        if ( cart?.length > 0 ) {
+          history.push('/cart');
+        } else {
+          history.push('/dashboard');
+        }
     } catch (error) {
       const { message } = error?.response?.data;
       setError(message);
@@ -129,7 +134,8 @@ function Login({ language, setCurrentUser }) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  language: selectLanguage
+  language: selectLanguage,
+  cart: selectCartItems
 });
 
 const mapDispatchToProps = dispatch => ({

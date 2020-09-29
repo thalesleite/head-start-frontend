@@ -9,13 +9,13 @@ import AboutUsPage from '../AboutUs/AboutUs';
 import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
 
-import BkgHeadStart from '../../assets/HEAD-START.jpeg';
-import BkgOne from '../../assets/carousell1.jpg';
-import BkgTwo from '../../assets/carousell2.jpg';
-import BkgThree from '../../assets/carousell3.jpg';
-import BkgFour from '../../assets/carousell4.jpg';
-import BkgFive from '../../assets/carousell5.jpg';
-import BkgSix from '../../assets/carousell6.jpg';
+import BkgHeadStart from '../../assets/images/HEAD-START.jpeg';
+import BkgOne from '../../assets/images/carousell1.jpg';
+import BkgTwo from '../../assets/images/carousell2.jpg';
+import BkgThree from '../../assets/images/carousell3.jpg';
+import BkgFour from '../../assets/images/carousell4.jpg';
+import BkgFive from '../../assets/images/carousell5.jpg';
+import BkgSix from '../../assets/images/carousell6.jpg';
 
 import { selectLanguage } from '../../redux/language/language.selectors';
 

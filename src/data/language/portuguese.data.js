@@ -33,17 +33,23 @@ const PT_DATA = {
       'Bartira is the founder of Head Start Courses and of the renowned “Barista Course By Bartira”, that in 7 years already has qualified more than 5000 professionals. She also is the owner of the stylish coffee shop located in British Studies Centres, Dublin.',
       'Bartira também faz parte e atua como mentora no “Career LEAP” Work Readiness Training Programme, programa criado pela Trinity College Dublin e negócios locais com o propósito de minimizar o desemprego entre jovens. Parte do seu tempo é dedicado para dar palestras, treinamentos e workshops, bem como para trabalhos sociais, através de treinamentos para adolescentes que fazem parte de um grupo socioeconômico tradicionalmente desafiador em áreas carentes de Dublin.',
       '',
-      'Transformando vidas atráves da educação'
+      'Aperte o play e comece hoje sua jornada profissional!'
     ],
     contact: [
       'CONTATO',
       'Preencha o formulário abaixo. Retornaremos assim que possível.',
       'Nome',
       'Email',
+      'Telefone',
+      'Assunto',
+      'Dúvidas',
+      'Assitência Técnica',
+      'Comentários',
+      'Outros',
       'Mensagem',
       'Enviar',
       'Localização',
-      'Você pode encontrar cursos da Head Start Courses em:',
+      'Você pode encontrar a Head Start Courses em:',
       'Dúvidas? Estamos aqui para ajudar você. Fale com a gente!'
     ],
     login: [

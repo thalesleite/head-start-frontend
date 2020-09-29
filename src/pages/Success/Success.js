@@ -23,11 +23,25 @@ class Success extends React.Component {
           id: response.data.id,
           name: response.data.name,
           email: response.data.email,
-          type: response.data.type
+          type: response.data.type,
+          level: response.data.level
         });
 
+        Date.prototype.addDays = function (days) {
+          let date = new Date(this.valueOf());
+          date.setDate(date.getDate() + days);
+
+          return date;
+        }
+        const date = new Date();
+
         cart.forEach(async item => {
-          response = await api.post('/user-courses', { user_id: userId, course_id: item.id, duration: item.duration });
+          response = await api.post('/user-courses', { 
+            user_id: userId, 
+            course_id: item.id, 
+            deadline: date.addDays(item.duration),
+            type: item.type
+          });
         });
 
         if (!response.error) {

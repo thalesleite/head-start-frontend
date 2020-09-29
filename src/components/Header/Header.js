@@ -17,7 +17,7 @@ import { setCurrentUser } from '../../redux/user/user.actions';
 import EN_DATA from '../../data/language/english.data';
 import PT_DATA from '../../data/language/portuguese.data';
 
-import Logo from '../../assets/head-start-branco.png';
+import Logo from '../../assets/images/head-start-branco.png';
 
 import './Header.scss';
 

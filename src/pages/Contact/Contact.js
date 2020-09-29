@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 import Alert from '@material-ui/lab/Alert';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Grid, TextField, Button, TextareaAutosize } from '@material-ui/core';
+import { Grid, TextField, Button, TextareaAutosize, MenuItem, InputLabel, Select } from '@material-ui/core';
 import L from 'leaflet';
 
 import { selectLanguage } from '../../redux/language/language.selectors';
@@ -31,6 +31,8 @@ function Contact({ language }) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState();
+  const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState('');
   const [sending, setSending] = useState('');
@@ -71,6 +73,8 @@ function Contact({ language }) {
   const resetForm = () => {
     setName('');
     setEmail('');
+    setPhone('');
+    setSubject('');
     setMessage('');
     setSending('');
     setIsValid(false);
@@ -119,9 +123,38 @@ function Contact({ language }) {
             />
           </Grid>
           <Grid item xs={12}>
+            <TextField
+              className="form-input" 
+              required 
+              id="phone" 
+              label={ text[4] }
+              type="number"
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+              disabled={isValid && !error}
+            />
+          </Grid>
+          <Grid item xs={12}></Grid>
+          <Grid item xs={12}>
+            <InputLabel id="select-subject">{ text[5] }</InputLabel>
+            <Select
+              className="form-input"
+              required
+              labelId="select-subject"
+              value={subject}
+              onChange={e => setSubject(e.target.value)}
+              disabled={isValid && !error}
+            >
+              <MenuItem value={ text[6] }>Dúvidas</MenuItem>
+              <MenuItem value={ text[7] }>Assitência Técnica</MenuItem>
+              <MenuItem value={ text[8] }>Comentários</MenuItem>
+              <MenuItem value={ text[9] }>Outros</MenuItem>
+            </Select>
+          </Grid>
+          <Grid item xs={12}>
             <TextareaAutosize 
               className="form-input textarea" 
-              placeholder={ text[4] } 
+              placeholder={ text[10] } 
               value={message}
               onChange={e => setMessage(e.target.value)}
               disabled={isValid && !error}
@@ -153,7 +186,7 @@ function Contact({ language }) {
               className="btn-purple"
               type="submit"
             >
-                { text[5] }
+                { text[11] }
             </Button>
           </Grid>
         </Grid>
@@ -161,10 +194,10 @@ function Contact({ language }) {
     </section>
 
     <section>
-      <h2>{ text[6] }</h2>
-      <p>{ text[7] } </p>
+      <h2>{ text[12] }</h2>
+      <p>{ text[13] } </p>
       <p><i>32 Bachelors Walk, North City, Dublin, D01 HK76</i></p>
-      <p>{ text[8] }</p>
+      <p>{ text[14] }</p>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <Map 

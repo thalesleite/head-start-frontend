@@ -1,0 +1,30 @@
+@import '../../scss/variables';
+
+.form-course-content {
+  background-color: white;
+  padding: 20px;
+
+  .form-question {
+    padding: 10px;
+
+    label {
+      font-size: 18px;
+    }
+  }
+
+  .form-question-input {
+    label {
+      font-size: 16px;
+    }
+  }
+
+  .btn-save {
+    background-color: $color-green;
+    color: white;
+    margin: 10px;
+
+    &:hover {
+      background-color: $color-green-dark;
+    }
+  }
+}
