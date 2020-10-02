@@ -58,11 +58,27 @@ class CourseSideMenu extends React.Component{
     this.setState({ open: !this.state.open });
   }
 
+  formatDate( date ) {
+    const formDate = new Date(date);
+    const day = formDate.getDate();
+    const year = formDate.getFullYear();
+    const month = formDate.getMonth() + 1;
+
+    return day + '/' + month + '/' + year;
+  }
+
+  isDeadline(deadline) {
+    const formDate = new Date(deadline);
+    const today = new Date();
+
+    return this.formatDate(formDate) === this.formatDate(today);
+  }
+
   getLevelCourse = async () => {
     const userId = localStorage.getItem('userId');
     const response = await api.get(`/user/${userId}`);
 
-    if ( response.data.level === 0 ) {
+    if ( response.data.level === 0 || this.isDeadline(response.data.deadline) ) {
       this.props.history.push('/dashboard');
     } else {
       this.setLevelCourse(response.data.level);

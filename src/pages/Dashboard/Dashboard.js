@@ -7,6 +7,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -37,6 +38,22 @@ class Dashboard extends React.Component {
     } else {
       this.props.history.push('/login');
     }
+  }
+
+  formatDate( date ) {
+    const formDate = new Date(date);
+    const day = formDate.getDate();
+    const year = formDate.getFullYear();
+    const month = formDate.getMonth() + 1;
+
+    return day + '/' + month + '/' + year;
+  }
+
+  isDeadline(deadline) {
+    const formDate = new Date(deadline);
+    const today = new Date();
+
+    return this.formatDate(formDate) === this.formatDate(today);
   }
 
   render() {
@@ -92,23 +109,62 @@ class Dashboard extends React.Component {
                     <div key={ course?.id } className="course">
                       <span className="name"> { course?.name }</span>
 
+                      <span className="deadline">
+                        DEADLINE: <b>{ this.formatDate(course?.deadline) }</b>
+                      </span>
+
                       {
                         course?.type === 'online' ? (
-                          <Link
-                            className="edit-button"
-                            to='/course'
-                            target="_blank"
-                          >
-                            Open 
-                            <OpenInNewIcon />
-                          </Link>
+                          
+                          course?.level === 0 ? (
+                            <Link
+                              className="add-button"
+                              to='#'
+                              disabled={true}
+                            >
+                              Finished
+                            </Link>
+                          ) : (
+
+                            this.isDeadline(course?.deadline) ? (
+                              <Link
+                                className="add-button"
+                                to='#'
+                                disabled={true}
+                              >
+                                Expired
+                            </Link>
+                            ) : (
+                              <Link
+                                className="edit-button"
+                                to='/course'
+                                target="_blank"
+                              >
+                                Open 
+                                <OpenInNewIcon />
+                              </Link>
+                            )
+                          )
+
                         ) : (
-                          <Link
-                            className="add-button"
-                            disabled={true}
-                          >
-                            Purchased
-                          </Link>
+
+                          this.isDeadline(course?.deadline) ? (
+                            <Link
+                              className="add-button"
+                              to='#'
+                              disabled={true}
+                            >
+                              Purchased
+                            </Link>
+                          ) : (
+                            <Link
+                              className="edit-button"
+                              to='#'
+                            >
+                              Schedule 
+                              <ScheduleIcon />
+                            </Link>
+                          )
                         )
                       }
                     </div>
