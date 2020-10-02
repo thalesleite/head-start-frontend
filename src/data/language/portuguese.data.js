@@ -6,7 +6,7 @@ const PT_DATA = {
     'CONTATO',
     'LOGIN',
     'LOGOUT',
-    'DASHBOARD',
+    'ÁREA DO ALUNO',
   ],
   sections: {
     services: [

@@ -6,7 +6,7 @@ const EN_DATA = {
     'CONTACT',
     'LOGIN',
     'LOGOUT',
-    'DASHBOARD'
+    'STUDENT AREA'
   ],
   sections: {
     services: [

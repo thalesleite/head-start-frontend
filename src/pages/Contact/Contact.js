@@ -51,7 +51,9 @@ function Contact({ language }) {
       const data = {
         name: name,
         email: email,
-        message: message
+        message: message,
+        phone: phone,
+        subject: subject
       };
       
       setError('');

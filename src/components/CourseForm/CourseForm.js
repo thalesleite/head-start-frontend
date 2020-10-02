@@ -114,12 +114,10 @@ function CourseForm(props) {
       if ( level === 0 ) { 
         const data = {
           name: currentUser.name,
-          email: currentUser.email,
-          message: 'Parabens voce finalizou o curso!',
-          subject: 'Certificado curso - Food Safety - HACCP(Level 1)'
+          email: currentUser.email
         };
 
-        await api.post('/send', data)
+        await api.post('/send-certificate', data)
             .then( res => {
               history.push('/dashboard');
         });
