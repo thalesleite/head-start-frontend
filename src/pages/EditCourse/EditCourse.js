@@ -20,7 +20,8 @@ class EditCourse extends React.Component {
       description2_pt: '',
       type: '',
       price: 0,
-      duration: 0
+      duration: 0,
+      active: 0
     };
   }
   
@@ -39,7 +40,8 @@ class EditCourse extends React.Component {
           description2_pt: course?.description2_pt,
           type: course?.type,
           price: course?.price,
-          duration: course?.duration
+          duration: course?.duration,
+          active: course?.active
         });
     });
   }
@@ -54,7 +56,8 @@ class EditCourse extends React.Component {
       description2_pt,
       type,
       price,
-      duration
+      duration,
+      active
     } = this.state;
 
     try {
@@ -67,7 +70,8 @@ class EditCourse extends React.Component {
           description2_pt,
           type,
           price,
-          duration
+          duration,
+          active
         });
 
         this.props.history.push('/dashboard');
@@ -85,7 +89,8 @@ class EditCourse extends React.Component {
       description2_pt,
       type,
       price,
-      duration
+      duration,
+      active
     } = this.state;
 
     return (
@@ -205,6 +210,20 @@ class EditCourse extends React.Component {
                   value={duration}
                   onChange={e => this.setState({ duration: e.target.value })}
                 />
+              </Grid>
+              <Grid className="form-select" item xs={12}>
+                <InputLabel id="select-active">Active</InputLabel>
+                <Select
+                  className="form-input"
+                  required
+                  labelId="select-active"
+                  id="active"
+                  value={active}
+                  onChange={e => this.setState({ active: e.target.value })}
+                >
+                  <MenuItem value={1}>Yes</MenuItem>
+                  <MenuItem value={0}>No</MenuItem>
+                </Select>
               </Grid>
             </Grid>
            

@@ -36,7 +36,7 @@ class App extends React.Component {
   componentDidMount() {
     const { setCourses } = this.props;
     
-    api.get('/courses')
+    api.get('/courses-active')
       .then(response => {
         setCourses(response.data);
 
@@ -48,7 +48,7 @@ class App extends React.Component {
   }
 
   async handleUser( id ) {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, setCourses } = this.props;
 
     const response = await api.get(`/user/${id}`);
     setCurrentUser({
@@ -58,6 +58,13 @@ class App extends React.Component {
       type: response.data.type,
       level: response.data.level
     });
+
+    if ( response.data.type === 0 ) {
+      api.get('/courses')
+      .then(resp => {
+        setCourses(resp.data);
+    });
+    }
   }
 
   render() {
