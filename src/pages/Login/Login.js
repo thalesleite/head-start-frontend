@@ -117,7 +117,7 @@ function Login({ language, setCurrentUser, cart }) {
               <Link 
                 onClick={ 
                   () => { 
-                    history.push('/'); 
+                    history.push('/forgot-password');
                   } 
                 }
               >

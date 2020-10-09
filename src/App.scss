@@ -1,5 +1,9 @@
 @import './scss/variables';
 
+* {
+  box-sizing: border-box;;
+}
+
 body {
   font-family: 'Livvic', sans-serif;
   padding-top: $height-header;
@@ -13,10 +17,6 @@ body {
 a {
   text-decoration: none;
   color: white;
-}
-
-* {
-  box-sizing: border-box;;
 }
 
 .container {

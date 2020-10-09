@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -20,6 +20,7 @@ import AddCoursePage from './pages/AddCourse/AddCourse';
 import SuccessPage from './pages/Success/Success';
 import CancelPage from './pages/Cancel/Cancel';
 import CoursePage from './pages/Course/Course';
+import ForgotPasswordPage from './pages/ForgotPassword/ForgotPassword';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCourses } from './redux/course/course.selectors';
@@ -87,6 +88,7 @@ class App extends React.Component {
                 <Route exact path='/' component={HomePage} />
                 <Route exact path='/cart' component={CartPage} />
                 <Route exact path='/login' component={LoginPage} />
+                <Route exact path='/forgot-password' component={ForgotPasswordPage} />
                 <Route exact path='/create-account' component={CreateAccountPage} />
                 <Route exact path='/security-policy' component={SecurityPolicy} />
                 
