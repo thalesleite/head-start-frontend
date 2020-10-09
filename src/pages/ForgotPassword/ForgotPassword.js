@@ -26,8 +26,9 @@ function ForgotPassword({ language, setCurrentUser, cart }) {
     event.preventDefault();
 
     try {
-        await api.post('/send-password', { email });
+        await api.post('/users-token', { email });
         setError('');
+        setEmail('');
         setMessage('A link has been sent to your email!');
 
     } catch (error) {
