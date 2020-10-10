@@ -21,6 +21,7 @@ import SuccessPage from './pages/Success/Success';
 import CancelPage from './pages/Cancel/Cancel';
 import CoursePage from './pages/Course/Course';
 import ForgotPasswordPage from './pages/ForgotPassword/ForgotPassword';
+import ResetPasswordPage from './pages/ResetPassword/ResetPassword';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCourses } from './redux/course/course.selectors';
@@ -89,6 +90,7 @@ class App extends React.Component {
                 <Route exact path='/cart' component={CartPage} />
                 <Route exact path='/login' component={LoginPage} />
                 <Route exact path='/forgot-password' component={ForgotPasswordPage} />
+                <Route exact path='/reset/:token' component={ResetPasswordPage} />
                 <Route exact path='/create-account' component={CreateAccountPage} />
                 <Route exact path='/security-policy' component={SecurityPolicy} />
                 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Alert from '@material-ui/lab/Alert';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
