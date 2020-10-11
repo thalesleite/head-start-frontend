@@ -1,0 +1,52 @@
+@import '../../scss/variables';
+
+.edit {
+  padding-top: 120px !important;
+  min-height: 30rem;
+
+  .form-container {
+    width: 100%;
+  
+    .form-input {
+      width: 100%;
+    }
+  
+    .form-submit {
+      float: right;
+    }
+
+    .btn-save {
+      background-color: $color-green;
+      color: white;
+      margin: 10px;
+
+      &:hover {
+        background-color: $color-green-dark;
+      }
+    }
+
+    .btn-cancel {
+      background-color: $color-red;
+      margin: 10px;
+      width: 70px;
+      height: 36px;
+      padding: 8px;
+      font-size: 15px;
+      text-transform: uppercase;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $color-red-dark;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding-top: 50px !important;
+    padding: 20px !important;
+
+    .form-container {
+      width: 100%;
+    }
+  }
+}

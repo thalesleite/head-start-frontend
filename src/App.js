@@ -12,6 +12,7 @@ import Language from './components/ChooseLanguage/ChooseLanguage';
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/Login/Login';
 import CreateAccountPage from './pages/CreateAccount/CreateAccount';
+import EditUser from './pages/EditUser/EditUser';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 import DashboardPage from './pages/Dashboard/Dashboard';
@@ -95,6 +96,7 @@ class App extends React.Component {
                 <Route exact path='/security-policy' component={SecurityPolicy} />
                 
                 <Route exact path='/dashboard' component={DashboardPage} />
+                <Route exact path='/edit-user/:id' component={EditUser} />
                 <Route exact path='/edit-course/:id' component={EditCoursePage} />
                 <Route exact path='/add-course' component={AddCoursePage} />
                 <Route exact path='/success' component={SuccessPage} />

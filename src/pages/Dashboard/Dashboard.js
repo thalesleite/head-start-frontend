@@ -4,6 +4,8 @@ import { createStructuredSelector } from 'reselect';
 
 import { HashLink as Link } from 'react-router-hash-link';
 
+
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EditIcon from '@material-ui/icons/Edit';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
@@ -62,7 +64,16 @@ class Dashboard extends React.Component {
 
     return (
       <div className="container dashboard">
-        <h1>Hi, { currentUser?.name }!</h1>
+        <div className="user">
+          <h1>Hi, { currentUser?.name }!</h1>
+          <Link
+            className="edit-button"
+            to={`/edit-user/${currentUser?.id}`}
+          >
+            edit 
+            <AccountCircleIcon />
+          </Link>
+        </div>
 
         {
           currentUser?.type === 0 ? (
@@ -81,13 +92,6 @@ class Dashboard extends React.Component {
                 courses && courses.map( course => (
                   <div key={ course.id } className="course">
                     <span className="name"> { course.name }</span>
-                    {/* <Link
-                      className="delete-button"
-                      onClick={() => {}}
-                    >
-                      delete 
-                      <DeleteIcon />
-                    </Link> */}
                     <Link
                       className="edit-button"
                       to={`/edit-course/${course.id}`}
