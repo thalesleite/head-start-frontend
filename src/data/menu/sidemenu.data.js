@@ -1,10 +1,7 @@
-//import videoModulo from '../../assets/videos/course/modulo1/modulo11.mp4';
-import videoModulo from 'https://vimeo.com/468646488';
+import videoModulo from '../../assets/videos/course/modulo1/modulo11.mp4';
 // Modulo 1
-//import videoModulo11 from '../../assets/videos/course/modulo1/modulo11.mp4';
-//import videoModulo12 from '../../assets/videos/course/modulo1/modulo12.mp4';
-import videoModulo11 from 'https://vimeo.com/468646488';
-import videoModulo12 from 'https://vimeo.com/468646488';
+import videoModulo11 from '../../assets/videos/course/modulo1/modulo11.mp4';
+import videoModulo12 from '../../assets/videos/course/modulo1/modulo12.mp4';
 // Modulo 2
 import videoModulo21 from '../../assets/videos/course/modulo2/modulo21.mp4';
 import videoModulo22 from '../../assets/videos/course/modulo2/modulo22.mp4';
@@ -34,7 +31,7 @@ const SIDEMNU = [
     items: [{
         link: '1.1',
         title: '1.1 Introdução',
-        video: videoModulo11,
+        video: 'https://vimeo.com/468646488',
         hidden: false
       },{
         link: '1.2',
