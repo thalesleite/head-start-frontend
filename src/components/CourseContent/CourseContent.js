@@ -24,13 +24,14 @@ function CourseContent() {
               {
                 !subitem?.hidden ?  
                   subitem?.video ? (
-                    <video
-                      className="video"
-                      controls={true}
-                      controlsList="nodownload"
-                      src={subitem.video}
-                    >
-                    </video>
+                    // <video
+                    //   className="video"
+                    //   controls={true}
+                    //   controlsList="nodownload"
+                    //   src={subitem.video}
+                    // >
+                    // </video>
+                    <iframe className="video" src={subitem.video}></iframe>
                   ) : (
                     <CourseForm moduleId={item?.id} />
                   )
