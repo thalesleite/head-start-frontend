@@ -55,7 +55,7 @@ class App extends React.Component {
 
     const response = await api.get(`/user/${id}`);
     setCurrentUser({
-      id: response.data.id,
+      id: response.data._id,
       name: response.data.name,
       email: response.data.email,
       type: response.data.type,

@@ -1,7 +1,10 @@
-import videoModulo from '../../assets/videos/course/modulo1/modulo11.mp4';
+//import videoModulo from '../../assets/videos/course/modulo1/modulo11.mp4';
+import videoModulo from 'https://vimeo.com/468646488';
 // Modulo 1
-import videoModulo11 from '../../assets/videos/course/modulo1/modulo11.mp4';
-import videoModulo12 from '../../assets/videos/course/modulo1/modulo12.mp4';
+//import videoModulo11 from '../../assets/videos/course/modulo1/modulo11.mp4';
+//import videoModulo12 from '../../assets/videos/course/modulo1/modulo12.mp4';
+import videoModulo11 from 'https://vimeo.com/468646488';
+import videoModulo12 from 'https://vimeo.com/468646488';
 // Modulo 2
 import videoModulo21 from '../../assets/videos/course/modulo2/modulo21.mp4';
 import videoModulo22 from '../../assets/videos/course/modulo2/modulo22.mp4';

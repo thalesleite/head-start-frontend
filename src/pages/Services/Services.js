@@ -30,7 +30,7 @@ const Services = ({ courses, language }) => {
         {(
           online ?
             online.map( course => (
-              <CourseCart key={course.id} course={course} language={language} />
+              <CourseCart key={course._id} course={course} language={language} />
             ))
           : ''
         )}
@@ -41,7 +41,7 @@ const Services = ({ courses, language }) => {
         {(
           facetoface ?
           facetoface.map( course => (
-            <CourseCart key={course.id} course={course} language={language} />
+            <CourseCart key={course._id} course={course} language={language} />
           ))
           : ''
         )}
