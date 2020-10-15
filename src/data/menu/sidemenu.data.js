@@ -31,7 +31,7 @@ const SIDEMNU = [
     items: [{
         link: '1.1',
         title: '1.1 Introdução',
-        video: '//player.vimeo.com/video/468646488',
+        video: 'https://player.vimeo.com/video/468646488',
         hidden: false
       },{
         link: '1.2',

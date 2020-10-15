@@ -31,7 +31,13 @@ function CourseContent() {
                     //   src={subitem.video}
                     // >
                     // </video>
-                    <iframe className="video" src={subitem.video}></iframe>
+                    <iframe 
+                      className="video"
+                      src={subitem.video}
+                      frameborder="0" 
+                      allow="autoplay; fullscreen" 
+                      allowfullscreen
+                    ></iframe>
                   ) : (
                     <CourseForm moduleId={item?.id} />
                   )
