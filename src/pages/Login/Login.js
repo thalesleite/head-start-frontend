@@ -32,9 +32,9 @@ function Login({ language, setCurrentUser, cart }) {
     try {
         const response = await api.post('/sessions', { email, password });
 
-        localStorage.setItem('userId', response.data.id);
+        localStorage.setItem('userId', response.data._id);
         setCurrentUser({
-          id: response.data.id,
+          id: response.data._id,
           name: response.data.name,
           email: response.data.email,
           type: response.data.type

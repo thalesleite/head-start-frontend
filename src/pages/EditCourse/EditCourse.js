@@ -30,7 +30,7 @@ class EditCourse extends React.Component {
 
     api.get(`/courses/${id}`)
       .then(response => {
-        const course = response.data.course;
+        const course = response.data.course[0];
         this.setState({
           id: id,
           name: course?.name,
@@ -75,6 +75,7 @@ class EditCourse extends React.Component {
         });
 
         this.props.history.push('/dashboard');
+        window.location.reload(false);
     } catch (error) {
         alert('Edit course error!!!');
     }

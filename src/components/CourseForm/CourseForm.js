@@ -108,9 +108,10 @@ function CourseForm(props) {
 
     await api.put(`/user-courses`, { 
       user_id: currentUser.id,
-      course_id: 1,
+      course_id: '5f83853c539a937ed63fbf2c',
       level
     }).then(async response => {
+      
       if ( level === 0 ) { 
         const data = {
           name: currentUser.name,

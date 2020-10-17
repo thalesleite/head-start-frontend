@@ -27,7 +27,6 @@ class EditUser extends React.Component {
     api.get(`/user/${id}`)
       .then(response => {
         const user = response.data;
-        console.log(response);
         this.setState({
           id: id,
           name: user?.name,

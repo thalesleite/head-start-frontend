@@ -33,8 +33,10 @@ class ResetPassword extends React.Component {
         const token = this.props.match.params.token;
         const response = await api.get(`/user-validate/${token}`);
 
+        console.log(response.data);
+
         this.setState({
-          userId: response.data.id,
+          userId: response.data._id,
           password: '',
           confirmPassword: '',
           validError: '',
@@ -58,6 +60,7 @@ class ResetPassword extends React.Component {
       });
     } else {
 
+      console.log(userId);
       try {
         await api.put('/user-reset-password', { id: userId, password });
         this.setState({
@@ -70,7 +73,6 @@ class ResetPassword extends React.Component {
         });
 
       } catch (error) {
-        console.log(error);
         const { message } = error?.response?.data;
         this.setState({
           error: message

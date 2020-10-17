@@ -78,7 +78,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
                 {
                   cart ?
                   cart.map( item => (
-                    <CheckoutItem key={item.id} cartItem={item}/>
+                    <CheckoutItem key={item._id} cartItem={item}/>
                   )) : ''
                 }
               </Grid>

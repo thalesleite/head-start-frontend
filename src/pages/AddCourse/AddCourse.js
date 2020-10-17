@@ -36,6 +36,7 @@ function AddCourse() {
         });
 
         history.push('/dashboard');
+        window.location.reload(false);
     } catch (error) {
         alert('Add course error!!!');
     }
@@ -148,7 +149,6 @@ function AddCourse() {
             <Grid item xs={12}>
               <TextField
                 className="form-input"
-                required
                 id="description2_pt" 
                 label='Descrição 2'
                 multiline

@@ -38,7 +38,7 @@ class Success extends React.Component {
         cart.forEach(async item => {
           response = await api.post('/user-courses', { 
             user_id: userId, 
-            course_id: item.id, 
+            course_id: item._id,
             deadline: date.addDays(item.duration),
             type: item.type
           });

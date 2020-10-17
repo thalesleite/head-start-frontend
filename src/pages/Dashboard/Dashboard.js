@@ -14,8 +14,6 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-import { setCourses } from '../../redux/course/course.actions';
-
 import api from '../../services/api';
 
 import './Dashboard.scss';
@@ -90,11 +88,11 @@ class Dashboard extends React.Component {
               </div>
               {
                 courses && courses.map( course => (
-                  <div key={ course.id } className="course">
+                  <div key={ course?._id } className="course">
                     <span className="name"> { course.name }</span>
                     <Link
                       className="edit-button"
-                      to={`/edit-course/${course.id}`}
+                      to={`/edit-course/${course._id}`}
                     >
                       edit 
                       <EditIcon />
@@ -110,7 +108,7 @@ class Dashboard extends React.Component {
               {
                 userCourses ? 
                   (userCourses.map( course => (
-                    <div key={ course?.id } className="course">
+                    <div key={ course?._id } className="course">
                       <span className="name"> { course?.name }</span>
 
                       <span className="deadline">
@@ -188,10 +186,4 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCourses: courses => dispatch(setCourses(courses))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);
