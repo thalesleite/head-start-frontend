@@ -16,11 +16,12 @@ import EditUser from './pages/EditUser/EditUser';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 import DashboardPage from './pages/Dashboard/Dashboard';
+import CoursePage from './pages/Course/Course';
+import EditCourseDate from './pages/EditCourseDate/EditCourseDate';
 import EditCoursePage from './pages/EditCourse/EditCourse';
 import AddCoursePage from './pages/AddCourse/AddCourse';
 import SuccessPage from './pages/Success/Success';
 import CancelPage from './pages/Cancel/Cancel';
-import CoursePage from './pages/Course/Course';
 import ForgotPasswordPage from './pages/ForgotPassword/ForgotPassword';
 import ResetPasswordPage from './pages/ResetPassword/ResetPassword';
 
@@ -98,6 +99,7 @@ class App extends React.Component {
                 <Route exact path='/dashboard' component={DashboardPage} />
                 <Route exact path='/edit-user/:id' component={EditUser} />
                 <Route exact path='/edit-course/:id' component={EditCoursePage} />
+                <Route exact path='/edit-course-date/:id' component={EditCourseDate} />
                 <Route exact path='/add-course' component={AddCoursePage} />
                 <Route exact path='/success' component={SuccessPage} />
                 <Route exact path='/cancel' component={CancelPage} />

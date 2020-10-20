@@ -10,10 +10,16 @@
     text-align: center;
     border: 1px solid #ccc;
 
-    .coupon {
+    .voucher {
       padding-top: 20px;
 
-      .btn-coupon {
+      .input-voucher {
+        input {
+          text-transform: uppercase;
+        }
+      }
+
+      .btn-voucher {
         background-color: $color-orange;
         border: solid 1px $color-black;
         margin-top: 12px;

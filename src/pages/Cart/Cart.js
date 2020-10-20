@@ -29,7 +29,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
   const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
   
-  const [coupon, setCoupon] = useState('');
+  const [voucher, setVoucher] = useState('');
   const [checkTotal, setCheckTotal] = useState(cartTotal);
   const [isValid, setIsValid] = useState(false);
   const history = useHistory();
@@ -43,7 +43,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
 
       const stripe = await stripePromise;
       const session = await api.post('/payment-session', { total });
-      const response = await stripe.redirectToCheckout({
+      await stripe.redirectToCheckout({
         sessionId: session.data.id,
       });
 
@@ -52,15 +52,27 @@ function Cart({ cart, cartTotal, language, currentUser }) {
     }
   }
 
-  function handleValidCupom(event) {
+  function handleValidVoucher(event) {
     event.preventDefault();
+    
+    if ( cart ) {
+      const online = cart.find(course => course.type === 'online');
 
-    if ( coupon === 'HEADFISRT' ) {
-      const discount = ( cartTotal * 10 ) / 100;
-      setCheckTotal(cartTotal - discount);
-      setIsValid(true);
-    } else {
-      setCoupon('');
+      if ( online ) {
+        if ( voucher === 'INTERCAMBIO' ||
+             voucher === 'SEDA' ||
+             voucher === 'BLUE' ||
+             voucher === 'EGALI7' ||
+             voucher === 'BARISTACOURSEBYBARTIRA'
+        ) {
+          const discount = voucher === 'BARISTACOURSEBYBARTIRA' ? 10 : 5;
+          setCheckTotal(cartTotal - discount);
+          setIsValid(true);
+
+        } else {
+          setVoucher('');
+        }
+      }
     }
   }
 
@@ -92,19 +104,20 @@ function Cart({ cart, cartTotal, language, currentUser }) {
                 >
                   { text[2] }
                 </Button>
-                <div className="coupon">
+                < div className="voucher" >
                   <TextField
-                    id="coupon" 
+                    id="voucher"
+                    className = "input-voucher"
                     label={ text[3] }
                     type="text"
-                    value={coupon}
-                    onChange={e => setCoupon(e.target.value)}
+                    value={voucher}
+                    onChange={e => setVoucher(e.target.value)}
                     disabled={isValid}
                   />
                   <Button
-                    className="btn-coupon"
+                    className = "btn-voucher"
                     type="button"
-                    onClick={ handleValidCupom }
+                    onClick={ handleValidVoucher }
                   >
                     { isValid ? 'APPLIED' : text[4] }
                   </Button>

@@ -33,8 +33,6 @@ class ResetPassword extends React.Component {
         const token = this.props.match.params.token;
         const response = await api.get(`/user-validate/${token}`);
 
-        console.log(response.data);
-
         this.setState({
           userId: response.data._id,
           password: '',
@@ -59,8 +57,7 @@ class ResetPassword extends React.Component {
         error: `Passwords don't match!`
       });
     } else {
-
-      console.log(userId);
+      
       try {
         await api.put('/user-reset-password', { id: userId, password });
         this.setState({
