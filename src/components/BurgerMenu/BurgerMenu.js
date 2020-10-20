@@ -50,7 +50,15 @@ function BurgerMenu({ language, currentUser }) {
         {
           currentUser ? (
             <Link to="/dashboard">
-              { menu[6] }
+              { currentUser?.type === 0 ? 'COURSES' : menu[6] }
+            </Link>
+          ) : ''
+        }
+        {
+          // Admin reports
+          currentUser?.type === 0 ? ( 
+            < Link to = "/reports" > 
+              REPORTS
             </Link>
           ) : ''
         }

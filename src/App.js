@@ -16,6 +16,7 @@ import EditUser from './pages/EditUser/EditUser';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
 import DashboardPage from './pages/Dashboard/Dashboard';
+import ReportPage from './pages/Reports/Reports';
 import CoursePage from './pages/Course/Course';
 import EditCourseDate from './pages/EditCourseDate/EditCourseDate';
 import EditCoursePage from './pages/EditCourse/EditCourse';
@@ -97,6 +98,7 @@ class App extends React.Component {
                 <Route exact path='/security-policy' component={SecurityPolicy} />
                 
                 <Route exact path='/dashboard' component={DashboardPage} />
+                <Route exact path='/reports' component={ReportPage} />
                 <Route exact path='/edit-user/:id' component={EditUser} />
                 <Route exact path='/edit-course/:id' component={EditCoursePage} />
                 <Route exact path='/edit-course-date/:id' component={EditCourseDate} />

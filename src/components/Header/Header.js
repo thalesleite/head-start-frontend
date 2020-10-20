@@ -33,6 +33,7 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
     const [contact, setContact] = useState(false);
     const [login, setLogin] = useState(false);
     const [dash, setDash] = useState(false);
+    const [report, setReport] = useState(false);
     const [cart, setCart] = useState(false);
 
     function setAllFalse() {
@@ -42,6 +43,7 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
         setContact(false);
         setLogin(false);
         setDash(false);
+        setReport(false);
         setCart(false);
     }
 
@@ -65,6 +67,9 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
         }
         if (option === 'dash') {
             setDash(true);
+        }
+        if (option === 'report') {
+            setReport(true);
         }
         if (option === 'cart') {
             setCart(true);
@@ -113,12 +118,24 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
                         { menu[3] }
                     </Link>
                     {
+                        // Dashboard
                         currentUser ? (
                             <Link 
                                 className={`option ${dash ? 'line-bottom' : ''}`}
                                 onClick={() => setOption('dash')}
                                 to="/dashboard">
-                                { menu[6] }
+                                { currentUser?.type === 0 ? 'COURSES' : menu[6] }
+                            </Link>
+                        ) : ''
+                    }
+                    {
+                        // Admin reports
+                        currentUser?.type === 0 ? (
+                            <Link 
+                                className={`option ${report ? 'line-bottom' : ''}`}
+                                onClick={() => setOption('report')}
+                                to="/reports">
+                                REPORTS
                             </Link>
                         ) : ''
                     }

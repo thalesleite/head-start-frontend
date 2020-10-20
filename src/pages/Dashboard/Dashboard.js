@@ -33,7 +33,6 @@ class Dashboard extends React.Component {
       await api.get(`/user-courses/${userId}`)
           .then(response => {
             this.setState({ userCourses: response.data.course });
-          console.log(response.data.course);
       });
     } else {
       this.props.history.push('/login');
