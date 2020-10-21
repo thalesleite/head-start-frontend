@@ -50,7 +50,7 @@ const PT_DATA = {
       'Enviar',
       'Localização',
       'Você pode encontrar a Head Start Courses em:',
-      'Dúvidas? Estamos aqui para ajudar você. Fale com a gente!'
+      'Seja muito bem-vindo! É um prazer ter você conosco!'
     ],
     login: [
       'Email',
