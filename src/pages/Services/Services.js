@@ -17,8 +17,8 @@ const Services = ({ courses, language }) => {
   const text = language === 'EN' ? EN_DATA.sections.services : PT_DATA.sections.services;
 
   console.log(courses);
-  const online = courses ? courses.filter( course => course.type === 'online' ) : '';
-  const facetoface = courses ? courses.filter( course => course.type !== 'online' ) : '';
+  const online = courses.length > 0 ? courses.filter( course => course.type === 'online' ) : '';
+  const facetoface = courses.length > 0 ? courses.filter(course => course.type !== 'online') : '';
 
   return (
     <div 
