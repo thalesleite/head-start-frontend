@@ -35,7 +35,10 @@ function BurgerMenu({ language, currentUser }) {
         <MenuIcon />
       </div>
       <div className={`nav-right ${open ? '' : 'hide'}`}>
-        <Link to="/">
+        <Link
+          onClick={() => window.scrollTo(0, 0)}
+          to="/"
+        >
           { menu[0] }
         </Link>
         <a href="/#about-us">

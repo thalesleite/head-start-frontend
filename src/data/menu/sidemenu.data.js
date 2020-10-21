@@ -1,28 +1,29 @@
-import videoModulo from '../../assets/videos/course/modulo1/modulo11.mp4';
+const vimeo = 'https://player.vimeo.com/video';
+
 // Modulo 1
-import videoModulo11 from '../../assets/videos/course/modulo1/modulo11.mp4';
-import videoModulo12 from '../../assets/videos/course/modulo1/modulo12.mp4';
+const videoModulo11 = `${vimeo}/469698588`;
+const videoModulo12 = `${vimeo}/469705858`;
 // Modulo 2
-import videoModulo21 from '../../assets/videos/course/modulo2/modulo21.mp4';
-import videoModulo22 from '../../assets/videos/course/modulo2/modulo22.mp4';
-import videoModulo23 from '../../assets/videos/course/modulo2/modulo23.mp4';
+const videoModulo21 = `${vimeo}/469698588`;
+const videoModulo22 = `${vimeo}/469705858`;
+const videoModulo23 = `${vimeo}/469698588`;
 // Modulo 3
-import videoModulo31 from '../../assets/videos/course/modulo3/modulo31.mp4';
-import videoModulo32 from '../../assets/videos/course/modulo3/modulo32.mp4';
-import videoModulo33 from '../../assets/videos/course/modulo3/modulo33.mp4';
+const videoModulo31 = `${vimeo}/469698588`;
+const videoModulo32 = `${vimeo}/469705858`;
+const videoModulo33 = `${vimeo}/469698588`;
 // Modulo 4
-import videoModulo41 from '../../assets/videos/course/modulo4/modulo41.mp4';
-import videoModulo42 from '../../assets/videos/course/modulo4/modulo42.mp4';
-//import videoModulo43 from '../../assets/videos/course/modulo4/modulo43.mp4';
+const videoModulo41 = `${vimeo}/469698588`;
+const videoModulo42 = `${vimeo}/469705858`;
+const videoModulo43 = `${vimeo}/469698588`;
 // Modulo 5
-//import videoModulo51 from '../../assets/videos/course/modulo5/modulo51.mp4';
-//import videoModulo52 from '../../assets/videos/course/modulo5/modulo52.mp4';
+const videoModulo51 = `${vimeo}/469698588`;
+const videoModulo52 = `${vimeo}/469705858`;
 // Modulo 6
-//import videoModulo61 from '../../assets/videos/course/modulo6/modulo61.mp4';
-//import videoModulo62 from '../../assets/videos/course/modulo6/modulo62.mp4';
-//import videoModulo63 from '../../assets/videos/course/modulo6/modulo63.mp4';
+const videoModulo61 = `${vimeo}/469698588`;
+const videoModulo62 = `${vimeo}/469705858`;
+const videoModulo63 = `${vimeo}/469698588`;
 // Modulo 7
-//import videoModulo71 from '../../assets/videos/course/modulo7/modulo71.mp4';
+const videoModulo71 = `${vimeo}/469698588`;
 
 const SIDEMNU = [
   {
@@ -31,7 +32,7 @@ const SIDEMNU = [
     items: [{
         link: '1.1',
         title: '1.1 Introdução',
-        video: 'https://player.vimeo.com/video/468646488',
+        video: videoModulo11,
         hidden: false
       },{
         link: '1.2',
@@ -111,7 +112,7 @@ const SIDEMNU = [
       }, {
         link: '4.3',
         title: '4.3 Preparo de Alimentos - parte 2',
-        video: videoModulo,
+        video: videoModulo43,
         hidden: true
       }, {
         link: '4.4',
@@ -126,12 +127,12 @@ const SIDEMNU = [
     items: [{
         link: '5.1',
         title: '5.1 Servindo alimentos e layout das facilidades/equipamentos',
-        video: videoModulo,
+        video: videoModulo51,
         hidden: true
       }, {
         link: '5.2',
         title: '5.2 Controle de peste e resíduos',
-        video: videoModulo,
+        video: videoModulo52,
         hidden: true
       }, {
         link: '5.3',
@@ -146,17 +147,17 @@ const SIDEMNU = [
     items: [{
         link: '6.1',
         title: '6.1 HACCP',
-        video: videoModulo,
+        video: videoModulo61,
         hidden: true
       }, {
         link: '6.2',
         title: '6.2 Treinamento de staff e registros',
-        video: videoModulo,
+        video: videoModulo62,
         hidden: true
       }, {
         link: '6.3',
         title: '6.3 Requerimentos Legais',
-        video: videoModulo,
+        video: videoModulo63,
         hidden: true
       }, {
         link: '6.4',
@@ -171,7 +172,7 @@ const SIDEMNU = [
     items: [{
         link: '7.1',
         title: '7.1  Importância de Pré-Requisitos',
-        video: videoModulo,
+        video: videoModulo71,
         hidden: true
       }, {
         link: '7.2',

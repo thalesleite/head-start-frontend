@@ -13,6 +13,11 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import { selectCourses } from '../../redux/course/course.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
+
 import api from '../../services/api';
 
 import './Dashboard.scss';
@@ -56,15 +61,16 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { courses, currentUser } = this.props;
+    const { courses, language, currentUser } = this.props;
     const { userCourses } = this.state;
+    const text = language === 'EN' ? EN_DATA.sections.dashboard : PT_DATA.sections.dashboard;
 
     return (
       <div className="container dashboard">
         <div className="user">
-          <h1>Hi, {currentUser?.name}!</h1>
+          <h1>{ text[0] }, {currentUser?.name}!</h1>
           <Link className="edit-button" to={`/edit-user/${currentUser?.id}`}>
-            edit
+            { text[1] }
             <AccountCircleIcon />
           </Link>
         </div>
@@ -86,7 +92,7 @@ class Dashboard extends React.Component {
                     className="edit-button"
                     to={`/edit-course/${course._id}`}
                   >
-                    edit
+                    Edit
                     <EditIcon />
                   </Link>
                 </div>
@@ -94,7 +100,7 @@ class Dashboard extends React.Component {
           </div>
         ) : (
           <div>
-            <p>Student</p>
+            <p>{ text[2] }</p>
 
             {userCourses
               ? userCourses.map((course) => (
@@ -104,11 +110,11 @@ class Dashboard extends React.Component {
                       {
                         !course?.dateCourse ? (
                           <span className = "deadline" >
-                            DEADLINE: <b>{this.formatDate(course?.deadline)}</b>
+                            { text[3] } <b>{this.formatDate(course?.deadline)}</b>
                           </span>
                         ) : (
                           <span className = "deadline" >
-                            DATE COURSE: <b>{this.formatDate(course?.dateCourse)} - 5:30 PM</b>
+                            { text[4] } <b>{this.formatDate(course?.dateCourse)} - 5:30 PM</b>
                           </span>
                         )
                       }
@@ -116,11 +122,11 @@ class Dashboard extends React.Component {
                     {course?.type === "online" ? (
                       course?.level === 0 ? (
                         <Link className="add-button" to="#" disabled={true}>
-                          Finished
+                          { text[5] }
                         </Link>
                       ) : this.isDeadline(course?.deadline) ? (
                         <Link className="add-button" to="#" disabled={true}>
-                          Expired
+                          { text[6] }
                         </Link>
                       ) : (
                         <Link
@@ -128,20 +134,20 @@ class Dashboard extends React.Component {
                           to="/course"
                           target="_blank"
                         >
-                          Open
+                          { text[7] }
                           <OpenInNewIcon />
                         </Link>
                       )
                     ): this.isDeadline(course?.deadline) || course?.dateCourse ? (
                       <Link className="add-button" to="#" disabled={true}>
-                        Purchased
+                        { text[8] }
                       </Link>
                     ) : (
                       <Link
                         className="edit-button"
                         to = {`/edit-course-date/${course?.userCourseId}`}
                       >
-                        Schedule
+                        { text[9] }
                         <ScheduleIcon />
                       </Link>
                     )}
@@ -157,7 +163,8 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   courses: selectCourses,
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  language: selectLanguage
 });
 
 export default connect(mapStateToProps, null)(Dashboard);

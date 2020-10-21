@@ -21,6 +21,7 @@ import CoursePage from './pages/Course/Course';
 import EditCourseDate from './pages/EditCourseDate/EditCourseDate';
 import EditCoursePage from './pages/EditCourse/EditCourse';
 import AddCoursePage from './pages/AddCourse/AddCourse';
+import CongratulationsPage from './pages/Congratulations/Congratulations';
 import SuccessPage from './pages/Success/Success';
 import CancelPage from './pages/Cancel/Cancel';
 import ForgotPasswordPage from './pages/ForgotPassword/ForgotPassword';
@@ -103,6 +104,7 @@ class App extends React.Component {
                 <Route exact path='/edit-course/:id' component={EditCoursePage} />
                 <Route exact path='/edit-course-date/:id' component={EditCourseDate} />
                 <Route exact path='/add-course' component={AddCoursePage} />
+                <Route exact path='/congratulations' component={CongratulationsPage} />
                 <Route exact path='/success' component={SuccessPage} />
                 <Route exact path='/cancel' component={CancelPage} />
               </Switch>

@@ -66,10 +66,31 @@ const EN_DATA = {
       'Shopping Cart',
       'Courses in Cart',
       'CHECKOUT',
-      'Enter Coupon',
+      'Enter Voucher',
+      'APPLIED',
       'APPLY',
       'Your cart is empty. Keep shopping!',
-      'go shoopping'
+      'go shopping'
+    ],
+    dashboard: [
+      'Hi',
+      'EDIT',
+      'Student',
+      'DEADLINE:',
+      'DATE COURSE:',
+      'Finished',
+      'Expired',
+      'Open',
+      'Purchased',
+      'Schedule'
+    ],
+    editUser: [
+      'Edit User',
+      'Name',
+      'Address',
+      'Phone',
+      'UPDATE',
+      'CANCEL'
     ]
   }
 };

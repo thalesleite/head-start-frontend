@@ -32,12 +32,13 @@
     .btn-cancel {
       background-color: $color-red;
       margin: 10px;
-      width: 70px;
+      width: 90px;
       height: 36px;
       padding: 8px;
       font-size: 15px;
       text-transform: uppercase;
       border-radius: 5px;
+      text-align: center;
 
       &:hover {
         background-color: $color-red-dark;

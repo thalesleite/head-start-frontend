@@ -28,7 +28,8 @@ function Cart({ cart, cartTotal, language, currentUser }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
   const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
-  
+  //const stripePromise = loadStripe("pk_live_51HRaroIVkTQz2SNYq9kcLEgRqOm8dKgGOgelRWeraZzEy1dQruDZXzzg85dGgj8ykjPfyDw2wESx65trKxctqnyT00htILJEEf");
+
   const [voucher, setVoucher] = useState('');
   const [checkTotal, setCheckTotal] = useState(cartTotal);
   const [isValid, setIsValid] = useState(false);
@@ -54,7 +55,6 @@ function Cart({ cart, cartTotal, language, currentUser }) {
 
   function handleValidVoucher(event) {
     event.preventDefault();
-    
     if ( cart ) {
       const online = cart.find(course => course.type === 'online');
 
@@ -69,6 +69,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
           setCheckTotal(cartTotal - discount);
           setIsValid(true);
 
+          localStorage.setItem('voucher', voucher);
         } else {
           setVoucher('');
         }
@@ -111,7 +112,9 @@ function Cart({ cart, cartTotal, language, currentUser }) {
                     label={ text[3] }
                     type="text"
                     value={voucher}
-                    onChange={e => setVoucher(e.target.value)}
+                    onChange = {
+                      e => setVoucher(e.target.value.toUpperCase())
+                    }
                     disabled={isValid}
                   />
                   <Button
@@ -119,7 +122,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
                     type="button"
                     onClick={ handleValidVoucher }
                   >
-                    { isValid ? 'APPLIED' : text[4] }
+                    { isValid ? text[4] : text[5] }
                   </Button>
                 </div>
               </Grid>
@@ -128,7 +131,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
           <section className="cart-container">
             <Grid container spacing={4}>
               <Grid item xs={12}>
-                <p>{ text[5] }</p>
+                <p>{ text[6] }</p>
               </Grid>
               <Grid item xs={12}>
                 <Button
@@ -136,7 +139,7 @@ function Cart({ cart, cartTotal, language, currentUser }) {
                   type="button"
                 >
                   <Link to="/#services">
-                    { text[6] }
+                    { text[7] }
                   </Link>
                 </Button>
               </Grid>

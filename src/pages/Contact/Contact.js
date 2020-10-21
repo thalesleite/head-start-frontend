@@ -199,6 +199,7 @@ function Contact({ language }) {
       <h2>{ text[12] }</h2>
       <p>{ text[13] } </p>
       <p><i>32 Bachelors Walk, North City, Dublin, D01 HK76</i></p>
+      <p>+353 (089) 972-0494 </p>
       <p>{ text[14] }</p>
       <Grid container spacing={4}>
         <Grid item xs={12}>

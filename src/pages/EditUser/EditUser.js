@@ -1,7 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import { Grid, TextField, Button, Select, MenuItem, InputLabel } from '@material-ui/core';
+import { Grid, TextField, Button } from '@material-ui/core';
 import { HashLink as Link } from 'react-router-hash-link';
+
+import { selectLanguage } from '../../redux/language/language.selectors';
+
+import EN_DATA from '../../data/language/english.data';
+import PT_DATA from '../../data/language/portuguese.data';
 
 import api from '../../services/api';
 
@@ -72,10 +79,12 @@ class EditUser extends React.Component {
       phone,
       password
     } = this.state;
+    const { language } = this.props;
+    const text = language === 'EN' ? EN_DATA.sections.editUser : PT_DATA.sections.editUser;
 
     return (
       <div className="container edit">
-        <h1>Edit User</h1>
+        <h1>{ text[0] }</h1>
 
         <form
           onSubmit={(e) => { 
@@ -94,7 +103,7 @@ class EditUser extends React.Component {
                   className="form-input" 
                   required 
                   id="name" 
-                  label='Name'
+                  label={ text[1] }
                   type="text"
                   value={name}
                   onChange={e => this.setState({ name: e.target.value })}
@@ -116,7 +125,7 @@ class EditUser extends React.Component {
                   className="form-input" 
                   required 
                   id="address" 
-                  label="Address"
+                  label={ text[2] }
                   type="text"
                   value={address}
                   onChange={e => this.setState({ address: e.target.value })}
@@ -127,7 +136,7 @@ class EditUser extends React.Component {
                   className="form-input" 
                   required 
                   id="phone" 
-                  label="Phone"
+                  label={ text[3] }
                   type="number"
                   value={phone}
                   onChange={e => this.setState({ phone: e.target.value })}
@@ -162,13 +171,13 @@ class EditUser extends React.Component {
                 className="btn-save float-r"
                 type="submit"
               >
-                Update
+                { text[4] }
               </Button>
               <Link 
                 className="btn-cancel float-r"
                 to='/dashboard'
               >
-                Cancel
+                { text[5] }
               </Link>
             </Grid>
           </Grid>
@@ -179,4 +188,8 @@ class EditUser extends React.Component {
   };
 }
 
-export default EditUser;
+const mapStateToProps = createStructuredSelector({
+  language: selectLanguage
+});
+
+export default connect(mapStateToProps, null)(EditUser);

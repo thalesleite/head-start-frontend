@@ -126,14 +126,14 @@ class CourseSideMenu extends React.Component{
     });
   }
 
-  handleMenu = menu => {    
+  handleMenu = menu => { 
     return (
       <div className="sidemenu">
         {
           menu?.map((item, index) => (
             <div key={ item?.id }>
               <a 
-                href="#" 
+                href= {`#${item?.id}`}
                 className="menu-title"
                 onClick={ () => {
                   if ( item?.enabled ) {
@@ -149,7 +149,7 @@ class CourseSideMenu extends React.Component{
                 item?.items.map((submenu, i) => 
                   <a 
                     key={i} 
-                    href="#" 
+                    href= {`#${this.state.menu[index].items[i].link}`}
                     className={ `menu-item ${item?.hidden ? 'hide' : ''}` }
                     onClick={ () => {
                       this.setHiddenItems(this.state.menu);
@@ -187,7 +187,7 @@ class CourseSideMenu extends React.Component{
                       <a
                         className="toggle-menu"
                         onClick={this.toggleOpen}
-                        href="#"
+                        href="#dock"
                       >
                         <MenuIcon />
                       </a>

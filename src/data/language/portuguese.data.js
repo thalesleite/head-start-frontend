@@ -43,7 +43,7 @@ const PT_DATA = {
       'Telefone',
       'Assunto',
       'Dúvidas',
-      'Assitência Técnica',
+      'Assistência Técnica',
       'Comentários',
       'Outros',
       'Mensagem',
@@ -66,10 +66,31 @@ const PT_DATA = {
       'Carrinho',
       'Cursos no Carrinho',
       'CONFIRMAR',
-      'Inserir Cupom',
+      'Inserir Voucher',
+      'APLICADO',
       'APLICAR',
       'O carrinho está vazio. Encontre um curso para você!',
       'ir às compras'
+    ],
+    dashboard: [
+      'Oi',
+      'EDITAR',
+      'Estudante',
+      'LIMITE:',
+      'DATA CURSO:',
+      'Finalizado',
+      'Expirado',
+      'Abrir',
+      'Comprado',
+      'Agendar'
+    ],
+    editUser: [
+      'Editar Usuário',
+      'Nome',
+      'Endereço',
+      'Celular',
+      'ATUALIZAR',
+      'CANCELAR'
     ]
   }
 };

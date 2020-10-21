@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import SIDEMENU from '../../data/menu/sidemenu.data';
 
+import { Button } from '@material-ui/core';
+import { HashLink as Link } from 'react-router-hash-link';
+
 import CourseForm from '../../components/CourseForm/CourseForm';
 
 import './CourseContent.scss';
@@ -24,13 +27,25 @@ function CourseContent() {
               {
                 !subitem?.hidden ?  
                   subitem?.video ? (
-                    <iframe 
-                      className="video"
-                      src={subitem.video}
-                      frameborder="0" 
-                      allow="autoplay; fullscreen" 
-                      allowfullscreen
-                    ></iframe>
+                    <div>
+                      <iframe
+                        title={`${subitem.link}`} 
+                        className="video"
+                        frameBorder= "0"
+                        src={subitem.video} 
+                        allow="autoplay; fullscreen" 
+                        allowFullScreen
+                      ></iframe>
+                      {/* <Link
+                        className=''
+                        onClick={() => {
+                          console.log(subitem)
+                        }}
+                        to="/course#1.2"
+                      >
+                        Next >>
+                      </Link> */}
+                    </div>
                   ) : (
                     <CourseForm moduleId={item?.id} />
                   )

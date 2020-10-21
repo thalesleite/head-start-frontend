@@ -16,6 +16,7 @@ class Success extends React.Component {
   async componentDidMount() {
     const cart = JSON.parse(localStorage.getItem('userCart'));
     const userId = localStorage.getItem('userId');
+    const voucher = localStorage.getItem('voucher') ? localStorage.getItem('voucher') : '';
 
     if ( userId && cart) {
         let response = await api.get(`/user/${userId}`);
@@ -40,7 +41,8 @@ class Success extends React.Component {
             user_id: userId, 
             course_id: item._id,
             deadline: date.addDays(item.duration),
-            type: item.type
+            type: item.type,
+            voucher: voucher,
           });
         });
 

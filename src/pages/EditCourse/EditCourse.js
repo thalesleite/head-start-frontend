@@ -21,7 +21,7 @@ class EditCourse extends React.Component {
       type: '',
       price: 0,
       duration: 0,
-      active: 0
+      active: false
     };
   }
   
@@ -222,8 +222,8 @@ class EditCourse extends React.Component {
                   value={active}
                   onChange={e => this.setState({ active: e.target.value })}
                 >
-                  <MenuItem value={1}>Yes</MenuItem>
-                  <MenuItem value={0}>No</MenuItem>
+                  <MenuItem value={true}>Yes</MenuItem>
+                  <MenuItem value={false}>No</MenuItem>
                 </Select>
               </Grid>
             </Grid>

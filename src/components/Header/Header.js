@@ -84,7 +84,11 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
     return (
         <div>
             <div className="header">
-                <Link className="logo-container" to="/">
+                <Link 
+                    className="logo-container"
+                    onClick = {() => window.scrollTo(0, 0)}
+                    to="/"
+                >
                     <Parallax y={[-40, 0]}>
                         <img src={Logo} alt="Head Start"/>
                     </Parallax> 
@@ -92,7 +96,11 @@ function Header({ cartItems, language, currentUser, setCurrentUser }) {
                 <div className="options">
                     <Link 
                         className={`option ${home ? 'line-bottom' : ''}`}
-                        onClick={() => setOption('home')}
+                        onClick={() => {
+                                setOption('home');
+                                window.scrollTo(0, 0);
+                            }
+                        }
                         to="/"
                     >
                         { menu[0] }

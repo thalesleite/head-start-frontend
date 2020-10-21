@@ -120,7 +120,7 @@ function CourseForm(props) {
 
         await api.post('/send-certificate', data)
             .then( res => {
-              history.push('/dashboard');
+              history.push('/congratulations');
         });
       } else {
         window.location.reload(); 

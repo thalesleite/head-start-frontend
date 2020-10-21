@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { useHistory } from 'react-router-dom';
-import { HashLink as Link } from 'react-router-hash-link';
 
 import { Card, CardActions, CardContent, Button } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -68,7 +67,7 @@ function CourseCart({ course, addItem, language }) {
           (
             <Button 
               className="btn-orange"
-              onClick={ () => { 
+              onClick={ () => {
                 addItem(course);
                 history.push('/cart');
               }}
