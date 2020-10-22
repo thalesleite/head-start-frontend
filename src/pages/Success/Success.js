@@ -48,6 +48,7 @@ class Success extends React.Component {
 
         if (!response.error) {
           localStorage.setItem('userCart', null);
+          localStorage.setItem('voucher', null);
         }
     }
   }
