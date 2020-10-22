@@ -32,7 +32,7 @@ function CreateAccount() {
         localStorage.setItem('userId', response.data.id);
         setError('');
 
-        history.push('/login');
+        history.push('/create-account-message');
       } catch (error) {
         const { message } = error?.response?.data;
         setError(message);

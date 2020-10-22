@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -30,10 +30,14 @@ function Cart({ cart, cartTotal, language, currentUser }) {
   const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
   //const stripePromise = loadStripe("pk_live_51HRaroIVkTQz2SNYq9kcLEgRqOm8dKgGOgelRWeraZzEy1dQruDZXzzg85dGgj8ykjPfyDw2wESx65trKxctqnyT00htILJEEf");
 
-  const [voucher, setVoucher] = useState('');
+  const [voucher, setVoucher] = useState(localStorage.getItem('voucher'));
   const [checkTotal, setCheckTotal] = useState(cartTotal);
   const [isValid, setIsValid] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    setVoucherToCart();
+  });
 
   async function handleClick(event) {
     event.preventDefault();
@@ -50,6 +54,25 @@ function Cart({ cart, cartTotal, language, currentUser }) {
 
     } else {
       history.push('/login');
+    }
+  }
+
+  function setVoucherToCart() {
+    if (cart && voucher) {
+      const online = cart.find(course => course.type === 'online');
+
+      if (online) {
+        if (voucher === 'INTERCAMBIO' ||
+          voucher === 'SEDA' ||
+          voucher === 'BLUE' ||
+          voucher === 'EGALI7' ||
+          voucher === 'BARISTACOURSEBYBARTIRA'
+        ) {
+          const discount = voucher === 'BARISTACOURSEBYBARTIRA' ? 10 : 5;
+          setCheckTotal(cartTotal - discount);
+          setIsValid(true);
+        }
+      }
     }
   }
 

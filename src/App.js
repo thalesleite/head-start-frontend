@@ -12,6 +12,7 @@ import Language from './components/ChooseLanguage/ChooseLanguage';
 import HomePage from './pages/Home/Home';
 import LoginPage from './pages/Login/Login';
 import CreateAccountPage from './pages/CreateAccount/CreateAccount';
+import CreateAccountMessagePage from './pages/CreateAccountMessage/CreateAccountMessage';
 import EditUser from './pages/EditUser/EditUser';
 import CartPage from './pages/Cart/Cart';
 import SecurityPolicy from './pages/SecurityPolicy/SecurityPolicy';
@@ -96,6 +97,7 @@ class App extends React.Component {
                 <Route exact path='/forgot-password' component={ForgotPasswordPage} />
                 <Route exact path='/reset/:token' component={ResetPasswordPage} />
                 <Route exact path='/create-account' component={CreateAccountPage} />
+                <Route exact path='/create-account-message' component={CreateAccountMessagePage} />
                 <Route exact path='/security-policy' component={SecurityPolicy} />
                 
                 <Route exact path='/dashboard' component={DashboardPage} />
