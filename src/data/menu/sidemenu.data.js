@@ -3,6 +3,8 @@ const vimeo = 'https://player.vimeo.com/video';
 // Modulo 1
 const videoModulo11 = `${vimeo}/470646633`;
 const videoModulo12 = `${vimeo}/470681979`;
+const videoModulo13 = `${vimeo}/470745656`;
+const videoModulo14 = `${vimeo}/471009395`;
 // Modulo 2
 const videoModulo21 = `${vimeo}/469698588`;
 const videoModulo22 = `${vimeo}/469705858`;
@@ -21,9 +23,6 @@ const videoModulo52 = `${vimeo}/469705858`;
 // Modulo 6
 const videoModulo61 = `${vimeo}/469698588`;
 const videoModulo62 = `${vimeo}/469705858`;
-const videoModulo63 = `${vimeo}/469698588`;
-// Modulo 7
-const videoModulo71 = `${vimeo}/469698588`;
 
 const SIDEMNU = [
   {
@@ -36,11 +35,21 @@ const SIDEMNU = [
         hidden: false
       },{
         link: '1.2',
-        title: '1.2 Termos, definições e  Vocabulário',
+        title: '1.2 Termos, Definições e Vocabulário',
         video: videoModulo12,
         hidden: true
       }, {
         link: '1.3',
+        title: '1.3 Requerimentos Legais em Segurança Alimentar e Legislação',
+        video: videoModulo13,
+        hidden: true
+      }, {
+        link: '1.4',
+        title: '1.4 Segurança Alimentar: Benefícios e Consequências em caso de Negligência',
+        video: videoModulo14,
+        hidden: true
+      }, {
+        link: '1.5',
         title: 'Revisão',
         hidden: true
     }],
@@ -51,7 +60,7 @@ const SIDEMNU = [
     title: 'Módulo 2',
     items: [{
         link: '2.1',
-        title: '2.1 Segurança e Higiene Alimentar',
+        title: '2.1 Higiene Alimentar',
         video: videoModulo21,
         hidden: true
       }, {
@@ -76,7 +85,7 @@ const SIDEMNU = [
     title: 'Módulo 3',
     items: [{
         link: '3.1',
-        title: '3.1 Contaminação Alimentar',
+        title: '3.1 Perigos da Contaminação Alimentar',
         video: videoModulo31,
         hidden: true
       }, {
@@ -86,7 +95,7 @@ const SIDEMNU = [
         hidden: true
       }, {
         link: '3.3',
-        title: '3.3 Microbiologia',
+        title: '3.3 Crescimento Bacteriano',
         video: videoModulo33,
         hidden: true
       }, {
@@ -101,17 +110,17 @@ const SIDEMNU = [
     title: 'Módulo 4',
     items: [{
         link: '4.1',
-        title: '4.1 Comprando, Recebendo Entregas e  Armazenamento',
+        title: '4.1 Transporte, Distribuição e Armazenamento',
         video: videoModulo41,
         hidden: true
       }, {
         link: '4.2',
-        title: '4.2 Preparo de Alimentos - parte 1',
+        title: '4.2 Preparando Alimentos',
         video: videoModulo42,
         hidden: true
       }, {
         link: '4.3',
-        title: '4.3 Preparo de Alimentos - parte 2',
+        title: '4.3 Servindo Alimentos',
         video: videoModulo43,
         hidden: true
       }, {
@@ -126,12 +135,12 @@ const SIDEMNU = [
     title: 'Módulo 5',
     items: [{
         link: '5.1',
-        title: '5.1 Servindo alimentos e layout das facilidades/equipamentos',
+        title: '5.1 HACCP',
         video: videoModulo51,
         hidden: true
       }, {
         link: '5.2',
-        title: '5.2 Controle de peste e resíduos',
+        title: '5.2 Treinamentos e Registros',
         video: videoModulo52,
         hidden: true
       }, {
@@ -146,21 +155,16 @@ const SIDEMNU = [
     title: 'Módulo 6',
     items: [{
         link: '6.1',
-        title: '6.1 HACCP',
+        title: '6.1 Controle de Pragas',
         video: videoModulo61,
         hidden: true
       }, {
         link: '6.2',
-        title: '6.2 Treinamento de staff e registros',
+        title: '6.2 Instalações',
         video: videoModulo62,
         hidden: true
       }, {
         link: '6.3',
-        title: '6.3 Requerimentos Legais',
-        video: videoModulo63,
-        hidden: true
-      }, {
-        link: '6.4',
         title: 'Revisão',
         hidden: true
     }],
@@ -168,25 +172,10 @@ const SIDEMNU = [
     enabled: false
   }, {
     id: 7,
-    title: 'Módulo 7',
-    items: [{
-        link: '7.1',
-        title: '7.1  Importância de Pré-Requisitos',
-        video: videoModulo71,
-        hidden: true
-      }, {
-        link: '7.2',
-        title: 'Revisão',
-        hidden: true
-    }],
-    hidden: true,
-    enabled: false
-  }, {
-    id: 8,
     title: 'Prova de Certificação',
     items: [{
-        link: '8.1',
-        title: '8.1 Prova',
+        link: '7.1',
+        title: '7.1 Prova',
         hidden: true
     }],
     hidden: true,

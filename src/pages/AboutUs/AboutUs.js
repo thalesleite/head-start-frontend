@@ -4,7 +4,8 @@ import { createStructuredSelector } from 'reselect';
 
 import BartiraImg from '../../assets/images/BARTIRA.jpg';
 import BartiraVideoEng from '../../assets/videos/home/CoffeeEnglish.mp4';
-import BartiraVideoPt from '../../assets/videos/home/CoffeePortuguese.mp4';
+import BartiraVideoPt1 from '../../assets/videos/home/CoffeePortuguese.mp4';
+import BartiraVideoPt2 from '../../assets/videos/home/CoffeePortuguese.mp4';
 
 import { selectLanguage } from '../../redux/language/language.selectors';
 
@@ -60,13 +61,54 @@ function AboutUs({ language }) {
       </section>
       <section className="about-section">
         <h1>{ text[17] }</h1>
-        
-        <video 
-          className="about-video"
-          controls={true}
-          controlsList="nodownload"
-          src={language === 'EN' ? BartiraVideoEng : BartiraVideoPt}>
-        </video>
+
+        {
+          language === 'EN' ? (
+            // <video 
+            //   className="about-video"
+            //   controls={true}
+            //   controlsList="nodownload"
+            //   src={BartiraVideoEng}>
+            // </video>
+            <iframe
+              className = "about-video"
+              frameBorder= "0"
+              src={`https://player.vimeo.com/video/471032332`} 
+              allow="autoplay; fullscreen" 
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <div className="video">
+              {/* <video 
+                className="about-video"
+                controls={true}
+                controlsList="nodownload"
+                src={BartiraVideoPt1}>
+              </video>
+              <video 
+                className="about-video"
+                controls={true}
+                controlsList="nodownload"
+                src={BartiraVideoPt2}>
+              </video> */}
+
+              <iframe
+                className = "about-video"
+                frameBorder= "0"
+                src={`https://player.vimeo.com/video/471032977`} 
+                allow="autoplay; fullscreen" 
+                allowFullScreen
+              ></iframe>
+              <iframe
+                className = "about-video"
+                frameBorder= "0"
+                src={`https://player.vimeo.com/video/471031727`} 
+                allow="autoplay; fullscreen" 
+                allowFullScreen
+              ></iframe>
+            </div>
+          )
+        }
       </section>
     </div>
   );

@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 import SIDEMENU from '../../data/menu/sidemenu.data';
 
-import { Button } from '@material-ui/core';
-import { HashLink as Link } from 'react-router-hash-link';
-
 import CourseForm from '../../components/CourseForm/CourseForm';
 
 import './CourseContent.scss';
@@ -36,15 +33,6 @@ function CourseContent() {
                         allow="autoplay; fullscreen" 
                         allowFullScreen
                       ></iframe>
-                      {/* <Link
-                        className=''
-                        onClick={() => {
-                          console.log(subitem)
-                        }}
-                        to="/course#1.2"
-                      >
-                        Next >>
-                      </Link> */}
                     </div>
                   ) : (
                     <CourseForm moduleId={item?.id} />

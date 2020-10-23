@@ -91,6 +91,10 @@ const PT_DATA = {
       'Celular',
       'ATUALIZAR',
       'CANCELAR'
+    ],
+    createUser: [
+      'Cadastro realizado com sucesso!',
+      'Fazer Login'
     ]
   }
 };

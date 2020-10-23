@@ -20,14 +20,14 @@ function CourseForm(props) {
   const [questions, setQuestions] = useState(QUESTIONS);
   const [questionsModule, setQuestionsModule] = useState(
     () => {
-      if (moduleId === 8) {
+      if (moduleId === 7) {
         let exam = [];
         let question = [];
         questions.modules.map( (question) => {
           question.questions.map( option => exam.push(option));
         });
         exam = exam.sort(() => Math.random() - 0.5);
-        exam.questions = exam.slice(0, 10);
+        exam.questions = exam.slice(0, 15);
 
         // hack to change the id because to find
         // the answer we have to pass the question id
@@ -58,6 +58,11 @@ function CourseForm(props) {
   const [question8, setQuestion8] = useState('1');
   const [question9, setQuestion9] = useState('1');
   const [question10, setQuestion10] = useState('1');
+  const [question11, setQuestion11] = useState('1');
+  const [question12, setQuestion12] = useState('1');
+  const [question13, setQuestion13] = useState('1');
+  const [question14, setQuestion14] = useState('1');
+  const [question15, setQuestion15] = useState('1');
   const [score, setScore] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
@@ -74,18 +79,24 @@ function CourseForm(props) {
     score += question2 === findAnswer(2) ? 1 : 0;
     score += question3 === findAnswer(3) ? 1 : 0;
     score += question4 === findAnswer(4) ? 1 : 0;
+    score += question5 === findAnswer(5) ? 1 : 0;
 
-    if ( moduleId === 8) {
+    if ( moduleId === 7) {
       score += question5 === findAnswer(5) ? 1 : 0;
       score += question6 === findAnswer(6) ? 1 : 0;
       score += question7 === findAnswer(7) ? 1 : 0;
       score += question8 === findAnswer(8) ? 1 : 0;
       score += question9 === findAnswer(9) ? 1 : 0;
       score += question10 === findAnswer(10) ? 1 : 0;
+      score += question11 === findAnswer(11) ? 1 : 0;
+      score += question12 === findAnswer(12) ? 1 : 0;
+      score += question13 === findAnswer(13) ? 1 : 0;
+      score += question14 === findAnswer(14) ? 1 : 0;
+      score += question15 === findAnswer(15) ? 1 : 0;
 
-      score = Math.ceil( score * 100 / 10);
+      score = Math.ceil( score * 100 / 15);
     } else {
-      score = Math.ceil( score * 100 / 4);
+      score = Math.ceil( score * 100 / 5);
     }
     setScore(score);
 
@@ -102,7 +113,7 @@ function CourseForm(props) {
     const { currentUser } = props;
 
     let level = currentUser.level + 1;
-    if ( level > 8 ) {
+    if ( level > 7 ) {
       level = 0;
     }
 
@@ -139,6 +150,11 @@ function CourseForm(props) {
     setQuestion8('1');
     setQuestion9('1');
     setQuestion10('1');
+    setQuestion11('1');
+    setQuestion12('1');
+    setQuestion13('1');
+    setQuestion14('1');
+    setQuestion15('1');
     setDisabled(false);
   }
 
@@ -181,6 +197,21 @@ function CourseForm(props) {
       case 10:
         setQuestion10(value);
         break;
+      case 11:
+        setQuestion11(value);
+        break;
+      case 12:
+        setQuestion12(value);
+        break;
+      case 13:
+        setQuestion13(value);
+        break;
+      case 14:
+        setQuestion14(value);
+        break;
+      case 15:
+        setQuestion15(value);
+        break;
       default:
         break;
     }
@@ -218,6 +249,21 @@ function CourseForm(props) {
       case 10:
         return question10;
         break;
+      case 11:
+        return question11;
+      break;
+      case 12:
+        return question12;
+      break;
+      case 13:
+        return question13;
+      break;
+      case 14:
+        return question14;
+      break;
+      case 15:
+        return question15;
+      break;
       default:
         break;
     }
@@ -235,7 +281,7 @@ function CourseForm(props) {
           
           <Grid item xs={12} sm={12}>
             <Grid item xs={12}>
-              <h1>{moduleId === 8 ? 'Prova' : `Revisão Módulo ${moduleId}`}</h1>
+              <h1>{moduleId === 7 ? 'Prova' : `Revisão Módulo ${moduleId}`}</h1>
             </Grid>
             {
               questionsModule ? 
@@ -259,14 +305,17 @@ function CourseForm(props) {
                     >
                       {
                         question?.options.map( (option, index) => (
-                          <FormControlLabel
-                            key={ index } 
-                            className="form-question-input"
-                            value={ option.value }
-                            control={<Radio />} 
-                            label={ option.text }
-                            disabled={disabled}
-                          />
+
+                          option.text ? (
+                            <FormControlLabel
+                              key={ index } 
+                              className="form-question-input"
+                              value={ option.value }
+                              control={<Radio />} 
+                              label={ option.text }
+                              disabled={disabled}
+                            />
+                          ) : ''
                         ))
                       }
                     </RadioGroup>

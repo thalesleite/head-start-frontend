@@ -91,6 +91,10 @@ const EN_DATA = {
       'Phone',
       'UPDATE',
       'CANCEL'
+    ],
+    createUser: [
+      'Your user has created successfully!',
+      'Go to Login'
     ]
   }
 };
