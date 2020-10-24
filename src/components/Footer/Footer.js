@@ -1,8 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
-import { selectLanguage } from '../../redux/language/language.selectors';
 
 import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -13,9 +9,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 import './Footer.scss';
 
-function Footer({ language }) {
-  const text = language === 'EN' ? 'Security Policy' : 'Política de Segurança';
-
+function Footer() {
   let newDate = new Date()
   let year = newDate.getFullYear();
 
@@ -24,7 +18,7 @@ function Footer({ language }) {
       <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <Link to="/security-policy">
-              { text }
+              Privacy Policy
             </Link>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -64,8 +58,4 @@ function Footer({ language }) {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  language: selectLanguage
-});
-
-export default connect(mapStateToProps)(Footer);
+export default Footer;

@@ -2,9 +2,14 @@
 
 .security {
   padding-top: 120px !important;
+  min-height: 30rem;
+
+  a {
+    color: blue !important;
+  }
 
   @media only screen and (max-width: 600px) {
-    padding-top: 50px;
-    padding: 20px;
+    padding-top: 50px !important;
+    padding: 20px !important;
   }
 }
