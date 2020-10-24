@@ -10,6 +10,22 @@
     margin: 10px;
     width: 100%;
 
+    a {
+      color: black !important;
+    }
+
+    .download {
+      text-align: right;
+    }
+
+    .filter {
+      display: flex;
+
+      .form-input {
+        padding: 5px;
+      }
+    }
+
     .table {
       min-width: 700px;
 

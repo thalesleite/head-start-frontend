@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
+import { CSVLink } from 'react-csv';
 import {
   IconButton,
   Grid,
@@ -13,12 +14,14 @@ import {
   TableRow,
   TableFooter,
   TablePagination,
-  Paper
+  Paper,
+  TextField
 } from '@material-ui/core';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 import api from '../../services/api';
 
@@ -94,9 +97,17 @@ class Reports extends React.Component {
     super();
 
     this.state = {
-      report: '',
+      report: [],
+      reportFiltered: [],
       page: 0,
-      rowsPerPage: 5
+      rowsPerPage: 5,
+      name: '',
+      email: '',
+      course: '',
+      dateScheduled: '',
+      type: '',
+      datePurchased: '',
+      voucher: ''
     }
   };
 
@@ -106,8 +117,8 @@ class Reports extends React.Component {
     if ( userId ) {
       await api.get(`/reports/`)
           .then(response => {
-            console.log(response.data)
             this.setState({ report: response.data });
+            this.setState({ reportFiltered: response.data });
       });
     } else {
       this.props.history.push('/login');
@@ -125,10 +136,119 @@ class Reports extends React.Component {
     return day + '/' + month + '/' + year;
   }
 
+  handleDataCSV(rowsData) {
+    const csv = [];
+
+    csv.push(['Name', 'Email', 'Course', 'Date Scheduled', 'Type', 'Date Purchased', 'Voucher']);
+    if( rowsData.length > 0 ) {
+      rowsData.forEach((cell) => {
+        csv.push([
+          cell?.user?.name,
+          cell?.user?.email,
+          cell?.course?.name,
+          this.formatDate(cell?.date_course),
+          cell?.course?.type,
+          this.formatDate(cell?.date_purchase),
+          cell?.voucher
+        ]);
+      });
+    }
+
+    return csv;
+  }
+
+  handleNameFilter(e) {
+    const filter = e.target.value;
+    const tag = e.target.id;
+
+    const { report } = this.state;
+    if ( report.length > 0 ) {
+      const result = report.filter(
+        data => {
+          if ( tag === 'name' ) {
+            this.setState({
+              name: e.target.value
+            });
+
+            return data?.user?.name?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'email') {
+            this.setState({
+              email: e.target.value
+            });
+
+            return data?.user?.email?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'course') {
+            this.setState({
+              course: e.target.value
+            });
+
+            return data?.course?.name?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'dateScheduled') {
+            this.setState({
+              dateScheduled: e.target.value
+            });
+
+            const scheduled = this?.formatDate(data?.date_course);
+            return scheduled?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'type') {
+            this.setState({
+              type: e.target.value
+            });
+
+            return data?.course?.type?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'datePurchased') {
+            this.setState({
+              datePurchased: e.target.value
+            });
+
+            const purchased = this.formatDate(data?.date_purchase);
+            return purchased?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+
+          if (tag === 'voucher') {
+            this.setState({
+              voucher: e.target.value
+            });
+            return data?.voucher?.toLowerCase()?.includes(filter?.toLowerCase());
+          }
+        }
+      );
+
+      if (result && filter) {
+        this.setState({ reportFiltered: result });
+      } else {
+        this.setState({ reportFiltered: report });
+      }
+    }
+  }
+
   render() {
-    const { report, page, rowsPerPage } = this.state;
-    const rows = report.length > 0 ? report : [];
+    const {
+      reportFiltered,
+      page,
+      rowsPerPage,
+      name,
+      email,
+      course,
+      dateScheduled,
+      type,
+      datePurchased,
+      voucher
+    } = this.state;
+    const rows = reportFiltered.length > 0 ? reportFiltered : [];
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+    const rowsData = rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : rows;
 
     return (
       <div className="container reports">
@@ -136,6 +256,102 @@ class Reports extends React.Component {
           <h1>Reports</h1>
 
           <Grid container spacing={4}>
+            <Grid  className="download" item xs={12}>
+              <CSVLink data={this.handleDataCSV(rowsData)}>Download <GetAppIcon/></CSVLink>
+            </Grid>
+             <Grid className="filter" item xs={12}>
+               <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="name" 
+                  label='Name'
+                  type="text"
+                  value={name}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="email" 
+                  label='Email'
+                  type="text"
+                  value={email}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="course" 
+                  label='Course'
+                  type="text"
+                  value={course}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="dateScheduled" 
+                  label='Date Scheduled'
+                  type="text"
+                  value={dateScheduled}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="type" 
+                  label='Type'
+                  type="text"
+                  value={type}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="datePurchased" 
+                  label='Date Purchased'
+                  type="text"
+                  value={datePurchased}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  className="form-input" 
+                  required 
+                  id="voucher" 
+                  label='Voucher'
+                  type="text"
+                  value={voucher}
+                  onChange={e => {
+                    this.handleNameFilter(e);
+                  }}
+                />
+              </Grid>
+            </Grid>
             <Grid item xs={12}>
 
               <TableContainer component={Paper}>
@@ -143,25 +359,24 @@ class Reports extends React.Component {
                   <TableHead>
                     <TableRow>
                       <TableCell>Name</TableCell>
+                      <TableCell>Email</TableCell>
                       <TableCell>Course</TableCell>
+                      <TableCell>Date Scheduled</TableCell>
                       <TableCell>Type</TableCell>
-                      <TableCell>Date Purchase</TableCell>
+                      <TableCell>Date Purchased</TableCell>
                       <TableCell>Voucher</TableCell>
-                      <TableCell>Date Course</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {(rowsPerPage > 0
-                      ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      : rows
-                    ).map((row) => (
+                    {rowsData.map((row) => (
                       <TableRow key={row._id}>
                         <TableCell component="th" scope="row">{row?.user?.name}</TableCell>
+                        <TableCell>{row?.user?.email}</TableCell>
                         <TableCell>{row?.course?.name}</TableCell>
+                        <TableCell>{this.formatDate(row?.date_course)}</TableCell>
                         <TableCell>{row?.course?.type}</TableCell>
                         <TableCell>{this.formatDate(row?.date_purchase)}</TableCell>
                         <TableCell>{row?.voucher}</TableCell>
-                        <TableCell>{this.formatDate(row?.date_course)}</TableCell>
                       </TableRow>
                     ))}
 
