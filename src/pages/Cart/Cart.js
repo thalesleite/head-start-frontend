@@ -46,18 +46,23 @@ function Cart({ cart, cartTotal, language, currentUser }) {
       const total = `${checkTotal}`.replace('.', '').padEnd(4, 0);
       localStorage.setItem('userCart', JSON.stringify(cart));
 
-      const stripe = await stripePromise;
-      const session = await api.post('/payment-session', { total });
-      await stripe.redirectToCheckout({
-        sessionId: session.data.id,
-      });
+      if ( voucher === 'FREE' ) {
+        history.push('/success');
+        window.location.reload(false);
+      } else {
+        const stripe = await stripePromise;
+        const session = await api.post('/payment-session', { total });
+        await stripe.redirectToCheckout({
+          sessionId: session.data.id,
+        });
+      }
 
     } else {
       history.push('/login');
     }
   }
 
-  function setVoucherToCart() {
+  async function setVoucherToCart() {
     if (cart && voucher) {
       const online = cart.find(course => course.type === 'online');
 
@@ -72,11 +77,21 @@ function Cart({ cart, cartTotal, language, currentUser }) {
           setCheckTotal(cartTotal - discount);
           setIsValid(true);
         }
+
+        if ( voucher === 'FREE' ) {
+          const resp = await api.get('/vouchers');
+          const voucher = resp.data[0];
+
+          if (voucher?.has_limit && voucher?.limit > 0) {
+            setCheckTotal(0);
+            setIsValid(true);
+          }
+        }
       }
     }
   }
 
-  function handleValidVoucher(event) {
+  async function handleValidVoucher(event) {
     event.preventDefault();
     if ( cart ) {
       const online = cart.find(course => course.type === 'online');
@@ -93,6 +108,14 @@ function Cart({ cart, cartTotal, language, currentUser }) {
           setIsValid(true);
 
           localStorage.setItem('voucher', voucher);
+        } else if ( voucher === 'FREE' ) {
+          const resp = await api.get('/vouchers');
+          const voucher = resp.data[0];
+
+          if (voucher?.has_limit && voucher?.limit > 0) {
+            setCheckTotal(0);
+            setIsValid(true);
+          }
         } else {
           setVoucher('');
         }

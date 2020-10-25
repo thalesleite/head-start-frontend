@@ -17,7 +17,10 @@ function Footer() {
     <footer className="footer">
       <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Link to="/security-policy">
+            <Link 
+            to="/security-policy"
+            onClick={() => window.scrollTo(0, 0)}
+            >
               Privacy Policy
             </Link>
           </Grid>

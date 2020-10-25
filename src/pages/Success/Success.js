@@ -46,9 +46,16 @@ class Success extends React.Component {
           });
         });
 
+        const resp = await api.get('/vouchers');
+        const voucherData = resp.data[0];
+
+        await api.put('/voucher', {
+          id: voucherData._id
+        });
+
         if (!response.error) {
-          localStorage.setItem('userCart', null);
-          localStorage.setItem('voucher', null);
+          localStorage.setItem('userCart', '');
+          localStorage.setItem('voucher', '');
         }
     }
   }

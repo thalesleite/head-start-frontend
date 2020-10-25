@@ -113,7 +113,7 @@ class EditCourseDate extends React.Component {
                 </MuiPickersUtilsProvider>
               </Grid>
               <Grid item xs={12}>
-                Time: <b>5:30 PM</b>
+                Time: <b>1:00 PM</b>
               </Grid>
             </Grid>
            

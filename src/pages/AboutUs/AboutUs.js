@@ -52,12 +52,11 @@ function AboutUs({ language }) {
             <p>{ text[13] }</p>
             <p>{ text[14] }</p>
             <p>{ text[15] }</p>
-            <p>{ text[16] }</p>
           </div>
         </div>
       </section>
       <section className="about-section">
-        <h1>{ text[17] }</h1>
+        <h1>{ text[16] }</h1>
 
         {
           language === 'EN' ? (

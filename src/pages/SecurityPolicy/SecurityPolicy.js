@@ -157,7 +157,7 @@ function SecurityPolicy() {
       </p>
 
       <p>
-        If you have any queries about Privacy Policy or Cookies, please, email us on: < a href = "mailto:bartira@headstartcourses.ie" > bartira @headstartcourses.ie </a>
+        If you have any queries about Privacy Policy or Cookies, please, email us on: < a href = "mailto:bartira@headstartcourses.ie">bartira@headstartcourses.ie</a>.
       </p>
 
     </div>
