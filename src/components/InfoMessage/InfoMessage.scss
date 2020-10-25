@@ -1,0 +1,16 @@
+@import '../../scss/variables';
+
+.info-message {
+  padding: 8px 230px 8px 230px;
+  border: $color-orange solid 4px;
+  background-color: #feffe8;
+  width: 100%;
+
+  .important {
+    border-bottom: 2px solid black;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 20px;
+  }
+}

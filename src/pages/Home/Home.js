@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import Carousel from 'react-material-ui-carousel';
 import { Paper, Button } from '@material-ui/core';
 
+import InfoMessage from '../../components/InfoMessage/InfoMessage'
 import AboutUsPage from '../AboutUs/AboutUs';
 import ServicesPage from '../Services/Services';
 import ContactPage from '../Contact/Contact';
@@ -234,6 +235,7 @@ function Home({ language }) {
 
   return (
     <div id="main">
+      <InfoMessage />
       <Carousel 
         className="carousel"
         autoPlay={true}

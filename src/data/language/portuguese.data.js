@@ -9,6 +9,10 @@ const PT_DATA = {
     'ÁREA DO ALUNO',
   ],
   sections: {
+    message: [
+      'Aviso importante referente ao nível 5 de restrições!',
+      'Estamos funcionando regularmente e de acordo com todas as diretrizes do governo.Por ser considerado educação e um treinamento profissionalizante que só pode ser entregue presencialmente, nosso curso de baristas tem permissão para continuar com as aulas.'
+    ],
     services: [
       'SERVIÇOS',
       'Cursos Online',

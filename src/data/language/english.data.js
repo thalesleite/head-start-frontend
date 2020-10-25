@@ -9,6 +9,10 @@ const EN_DATA = {
     'STUDENT AREA'
   ],
   sections: {
+    message: [
+      'Important Notice!',
+      'As a further education provider, the Barista Course By Bartira is still operating as usual during Level 5 restrictions; we are following all the guidelines to keep our students safe.'
+    ],
     services: [
       'SERVICES',
       'Online Courses',
