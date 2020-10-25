@@ -6,23 +6,23 @@ const videoModulo12 = `${vimeo}/470681979`;
 const videoModulo13 = `${vimeo}/470745656`;
 const videoModulo14 = `${vimeo}/471009395`;
 // Modulo 2
-const videoModulo21 = `${vimeo}/469698588`;
-const videoModulo22 = `${vimeo}/469705858`;
+const videoModulo21 = `${vimeo}/471535190`;
+const videoModulo22 = `${vimeo}/471694937`;
 const videoModulo23 = `${vimeo}/469698588`;
 // Modulo 3
 const videoModulo31 = `${vimeo}/469698588`;
-const videoModulo32 = `${vimeo}/469705858`;
+const videoModulo32 = `${vimeo}/469698588`;
 const videoModulo33 = `${vimeo}/469698588`;
 // Modulo 4
 const videoModulo41 = `${vimeo}/469698588`;
-const videoModulo42 = `${vimeo}/469705858`;
+const videoModulo42 = `${vimeo}/469698588`;
 const videoModulo43 = `${vimeo}/469698588`;
 // Modulo 5
 const videoModulo51 = `${vimeo}/469698588`;
-const videoModulo52 = `${vimeo}/469705858`;
+const videoModulo52 = `${vimeo}/469698588`;
 // Modulo 6
 const videoModulo61 = `${vimeo}/469698588`;
-const videoModulo62 = `${vimeo}/469705858`;
+const videoModulo62 = `${vimeo}/469698588`;
 
 const SIDEMNU = [
   {
