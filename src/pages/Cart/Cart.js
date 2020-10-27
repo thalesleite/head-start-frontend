@@ -27,8 +27,8 @@ import './Cart.scss';
 function Cart({ cart, cartTotal, language, currentUser }) {
   // getting language text
   const text = language === 'EN' ? EN_DATA.sections.cart : PT_DATA.sections.cart;
-  const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
-  //const stripePromise = loadStripe("pk_live_51HRaroIVkTQz2SNYq9kcLEgRqOm8dKgGOgelRWeraZzEy1dQruDZXzzg85dGgj8ykjPfyDw2wESx65trKxctqnyT00htILJEEf");
+  //const stripePromise = loadStripe("pk_test_51HRaroIVkTQz2SNYCwAaRdPcRiuAT2h2sZdqY394khVXXO6buIJlfIR6EIes9ylqDWuGYIgCxoJsGJJa9aoJzHgX00H3Yj6P8w");
+  const stripePromise = loadStripe("pk_live_51HRaroIVkTQz2SNYq9kcLEgRqOm8dKgGOgelRWeraZzEy1dQruDZXzzg85dGgj8ykjPfyDw2wESx65trKxctqnyT00htILJEEf");
 
   const [voucher, setVoucher] = useState(localStorage.getItem('voucher'));
   const [checkTotal, setCheckTotal] = useState(cartTotal);
